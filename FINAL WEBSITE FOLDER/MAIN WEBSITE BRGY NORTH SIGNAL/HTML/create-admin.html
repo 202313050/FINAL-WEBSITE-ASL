@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Admin Account - Barangay North Signal Village</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../CSS/CreateAdmin.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../CSS/Logo.png" alt="Barangay Logo">
+            <div class="sidebar-header-text">
+                <h1>Barangay North Signal Village</h1>
+                <p>Ipil - Jct. P. North Signal Village 1630 Taguig, Philippines</p>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="../HTML/Admin Dashboard.html" class="menu-item">
+                <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="../HTML/Resident-Req.html" class="menu-item">
+                <img src="../IMG/interview.png" alt="Resident Requests Icon" class="menu-icon">
+                <span>Resident Requests</span>
+            </a>
+            <a href="../HTML/document-requests.html" class="menu-item">
+                <img src="../IMG/document-icon.png" alt="Document Requests Icon" class="menu-icon">
+                <span>Document Requests</span>
+            </a>
+            <a href="../HTML/User-Management.html" class="menu-item active">
+                <img src="../IMG/skills.png" alt="User Management Icon" class="menu-icon">
+                <span>User Management</span>
+            </a>
+            <a href="../HTML/account-settings.html" class="menu-item">
+                <img src="../IMG/settings.png" alt="Settings Icon" class="menu-icon">
+                <span>Account Settings</span>
+            </a>
+        </div>
+        <div class="sign-out">
+            <a href="#">
+                <img src="../IMG/logout.png" alt="Sign Out Icon" class="menu-icon">
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">Create New Admin Account</div>
+        <div class="header-actions">
+            <div class="user-info">
+                <span>Hi, Admin</span>
+                <div class="notification">
+                    <img src="../IMG/notification.png" alt="Notification Icon" class="notification-icon">
+                </div>
+                <div class="user-avatar">👤</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="form-content">
+            <div class="form-container">
+                <h2 class="form-title">Create A New Admin Account</h2>
+                <form id="adminForm">
+                    <div class="form-grid">
+                        <div class="form-left">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Ex: John">
+                                <span class="error-message" id="firstNameError">First name is required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Ex: Doe">
+                                <span class="error-message" id="lastNameError">Last name is required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Ex: john@gmail.com">
+                                <span class="error-message" id="emailError">Valid email address is required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" placeholder="Ex: johndoe">
+                                <span class="error-message" id="usernameError">Username is required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="text" id="mobile" name="mobile" placeholder="Ex: 09123456789">
+                                <span class="error-message" id="mobileError">Valid mobile number is required (format: 09XXXXXXXXX)</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Create New Password for this account">
+                                <span class="error-message" id="passwordError">Password is required</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
+                                <span class="error-message" id="confirmPasswordError">Passwords must match</span>
+                            </div>
+                        </div>
+                        <div class="form-right">
+                            <div class="permissions-section">
+                                <h3 class="permissions-title">Permissions / Access Level</h3>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="manageRequests" name="permissions" value="manageRequests">
+                                    <label for="manageRequests">Manage Requests</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="viewDashboard" name="permissions" value="viewDashboard">
+                                    <label for="viewDashboard">View Dashboard Analytics</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="approveDocuments" name="permissions" value="approveDocuments">
+                                    <label for="approveDocuments">Approve/Reject Documents</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="manageAdmins" name="permissions" value="manageAdmins">
+                                    <label for="manageAdmins">Manage Admin Accounts</label>
+                                </div>
+                                <span class="error-message" id="permissionsError">At least one permission must be selected</span>
+                            </div>
+                            <div class="upload-section">
+                                <h3 class="permissions-title">Upload Head Admin's Signature of Approval</h3>
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-content" id="uploadContent">
+                                        <div class="upload-icon">⬆️</div>
+                                        <p class="upload-text">Click or drag file to this area to upload</p>
+                                    </div>
+                                    <img id="previewImage" class="preview-image" src="#" alt="Signature Preview">
+                                    <input type="file" id="signatureUpload" accept="image/*">
+                                </div>
+                                <span class="error-message" id="signatureError">Signature upload is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+                        <button type="button" class="btn btn-create" id="createBtn">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Account Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-icon">❓</div>
+            <h2 class="modal-title">Confirm Account Creation</h2>
+            <p class="modal-message">Are you sure you want to create an admin account with the provided information?</p>
+            <div class="confirm-modal-buttons">
+                <button class="modal-btn btn-no" id="noBtn">No</button>
+                <button class="modal-btn btn-yes" id="yesBtn">Yes</button>
+            </div>
+            <div class="timer-display" id="timerDisplay">Auto-cancelling in <span id="timerSeconds">10</span> seconds</div>
+        </div>
+    </div>
+    
+    <!-- Cancel Confirmation Modal -->
+    <div class="modal" id="cancelConfirmModal">
+        <div class="modal-content">
+            <div class="modal-icon" style="color: #b91c1c;">⚠️</div>
+            <h2 class="modal-title">Confirm Cancellation</h2>
+            <p class="modal-message">Are you sure you want to cancel? All entered data will be lost.</p>
+            <div class="confirm-modal-buttons">
+                <button class="modal-btn btn-no" id="cancelNoBtn">No</button>
+                <button class="modal-btn btn-yes" id="cancelYesBtn">Yes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title">Thank you</h2>
+            <p class="modal-message">Successfully created an admin account for <span id="createdUsername"></span></p>
+            <button class="modal-btn" id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+    
+    <!-- Logout Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Confirm Logout</h2>
+            <p class="modal-message">Are you sure you want to logout?</p>
+            <div class="confirm-modal-buttons">
+                <button class="modal-btn btn-no" id="cancelLogout">Cancel</button>
+                <button class="modal-btn btn-yes" id="confirmLogout">Log Out</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form elements
+            const adminForm = document.getElementById('adminForm');
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const emailInput = document.getElementById('email');
+            const usernameInput = document.getElementById('username');
+            const mobileInput = document.getElementById('mobile');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const signatureUpload = document.getElementById('signatureUpload');
+            const previewImage = document.getElementById('previewImage');
+            const uploadContent = document.getElementById('uploadContent');
+            
+            // Modal elements
+            const confirmModal = document.getElementById('confirmModal');
+            const cancelConfirmModal = document.getElementById('cancelConfirmModal');
+            const successModal = document.getElementById('successModal');
+            const createdUsername = document.getElementById('createdUsername');
+            const timerDisplay = document.getElementById('timerDisplay');
+            const timerSeconds = document.getElementById('timerSeconds');
+            
+            // Button elements
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const createBtn = document.getElementById('createBtn');
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const cancelNoBtn = document.getElementById('cancelNoBtn');
+            const cancelYesBtn = document.getElementById('cancelYesBtn');
+            
+            // Timer variables
+            let confirmTimer;
+            let secondsRemaining = 30;
+
+            // Logout Modal Elements
+            const logoutLink = document.querySelector(".sign-out a");
+            const logoutModal = document.getElementById("logoutModal");
+            const cancelLogoutBtn = document.getElementById("cancelLogout");
+            const confirmLogoutBtn = document.getElementById("confirmLogout");
+    
+            // Preview uploaded signature
+            signatureUpload.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                        uploadContent.style.display = 'none';
+                    }
+                    reader.readAsDataURL(file);
+                    document.getElementById('signatureError').style.display = 'none';
+                }
+            });
+    
+            // Create button click - Show confirmation modal and start timer
+            createBtn.addEventListener('click', function() {
+                // Reset and start the timer
+                secondsRemaining = 30;
+                
+                // Show the confirmation modal
+                confirmModal.style.display = 'flex';
+                
+                // Start the countdown timer
+                startConfirmTimer();
+            });
+            
+            // Function to start the confirmation timer
+            function startConfirmTimer() {
+                // Clear any existing timer
+                if (confirmTimer) {
+                    clearInterval(confirmTimer);
+                }
+                
+                // Hide timer display initially
+                timerDisplay.style.display = 'none';
+                
+                // Set up the timer
+                confirmTimer = setInterval(function() {
+                    secondsRemaining--;
+                    
+                    // Show timer for the last 10 seconds
+                    if (secondsRemaining <= 10) {
+                        timerDisplay.style.display = 'block';
+                        timerSeconds.textContent = secondsRemaining;
+                    }
+                    
+                    // When timer reaches 0, close modal and return to form
+                    if (secondsRemaining <= 0) {
+                        clearInterval(confirmTimer);
+                        confirmModal.style.display = 'none';
+                    }
+                }, 1000);
+            }
+    
+            // No button click - Close confirmation modal and return to form
+            noBtn.addEventListener('click', function() {
+                // Clear the timer
+                clearInterval(confirmTimer);
+                
+                // Hide the confirmation modal
+                confirmModal.style.display = 'none';
+            });
+    
+            // Yes button click - Validate and submit form
+            yesBtn.addEventListener('click', function() {
+                // Clear the timer
+                clearInterval(confirmTimer);
+                
+                // Hide the confirmation modal
+                confirmModal.style.display = 'none';
+                
+                // Validate and submit the form
+                validateAndSubmitForm();
+            });
+            
+            // Cancel button click - Show cancel confirmation modal
+            cancelBtn.addEventListener('click', function() {
+                // Show the cancel confirmation modal
+                cancelConfirmModal.style.display = 'flex';
+            });
+            
+            // Cancel No button click - Close cancel confirmation modal
+            cancelNoBtn.addEventListener('click', function() {
+                // Hide the cancel confirmation modal
+                cancelConfirmModal.style.display = 'none';
+            });
+            
+            // Cancel Yes button click - Redirect to user management page
+            cancelYesBtn.addEventListener('click', function() {
+                // Hide the cancel confirmation modal
+                cancelConfirmModal.style.display = 'none';
+                
+                // Redirect to user management page
+                window.location.href = 'user-management.html';
+            });
+
+            // Show logout confirmation modal
+            logoutLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                logoutModal.style.display = "flex";
+            });
+
+            // Hide modal when Cancel is clicked
+            cancelLogoutBtn.addEventListener("click", function() {
+                logoutModal.style.display = "none";
+            });
+
+            // Handle logout when confirmed
+            confirmLogoutBtn.addEventListener("click", function() {
+                // Redirect to login page
+                window.location.href = "Admin-login.html";
+            });
+
+            // Close modal if user clicks outside of it
+            window.addEventListener("click", function(event) {
+                if (event.target === logoutModal) {
+                    logoutModal.style.display = "none";
+                }
+            });
+    
+            // Form validation and submission
+            function validateAndSubmitForm() {
+                let isValid = true;
+                
+                // Validate first name
+                if (!firstNameInput.value.trim()) {
+                    document.getElementById('firstNameError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('firstNameError').style.display = 'none';
+                }
+                
+                // Validate last name
+                if (!lastNameInput.value.trim()) {
+                    document.getElementById('lastNameError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('lastNameError').style.display = 'none';
+                }
+                
+                // Validate email
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailInput.value.trim() || !emailPattern.test(emailInput.value.trim())) {
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('emailError').style.display = 'none';
+                }
+                
+                // Validate username
+                if (!usernameInput.value.trim()) {
+                    document.getElementById('usernameError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('usernameError').style.display = 'none';
+                }
+                
+                // Validate mobile number (format: 09XXXXXXXXX)
+                const mobilePattern = /^09\d{9}$/;
+                if (!mobileInput.value.trim() || !mobilePattern.test(mobileInput.value.trim())) {
+                    document.getElementById('mobileError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('mobileError').style.display = 'none';
+                }
+                
+                // Validate password
+                if (!passwordInput.value) {
+                    document.getElementById('passwordError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('passwordError').style.display = 'none';
+                }
+                
+                // Validate confirm password
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    document.getElementById('confirmPasswordError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('confirmPasswordError').style.display = 'none';
+                }
+                
+                // Validate at least one permission is checked
+                const permissions = document.querySelectorAll('input[name="permissions"]:checked');
+                if (permissions.length === 0) {
+                    document.getElementById('permissionsError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('permissionsError').style.display = 'none';
+                }
+                
+                // Validate signature upload
+                if (!signatureUpload.files[0] && previewImage.style.display !== 'block') {
+                    document.getElementById('signatureError').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('signatureError').style.display = 'none';
+                }
+                
+                // If all validations pass, save user data and show success modal
+                if (isValid) {
+                    // Generate a unique user ID (P + 4 digits)
+                    const userId = 'P' + Math.floor(1000 + Math.random() * 9000);
+                    
+                    // Create user object
+                    const newUser = {
+                        userId: userId,
+                        firstName: firstNameInput.value.trim(),
+                        lastName: lastNameInput.value.trim(),
+                        email: emailInput.value.trim(),
+                        username: usernameInput.value.trim(),
+                        mobile: mobileInput.value.trim(),
+                        status: 'active',
+                        permissions: Array.from(permissions).map(p => p.value)
+                    };
+                    
+                    // Get existing users from localStorage or initialize empty array
+                    let users = JSON.parse(localStorage.getItem('barangayUsers')) || [];
+                    
+                    // Add new user to array
+                    users.push(newUser);
+                    
+                    // Save updated users array to localStorage
+                    localStorage.setItem('barangayUsers', JSON.stringify(users));
+                    
+                    // Update total users count
+                    let totalUsers = parseInt(localStorage.getItem('totalUsers') || '42');
+                    totalUsers += 1;
+                    localStorage.setItem('totalUsers', totalUsers.toString());
+                    
+                    // Update active users count
+                    let activeUsers = parseInt(localStorage.getItem('activeUsers') || '35');
+                    activeUsers += 1;
+                    localStorage.setItem('activeUsers', activeUsers.toString());
+                    
+                    // Show success modal
+                    createdUsername.textContent = usernameInput.value;
+                    successModal.style.display = 'flex';
+                    
+                    console.log('Form submitted with data:', newUser);
+                } else {
+                    // Scroll to the first error
+                    const firstError = document.querySelector('.error-message[style="display: block"]');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+            
+            // Close modal and redirect to user management page
+            modalCloseBtn.addEventListener('click', function() {
+                successModal.style.display = 'none';
+                // Redirect to user management page
+                window.location.href = 'user-management.html';
+            });
+            
+            // Menu item click - navigate to respective pages
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#') {
+                        // If there are unsaved changes, confirm before navigating
+                        if (hasUnsavedChanges()) {
+                            e.preventDefault();
+                            if (confirm('You have unsaved changes. Are you sure you want to leave this page?')) {
+                                window.location.href = href;
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Function to check if form has unsaved changes
+            function hasUnsavedChanges() {
+                return firstNameInput.value.trim() !== '' || 
+                       lastNameInput.value.trim() !== '' || 
+                       emailInput.value.trim() !== '' || 
+                       usernameInput.value.trim() !== '' || 
+                       mobileInput.value.trim() !== '' || 
+                       passwordInput.value !== '' || 
+                       confirmPasswordInput.value !== '' || 
+                       document.querySelectorAll('input[name="permissions"]:checked').length > 0 ||
+                       previewImage.style.display === 'block';
+            }
+            
+            // Make the upload area clickable
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.addEventListener('click', function() {
+                signatureUpload.click();
+            });
+            
+            // Drag and drop functionality for signature upload
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#0c4d84';
+            });
+            
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.style.borderColor = '#0a3b66';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#0a3b66';
+                
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    signatureUpload.files = e.dataTransfer.files;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                        uploadContent.style.display = 'none';
+                    }
+                    reader.readAsDataURL(file);
+                    document.getElementById('signatureError').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

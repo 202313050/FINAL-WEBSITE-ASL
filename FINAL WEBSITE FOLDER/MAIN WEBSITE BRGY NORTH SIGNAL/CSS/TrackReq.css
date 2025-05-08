@@ -1,0 +1,702 @@
+/* Reset default body margins */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Noto Sans", sans-serif;
+  color: #333;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f1f1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 160px;
+  background-color: #fff;
+}
+
+.announcement-text,
+.login-text {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Header - Made Sticky */
+.main-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 15px 160px;
+  z-index: 1000; /* Increased z-index to ensure it stays on top */
+  background-color: #0f2d70;
+  flex-wrap: wrap;
+  transition: all 0.3s ease; /* Smooth transition for any changes */
+}
+
+.header-logo {
+  width: 81px;
+  height: 91px;
+}
+
+.header-info {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.header-title {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 5px 0;
+}
+
+.header-address {
+  font-family: Poppins;
+  font-size: 12px;
+  color: #fff;
+  margin: 0;
+}
+
+/* Update the header line styles */
+.yellow-line {
+  width: 100%;
+  height: 2px;
+  background-color: #f2ff37;
+  border: none;
+  margin: 0;
+}
+
+.header-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  top: 171px;
+  z-index: 999; /* Make sure it's below the sticky header */
+}
+
+
+.main-nav {
+  display: flex;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+.nav-link {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+/* Add hover effect for nav links */
+.nav-link {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #f2ff37;
+  transition: width 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #f2ff37;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Add dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-icon {
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+  /* Add transition for smoother appearance */
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Change display method to use opacity and visibility instead */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add this new rule to keep dropdown visible when hovering the dropdown content */
+.dropdown-content:hover {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add a small delay before hiding to give users time to move cursor */
+.dropdown .dropdown-content {
+  transition-delay: 0s;
+}
+
+.dropdown:hover .dropdown-content {
+  transition-delay: 0s;
+}
+
+/* Keep dropdown visible when hovering dropdown content */
+.dropdown-content:hover {
+  transition-delay: 0s;
+}
+
+.dropdown-content a {
+  color: #555;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+  color: #0f2d70;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.header-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  top: 171px;
+  z-index: 999; /* Make sure it's below the sticky header */
+}
+
+/* Track Title Section */
+.track-title-section {
+  background-color: #0f2d70;
+  color: #fff;
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 0; /* Adjusted for sticky header */
+}
+
+.track-title {
+  font-family: Poppins;
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.breadcrumb {
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: #fff;
+}
+
+/* Track Section */
+.track-section {
+  padding: 60px 160px;
+}
+
+.track-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.track-form-container {
+  background-color: #f8f8f8;
+  padding: 40px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-family: Poppins;
+  font-size: 28px;
+  font-weight: 600;
+  color: #0f2d70;
+  margin: 0 0 20px 0;
+}
+
+.track-description {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.track-form {
+  max-width: 600px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.reference-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #333;
+}
+
+.track-button {
+  background-color: #0f2d70;
+  color: white;
+  border: none;
+  padding: 0 30px;
+  border-radius: 8px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.track-button:hover {
+  background-color: #0a1f50;
+}
+
+/* Track Results */
+.track-results {
+  margin-bottom: 60px;
+}
+
+.status-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.status-title {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.reference-number {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Noto Sans";
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #0f2d70;
+}
+
+.status-verification {
+  background-color: #ff9800;
+}
+
+.status-processing {
+  background-color: #2196f3;
+}
+
+.status-ready {
+  background-color: #4caf50;
+}
+
+.status-completed {
+  background-color: #4caf50;
+}
+
+.status-details {
+  margin-bottom: 30px;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  width: 200px;
+}
+
+.detail-value {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #333;
+}
+
+/* Timeline */
+.status-timeline {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.status-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  width: 2px;
+  background-color: #ddd;
+}
+
+.timeline-item {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline-point {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-right: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item.completed .timeline-point {
+  background-color: #4caf50;
+}
+
+.timeline-item.active .timeline-point {
+  background-color: #2196f3;
+  box-shadow: 0 0 0 5px rgba(33, 150, 243, 0.2);
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: 10px;
+}
+
+.timeline-content h5 {
+  font-family: "Noto Sans";
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.timeline-content p {
+  font-family: "Noto Sans";
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.status-notes {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.status-notes h5 {
+  font-family: "Noto Sans";
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.status-notes p {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Track Info */
+.track-info {
+  background-color: #f8f8f8;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.track-steps {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
+.track-steps li {
+  margin-bottom: 10px;
+}
+
+.track-note {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #0f2d70;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.track-note h4 {
+  font-family: "Noto Sans";
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f2d70;
+  margin: 0 0 10px 0;
+}
+
+.track-note p {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Footer */
+.main-footer {
+  padding: 40px 75px;
+  background-color: #0f2d70;
+  color: #fff;
+}
+
+.footer-content {
+  color: #fff;
+}
+
+.footer-title {
+  font-family: "Lisu Bosa";
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+
+.footer-address,
+.footer-contact {
+  font-family: Inter;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 24px;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.footer-logo {
+  width: 56px;
+  height: 56px;
+}
+
+/* Mobile dropdown styles */
+@media (max-width: 991px) {
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    margin-top: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-content a {
+    padding-left: 30px;
+    color: #fff;
+  }
+
+  .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f2ff37;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .track-section {
+    padding: 40px 80px;
+  }
+}
+
+@media (max-width: 991px) {
+  .announcement-bar,
+  .main-header {
+    padding: 14px 20px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .track-section {
+    padding: 30px 40px;
+  }
+
+  .reference-input-container {
+    flex-direction: column;
+  }
+
+  .track-button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .status-header {
+    flex-direction: column;
+  }
+
+  .status-badge {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .track-title {
+    font-size: 36px;
+  }
+
+  .track-section {
+    padding: 20px;
+  }
+
+  .track-form-container,
+  .track-info {
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .status-card {
+    padding: 20px;
+  }
+
+  .detail-row {
+    flex-direction: column;
+  }
+
+  .detail-label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}

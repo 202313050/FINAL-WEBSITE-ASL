@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay North Signal Village</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../CSS/User-Mang.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../IMG/Logo.png" alt="Barangay Logo">
+            <div class="sidebar-header-text">
+                <h1>Barangay North Signal Village</h1>
+                <p>Ipil - Jct. P. North Signal Village 1630 Taguig, Philippines</p>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="../HTML/Admin-Dashboard.html" class="menu-item">
+                <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="../HTML/resident-requests.html" class="menu-item">
+                <img src="../IMG/interview.png" alt="Resident Requests Icon" class="menu-icon">
+                <span>Resident Requests</span>
+            </a>
+            <a href="../HTML/document-requests.html" class="menu-item">
+                <img src="../IMG/document-icon.png" alt="Document Requests Icon" class="menu-icon">
+                <span>Document Requests</span>
+            </a>
+            <a href="../HTML/user-management.html" class="menu-item active">
+                <img src="../IMG/skills.png" alt="User Management Icon" class="menu-icon">
+                <span>User Management</span>
+            </a>
+            <!-- Added UI Settings menu item -->
+            <a href="../HTML/UI_Settings.html" class="menu-item">
+                <img src="../IMG/settings.png" alt="UI Settings Icon" class="menu-icon">
+                <span>UI Settings</span>
+            </a>
+            <a href="../HTML/account-settings.html" class="menu-item">
+                <img src="../IMG/settings.png" alt="Settings Icon" class="menu-icon">
+                <span>Account Settings</span>
+            </a>
+        </div>
+        <div class="sign-out">
+            <a href="#" id="signOutBtn">
+                <img src="../IMG/logout.png" alt="Sign Out Icon" class="menu-icon">
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">User Management</div>
+        <div class="header-actions">
+            <div class="user-info">
+                <span>Hi, Admin</span>
+                <div class="notification">
+                    <img src="../IMG/notification.png" alt="Notification Icon" class="notification-icon">
+                </div>
+                <div class="user-avatar">👤</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-cards">
+                <div class="stat-card blue">
+                    <h2 id="totalUsers">42</h2>
+                    <p>Total Users</p>
+                </div>
+                <div class="stat-card green">
+                    <h2 id="activeUsers">35</h2>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card orange">
+                    <h2 id="suspendedUsers">7</h2>
+                    <p>Suspended Users</p>
+                </div>
+            </div>
+
+            <!-- User Table -->
+            <div class="user-table-container">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <tr>
+                            <td>P1233</td>
+                            <td>Olivia</td>
+                            <td>Sakamoto</td>
+                            <td>pearly@gmail.com</td>
+                            <td>Admin</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-suspend">Suspend</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1234</td>
+                            <td>John Dela</td>
+                            <td>Cruz</td>
+                            <td>john@gmail.com</td>
+                            <td>Barangay Captain</td>
+                            <td><span class="status-badge status-suspended">Suspended</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-activate">Activate</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1235</td>
+                            <td>Jose Dela</td>
+                            <td>Cruz</td>
+                            <td>jose@gmail.com</td>
+                            <td>Document Verifier</td>
+                            <td><span class="status-badge status-suspended">Suspended</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-activate">Activate</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1236</td>
+                            <td>Maria</td>
+                            <td>Santos</td>
+                            <td>maria@gmail.com</td>
+                            <td>Document Verifier</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-suspend">Suspend</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1237</td>
+                            <td>Maria</td>
+                            <td>Clara</td>
+                            <td>clara@gmail.com</td>
+                            <td>Barangay Captain</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-suspend">Suspend</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1238</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>johnd@gmail.com</td>
+                            <td>Admin</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-suspend">Suspend</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P1239</td>
+                            <td>Jane</td>
+                            <td>Doe</td>
+                            <td>jane@gmail.com</td>
+                            <td>Document Verifier</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-view">View</button>
+                                    <button class="btn btn-suspend">Suspend</button>
+                                    <button class="btn btn-delete">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                    <div class="search-filters">
+                        <button class="search-button">[ Search by name or ID ]</button>
+                        <button class="search-button">[ Search By Role ]</button>
+                        <button class="filter-button">[ Filter By Status ]</button>
+                    </div>
+                    <div>
+                        <button class="create-button" id="createAdminBtn">[ Create New User ]</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approve All Button -->
+            <div class="approve-all-container">
+                <button class="approve-all-button">Activate All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-buttons">
+                <button id="cancelLogout" class="modal-button cancel-button">Cancel</button>
+                <button id="confirmLogout" class="modal-button logout-button">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View User Modal -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <h2>User Details</h2>
+            <div class="user-details">
+                <p><strong>User ID:</strong> <span id="viewUserId"></span></p>
+                <p><strong>Name:</strong> <span id="viewUserName"></span></p>
+                <p><strong>Email:</strong> <span id="viewUserEmail"></span></p>
+                <p><strong>Role:</strong> <span id="viewUserRole"></span></p>
+                <p><strong>Status:</strong> <span id="viewUserStatus"></span></p>
+                <div class="permissions-section">
+                    <h3>Permissions</h3>
+                    <ul id="viewUserPermissions">
+                        <!-- Permissions will be populated dynamically -->
+                    </ul>
+                </div>
+                <div class="user-reasons" id="viewReasons">
+                    <!-- Reasons will be populated dynamically -->
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-action">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activate User Modal -->
+    <div id="activateModal" class="modal">
+        <div class="modal-content">
+            <h2>Activate User</h2>
+            <p>You are activating user: <strong id="activateUserName"></strong> (<span id="activateUserId"></span>)</p>
+            <div class="form-group">
+                <label for="activateReasonInput">Reason for activation:</label>
+                <textarea id="activateReasonInput" rows="4" placeholder="Enter reason for activation"></textarea>
+                <p class="error-message" id="activateError">Please provide a reason for activation</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-action">Cancel</button>
+                <button id="confirmActivate" class="modal-button logout-button">Activate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suspend User Modal -->
+    <div id="suspendModal" class="modal">
+        <div class="modal-content">
+            <h2>Suspend User</h2>
+            <p>You are suspending user: <strong id="suspendUserName"></strong> (<span id="suspendUserId"></span>)</p>
+            <div class="form-group">
+                <label for="suspendReasonInput">Reason for suspension:</label>
+                <textarea id="suspendReasonInput" rows="4" placeholder="Enter reason for suspension"></textarea>
+                <p class="error-message" id="suspendError">Please provide a reason for suspension</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-action">Cancel</button>
+                <button id="confirmSuspend" class="modal-button logout-button">Suspend</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete User Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h2>Delete User</h2>
+            <p>You are deleting user: <strong id="deleteUserName"></strong> (<span id="deleteUserId"></span>)</p>
+            <div class="form-group">
+                <label for="deleteReasonInput">Reason for deletion:</label>
+                <textarea id="deleteReasonInput" rows="4" placeholder="Enter reason for deletion"></textarea>
+                <p class="error-message" id="deleteError">Please provide a reason for deletion</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-action">Cancel</button>
+                <button id="confirmDelete" class="modal-button logout-button">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activate All Modal -->
+    <div id="activateAllModal" class="modal">
+        <div class="modal-content">
+            <h2>Activate All Suspended Users</h2>
+            <p>You are about to activate all suspended users.</p>
+            <div class="form-group">
+                <label for="activateAllReasonInput">Reason for batch activation:</label>
+                <textarea id="activateAllReasonInput" rows="4" placeholder="Enter reason for activating all users"></textarea>
+                <p class="error-message" id="activateAllError">Please provide a reason for batch activation</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-button cancel-action">Cancel</button>
+                <button id="confirmActivateAll" class="modal-button logout-button">Activate All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create User Modal -->
+    <div id="createAdminModal" class="modal">
+        <div class="modal-content create-admin-modal">
+            <h2>Create New User</h2>
+            <form id="createAdminForm">
+                <div class="form-group">
+                    <label for="adminFirstName">First Name:</label>
+                    <input type="text" id="adminFirstName" class="form-input" placeholder="Enter first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminLastName">Last Name:</label>
+                    <input type="text" id="adminLastName" class="form-input" placeholder="Enter last name" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Email:</label>
+                    <input type="email" id="adminEmail" class="form-input" placeholder="Enter email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="Enter password" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminConfirmPassword">Confirm Password:</label>
+                    <input type="password" id="adminConfirmPassword" class="form-input" placeholder="Confirm password" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminRole">Role:</label>
+                    <select id="adminRole" class="form-input" required>
+                        <option value="">Select a role</option>
+                        <option value="admin">Admin</option>
+                        <option value="barangay-captain">Barangay Captain</option>
+                        <option value="document-verifier">Document Verifier</option>
+                    </select>
+                </div>
+                
+                <!-- Dynamic Permissions Section -->
+                <div class="form-group" id="permissionsSection">
+                    <label>Permissions:</label>
+                    <div class="permissions-container">
+                        <p class="permissions-message">Select a role to view available permissions</p>
+                    </div>
+                </div>
+                
+                <p class="error-message" id="createAdminError"></p>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-button cancel-action">Cancel</button>
+                    <button type="submit" class="modal-button logout-button">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../JS/notification-no-content.js"></script>
+    <script src="../JS/User-Mang.js"></script>
+</body>
+</html>

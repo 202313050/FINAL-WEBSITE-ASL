@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Barangay ID Application</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;600&family=Inter:wght@400&family=Lisu+Bosa:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/id.css" />
+    <link rel="stylesheet" href="mobile-menu.css" />
+    <style>
+      /* Error message styling */
+      .error-message {
+        color: #ff0000;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="top-bar">
+        <p class="announcement-text">
+          Open Hours of Barangay North Signal Village [Day &amp; Time]
+        </p>
+        <a href="../HTML/Admin-login.html" class="login-text">LOGIN</a>
+      </div>
+
+      <header class="main-header">
+        <div class="header-content">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4848c1b44e47c6c0ce74516fefca71bf5244d214" alt="Logo" class="header-logo" />
+          <div class="header-info">
+            <h1 class="header-title">Barangay North Signal Village</h1>
+            <p class="header-address">
+              Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+            </p>
+          </div>
+          <nav class="main-nav">
+            <a href="../HTML/Home.html" class="nav-link">HOME</a>
+            <a href="../HTML/About.html" class="nav-link">ABOUT</a>
+            <div class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle">SERVICES <span class="dropdown-icon">▼</span></a>
+              <div class="dropdown-content">
+                <a href="../HTML/Business-Clearance.html">Business Clearance</a>
+                <a href="../HTML/Form.html">Certificate</a>
+                <a href="../HTML/Form.html">Clearances</a>
+                <a href="../HTML/Brgyid.html">Barangay ID Application</a>
+              </div>
+            </div>
+            <a href="../HTML/Contact.html" class="nav-link">CONTACT</a>
+            <a href="../HTML/Faqs.html" class="nav-link">FAQ</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="header-line">
+       
+      </div>
+      
+      <main class="main-content">
+        <h2 class="page-title">Barangay ID Application</h2>
+
+        <section class="form-container">
+          <form class="clearance-form" id="idForm">
+            <div class="form-field">
+              <label class="form-label">First Name</label>
+              <input type="text" name="firstName" placeholder="First Name" class="form-input" required/>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Middle Name</label>
+              <input type="text" name="middleName" placeholder="Middle Name" class="form-input" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Last Name</label>
+              <input type="text" name="lastName" placeholder="Last Name" class="form-input" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Address</label>
+              <input type="text" name="address" placeholder="Address" class="form-input" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Contact Number</label>
+              <input type="text" name="contactNumber" placeholder="Contact Number" class="form-input" required />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Birthday</label>
+              <input
+                type="date"
+                name="birthday"
+                placeholder="mm/dd/yyyy"
+                class="form-input" required
+              />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Precinct</label>
+              <input
+                type="text"
+                name="precinct"
+                placeholder="Precinct"
+                class="form-input" required
+              />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Date Today</label>
+              <input type="date" name="dateToday" placeholder="mm/dd/yyyy" class="form-input" required />
+            </div>
+
+            <div class="address-section">
+              <label class="form-label">Emergency Contact</label>
+              <div class="form-field">
+                <label class="form-label">Name</label>
+                <input
+                  type="text"
+                  name="emergencyName"
+                  placeholder="Name"
+                  class="form-input"
+                />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Contact Number</label>
+                <input
+                  type="tel"
+                  name="emergencyContact"
+                  placeholder="Contact Number"
+                  class="form-input"
+                />
+              </div>
+
+              <div class="form-field">
+                <label class="form-label">Relationship</label>
+                <input
+                  type="text"
+                  name="emergencyRelationship"
+                  placeholder="Relationship"
+                  class="form-input"
+                />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <a href="../HTML/SectorType.html" class="btn-cancel">Cancel</a>
+              <button type="button" id="confirmBtn" class="btn-next">Confirm</button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <!-- Popup Modal -->
+      <div id="successPopup" class="popup">
+        <div class="popup-content">
+          <div class="checkmark">
+            <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="70" cy="70" r="65" stroke="#4CAF50" stroke-width="10"/>
+              <path d="M40 70L60 90L100 50" stroke="#4CAF50" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 style="font-size: 36px; margin-bottom: 20px;">Successfully submitted!</h2>
+          <p style="font-size: 20px; margin-bottom: 10px;">Your Reference No. is</p>
+          <p id="refNumberDisplay" style="font-size: 32px; font-weight: bold; margin-bottom: 20px;">#00001</p>
+          <p style="font-size: 20px; margin-bottom: 10px;">Track your request <a id="trackLink" href="trackmyrequest.html" style="color: #4285F4; text-decoration: underline;">here</a></p>
+          <button id="homeBtn">Back to Home</button>
+        </div>
+      </div>
+
+      <footer class="main-footer">
+        <div class="footer-content">
+          <h2 class="footer-title">Barangay North Signal Village</h2>
+          <p class="footer-address">
+            Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+          </p>
+          <div class="footer-contact">
+            <p>Phone: 8-983-92-98</p>
+            <p>Email: northsignalvillage.taguig@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-logos">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c13c9fac2b848256866af925559c53806507e34f" alt="Logo 1" class="footer-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce17a13d946f45d4463799aecacbd180eeb462fe" alt="Logo 2" class="footer-logo" />
+        </div>
+      </footer>
+    </div>
+
+    <!-- Include the form validation JavaScript -->
+    <script src="../JS/brgyid.js"></script>
+    
+  </body>
+</html>

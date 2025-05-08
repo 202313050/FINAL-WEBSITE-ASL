@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Requests - Barangay North Signal Village</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../CSS/Residentreq.css">
+    <link rel="stylesheet" href="../CSS/notification.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../IMG/Logo.png" alt="Barangay Logo">
+            <div class="sidebar-header-text">
+                <h1>Barangay North Signal Village</h1>
+                <p>Ipil - Jct. P. North Signal Village 1630 Taguig, Philippines</p>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="../HTML/Admin-Dashboard.html" class="menu-item">
+                <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="../HTML/Resident-Req.html" class="menu-item active">
+                <img src="../IMG/interview.png" alt="Resident Requests Icon" class="menu-icon">
+                <span>Resident Requests</span>
+            </a>
+            <a href="../HTML/document-requests.html" class="menu-item">
+                <img src="../IMG/document-icon.png" alt="Document Requests Icon" class="menu-icon">
+                <span>Document Requests</span>
+            </a>
+            <a href="../HTML/User-Management.html" class="menu-item">
+                <img src="../IMG/skills.png" alt="User Management Icon" class="menu-icon">
+                <span>User Management</span>
+            </a>
+            <!-- Added UI Settings menu item -->
+            <a href="../HTML/UI_Settings.html" class="menu-item">
+               <img src="../IMG/settings.png" alt="UI Settings Icon" class="menu-icon">
+               <span>UI Settings</span>
+            </a>
+            <a href="../HTML/account-settings.html" class="menu-item">
+                <img src="../IMG/settings.png" alt="Settings Icon" class="menu-icon">
+                <span>Account Settings</span>
+            </a>
+        </div>
+        <div class="sign-out">
+            <a href="#" id="signOutBtn">
+                <img src="../IMG/logout.png" alt="Sign Out Icon" class="menu-icon">
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">Resident Requests</div>
+        <div class="header-actions">
+            <div class="user-info">
+                <span>Hi, Admin</span>
+                <div class="notification">
+                    <img src="../IMG/notification.png" alt="Notification Icon" class="notification-icon">
+                </div>
+                <div class="user-avatar">👤</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-cards">
+                <div class="stat-card blue">
+                    <h2 id="pendingCount">0</h2>
+                    <p>Pending Requests</p>
+                </div>
+                <div class="stat-card green">
+                    <h2 id="approvedCount">0</h2>
+                    <p>Approved Requests</p>
+                </div>
+                <div class="stat-card orange">
+                    <h2 id="scheduledCount">0</h2>
+                    <p>Scheduled Appointments</p>
+                </div>
+            </div>
+
+            <!-- Request Table -->
+            <div class="request-table-container">
+                <table class="request-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Resident Name</th>
+                            <th>Request Type</th>
+                            <th>Date Submitted</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestTableBody">
+                        <!-- Table rows will be dynamically populated -->
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                    <div class="search-filters">
+                        <button class="search-button">[ Search by name or ID ]</button>
+                        <button class="filter-button">[ Filter By Date ]</button>
+                        <button class="filter-button">[ Filter By Status ]</button>
+                    </div>
+                    <div>
+                        <button class="new-button">[ New Requests ]</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approve All Button -->
+            <div class="approve-all-container">
+                <button class="approve-all-button">Approve All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-actions">
+                <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                <button id="confirmLogout" class="btn-logout">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Request Modal -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <h2>Request Details</h2>
+            <div class="request-details">
+                <p><strong>Request ID:</strong> <span id="viewRequestId"></span></p>
+                <p><strong>Resident Name:</strong> <span id="viewResidentName"></span></p>
+                <p><strong>Request Type:</strong> <span id="viewRequestType"></span></p>
+                <p><strong>Status:</strong> <span id="viewStatus"></span></p>
+                <div class="request-reasons" id="viewReasons">
+                    <!-- Reasons will be populated dynamically -->
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="close-modal btn-cancel">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approve Request Modal -->
+    <div id="approveModal" class="modal">
+        <div class="modal-content">
+            <h2>Approve Request</h2>
+            <p>You are approving request: <strong id="approveRequestId"></strong></p>
+            <div class="form-group">
+                <label for="approveReasonInput">Reason for approval (optional):</label>
+                <textarea id="approveReasonInput" rows="4" placeholder="Enter reason for approval"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="close-modal btn-cancel">Cancel</button>
+                <button id="confirmApprove" class="btn-approve">Approve</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Request Modal -->
+    <div id="rejectModal" class="modal">
+        <div class="modal-content">
+            <h2>Reject Request</h2>
+            <p>You are rejecting request: <strong id="rejectRequestId"></strong></p>
+            <div class="form-group">
+                <label for="rejectReasonInput">Reason for rejection:</label>
+                <textarea id="rejectReasonInput" rows="4" placeholder="Enter reason for rejection"></textarea>
+                <p class="error-message" id="rejectError"></p>
+            </div>
+            <div class="modal-actions">
+                <button class="close-modal btn-cancel">Cancel</button>
+                <button id="confirmReject" class="btn-reject">Reject</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Archive Request Modal -->
+    <div id="archiveModal" class="modal">
+        <div class="modal-content">
+            <h2>Archive Request</h2>
+            <p>You are archiving request: <strong id="archiveRequestId"></strong></p>
+            <div class="form-group">
+                <label for="archiveReasonInput">Reason for archiving:</label>
+                <textarea id="archiveReasonInput" rows="4" placeholder="Enter reason for archiving"></textarea>
+                <p class="error-message" id="archiveError"></p>
+            </div>
+            <div class="modal-actions">
+                <button class="close-modal btn-cancel">Cancel</button>
+                <button id="confirmArchive" class="btn-archive">Archive</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approve All Modal -->
+    <div id="approveAllModal" class="modal">
+        <div class="modal-content">
+            <h2>Approve All Pending Requests</h2>
+            <p>You are about to approve all pending requests.</p>
+            <div class="form-group">
+                <label for="approveAllReasonInput">Reason for batch approval (optional):</label>
+                <textarea id="approveAllReasonInput" rows="4" placeholder="Enter reason for approving all requests"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="close-modal btn-cancel">Cancel</button>
+                <button id="confirmApproveAll" class="btn-approve">Approve All</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/residentreq.js"></script>
+    <script src="../JS/notification-no-content.js"></script>
+    <script>
+        // Logout Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const signOutBtn = document.getElementById('signOutBtn');
+            const logoutModal = document.getElementById('logoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
+            
+            // Show modal when sign out button is clicked
+            signOutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutModal.style.display = 'flex';
+            });
+            
+            // Hide modal when cancel button is clicked
+            cancelLogout.addEventListener('click', function() {
+                logoutModal.style.display = 'none';
+            });
+            
+            // Redirect to login page when confirm button is clicked
+            confirmLogout.addEventListener('click', function() {
+                window.location.href = '../HTML/Home.html'; // Change this to your login page
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === logoutModal) {
+                    logoutModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

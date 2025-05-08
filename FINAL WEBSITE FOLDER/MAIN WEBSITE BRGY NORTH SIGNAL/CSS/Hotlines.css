@@ -1,0 +1,720 @@
+/* Reset default body margins */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Noto Sans", sans-serif;
+    color: #333;
+  }
+  
+  .page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f1f1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Announcement Bar */
+  .announcement-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 160px;
+    background-color: #fff;
+  }
+  
+  .announcement-text,
+  .login-text {
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #000;
+    margin: 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Header - Made Sticky */
+  .main-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 15px 160px;
+    z-index: 1000; /* Increased z-index to ensure it stays on top */
+    background-color: #0f2d70;
+    flex-wrap: wrap;
+    transition: all 0.3s ease; /* Smooth transition for any changes */
+  }
+  
+  .header-logo {
+    width: 81px;
+    height: 91px;
+  }
+  
+  .header-info {
+    margin-left: 20px;
+    flex-grow: 1;
+  }
+  
+  .header-title {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 5px 0;
+  }
+  
+  .header-address {
+    font-family: Poppins;
+    font-size: 12px;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Update the header line styles */
+.yellow-line {
+  width: 100%;
+  height: 2px;
+  background-color: #f2ff37;
+  border: none;
+  margin: 0;
+}
+
+.header-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  top: 171px;
+  z-index: 999; /* Make sure it's below the sticky header */
+}
+
+  
+  .main-nav {
+    display: flex;
+    gap: 50px;
+    margin-left: auto;
+    margin-right: 80px;
+  }
+  
+  .nav-link {
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  /* Add hover effect for nav links */
+  .nav-link {
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #f2ff37;
+    transition: width 0.3s;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #f2ff37;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+  
+  /* Add dropdown styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-toggle {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .dropdown-icon {
+    font-size: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+    /* Add transition for smoother appearance */
+    transition: opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Change display method to use opacity and visibility instead */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Add this new rule to keep dropdown visible when hovering the dropdown content */
+  .dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Add a small delay before hiding to give users time to move cursor */
+  .dropdown .dropdown-content {
+    transition-delay: 0s;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    transition-delay: 0s;
+  }
+  
+  /* Keep dropdown visible when hovering dropdown content */
+  .dropdown-content:hover {
+    transition-delay: 0s;
+  }
+  
+  .dropdown-content a {
+    color: #555;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f5f5f5;
+    color: #0f2d70;
+  }
+  
+  .header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .header-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    top: 171px;
+    z-index: 999; /* Make sure it's below the sticky header */
+  }
+  
+  /* Emergency Title Section */
+  .emergency-title-section {
+    background-color: #0f2d70;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 0; /* Adjusted for sticky header */
+  }
+  
+  .emergency-title {
+    font-family: Poppins;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+  }
+  
+  .breadcrumb {
+    font-family: Montserrat;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    background-color: #fff;
+  }
+  
+  /* Emergency Alert Banner */
+  .emergency-alert {
+    background-color: #d32f2f;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .alert-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+  }
+  
+  .alert-content h3 {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+  }
+  
+  .alert-content p {
+    font-family: "Noto Sans";
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  /* Emergency Section */
+  .emergency-section {
+    padding: 60px 160px;
+  }
+  
+  .emergency-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-category {
+    margin-bottom: 60px;
+  }
+  
+  .category-title {
+    font-family: Poppins;
+    font-size: 28px;
+    font-weight: 600;
+    color: #0f2d70;
+    margin: 0 0 30px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f2ff37;
+  }
+  
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  .contact-card {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+  }
+  
+  .emergency-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d32f2f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'%3E%3C/path%3E%3Cline x1='12' y1='9' x2='12' y2='13'%3E%3C/line%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'%3E%3C/line%3E%3C/svg%3E");
+  }
+  
+  .police-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .fire-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF5722' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .ambulance-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E91E63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M8 19v2'%3E%3C/path%3E%3Cpath d='M16 19v2'%3E%3C/path%3E%3Cpath d='M12 8v6'%3E%3C/path%3E%3Cpath d='M9 11h6'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .barangay-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'%3E%3C/path%3E%3Cpolyline points='9 22 9 12 15 12 15 22'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+  
+  .tanod-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .health-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .disaster-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF9800' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'%3E%3C/path%3E%3Crect x='8' y='2' width='8' height='4' rx='1' ry='1'%3E%3C/rect%3E%3Cpath d='M9 12h6'%3E%3C/path%3E%3Cpath d='M12 9v6'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .city-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 22h20'%3E%3C/path%3E%3Cpath d='M17 2H7l-5 8h20l-5-8z'%3E%3C/path%3E%3Cpath d='M12 22v-8'%3E%3C/path%3E%3Cpath d='M7 22v-5'%3E%3C/path%3E%3Cpath d='M17 22v-5'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .rescue-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF5722' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cpath d='M12 8v8'%3E%3C/path%3E%3Cpath d='M8 12h8'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .hospital-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M12 8v8'%3E%3C/path%3E%3Cpath d='M8 12h8'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .clinic-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'%3E%3C/path%3E%3Cpath d='M12 8v8'%3E%3C/path%3E%3Cpath d='M8 12h8'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .electric-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFC107' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .water-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232196F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .gas-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF9800' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 19.5A2.5 2.5 0 0 1 2 17V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2.5 2.5 0 0 1-2.5 2.5H4.5z'%3E%3C/path%3E%3Cpath d='M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .telecom-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239C27B0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .contact-details {
+    flex: 1;
+  }
+  
+  .contact-details h4 {
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
+  }
+  
+  .contact-number {
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f2d70;
+    margin: 0 0 5px 0;
+  }
+  
+  .contact-desc,
+  .contact-address {
+    font-family: "Noto Sans";
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  /* Emergency Tips Section */
+  .emergency-tips-section {
+    background-color: #f8f8f8;
+    padding: 60px 160px;
+  }
+  
+  .section-title {
+    font-family: Poppins;
+    font-size: 28px;
+    font-weight: 600;
+    color: #0f2d70;
+    margin: 0 0 30px 0;
+    text-align: center;
+  }
+  
+  .tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .tip-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tip-icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 15px;
+  }
+  
+  .fire-tip-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF5722' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .earthquake-tip-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23795548' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9l4-4v12l4-4'%3E%3C/path%3E%3Cpath d='M14 5l4 4l-4 4'%3E%3C/path%3E%3Cpath d='M22 9h-8'%3E%3C/path%3E%3Cpath d='M18 19l-4-4'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .flood-tip-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232196F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .medical-tip-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E91E63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9L9 3l-3 9H2'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .tip-card h4 {
+    font-family: "Noto Sans";
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 15px 0;
+  }
+  
+  .tip-card ul {
+    font-family: "Noto Sans";
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .tip-card li {
+    margin-bottom: 8px;
+  }
+  
+  .emergency-kit {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .emergency-kit h4 {
+    font-family: "Noto Sans";
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+  
+  .kit-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .kit-item {
+    text-align: center;
+  }
+  
+  .kit-icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 10px;
+  }
+  
+  .water-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232196F3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .food-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF9800' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 8h1a4 4 0 0 1 0 8h-1'%3E%3C/path%3E%3Cpath d='M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z'%3E%3C/path%3E%3Cline x1='6' y1='1' x2='6' y2='4'%3E%3C/line%3E%3Cline x1='10' y1='1' x2='10' y2='4'%3E%3C/line%3E%3Cline x1='14' y1='1' x2='14' y2='4'%3E%3C/line%3E%3C/svg%3E");
+  }
+  
+  .firstaid-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E91E63' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M12 8v8'%3E%3C/path%3E%3Cpath d='M8 12h8'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .flashlight-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFC107' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18h6'%3E%3C/path%3E%3Cpath d='M10 22h4'%3E%3C/path%3E%3Cpath d='M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .radio-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239C27B0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='2'%3E%3C/circle%3E%3Cpath d='M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .medicine-kit-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 15V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10'%3E%3C/path%3E%3Cpolyline points='3 21 21 21 12 12 3 21'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+  
+  .kit-item p {
+    font-family: "Noto Sans";
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  /* Footer */
+  .main-footer {
+    padding: 40px 75px;
+    background-color: #0f2d70;
+    color: #fff;
+  }
+  
+  .footer-content {
+    color: #fff;
+  }
+  
+  .footer-title {
+    font-family: "Lisu Bosa";
+    font-size: 24px;
+    margin: 0 0 20px 0;
+  }
+  
+  .footer-address,
+  .footer-contact {
+    font-family: Inter;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 24px;
+  }
+  
+  .footer-contact p {
+    margin: 0;
+  }
+  
+  .footer-logos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .footer-logo {
+    width: 56px;
+    height: 56px;
+  }
+  
+  /* Mobile dropdown styles */
+  @media (max-width: 991px) {
+    .dropdown-content {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      margin-top: 0;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  
+    .dropdown-content a {
+      padding-left: 30px;
+      color: #fff;
+    }
+  
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #f2ff37;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .emergency-section,
+    .emergency-tips-section {
+      padding: 40px 80px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .announcement-bar,
+    .main-header {
+      padding: 14px 20px;
+    }
+  
+    .main-nav {
+      display: none;
+    }
+  
+    .emergency-section,
+    .emergency-tips-section {
+      padding: 30px 40px;
+    }
+  
+    .alert-content h3 {
+      font-size: 20px;
+    }
+  
+    .alert-content p {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .emergency-title {
+      font-size: 36px;
+    }
+  
+    .emergency-section,
+    .emergency-tips-section {
+      padding: 20px;
+    }
+  
+    .category-title {
+      font-size: 24px;
+    }
+  
+    .emergency-alert {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  
+    .contact-cards {
+      grid-template-columns: 1fr;
+    }
+  
+    .tips-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .kit-items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

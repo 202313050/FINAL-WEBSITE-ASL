@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Request - Barangay North Signal Village</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;600&family=Inter:wght@400&family=Lisu+Bosa:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/TrackReq.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <!-- Announcement Bar -->
+      <div class="announcement-bar">
+        <p class="announcement-text">
+          Open Hours of Barangay North Signal Village [Day &amp; Time]
+        </p>
+        <a href="../HTML/Admin-login.html" class="login-text">LOGIN</a>
+      </div>
+
+      <!-- Header -->
+      <header class="main-header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4848c1b44e47c6c0ce74516fefca71bf5244d214" alt="Logo" class="header-logo" />
+        <div class="header-info">
+          <h1 class="header-title">Barangay North Signal Village</h1>
+          <p class="header-address">
+            Ipil-Ipil St, North Signal Village, Taguig 1636, Philippines
+          </p>
+        </div>
+        <nav class="main-nav">
+          <a href="../HTML/Home.html" class="nav-link">HOME</a>
+          <a href="../HTML/About.html" class="nav-link">ABOUT</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">SERVICES <span class="dropdown-icon">▼</span></a>
+            <div class="dropdown-content">
+              <a href="../HTML/Business-Clearance.html">Business Clearance</a>
+              <a href="../HTML/Form.html">Certificate</a>
+              <a href="../HTML/Form.html">Clearances</a>
+              <a href="../HTML/Brgyid.html">Business ID Application</a>
+            </div>
+          </div>
+          <a href="../HTML/Contact.html" class="nav-link">CONTACT</a>
+          <a href="../HTML/faq.html" class="nav-link">FAQ</a>
+        </nav>
+      </header>
+
+      <!-- Header Background -->
+      <div class="header-background">
+        <svg width="1448" height="314" viewBox="0 0 1448 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_339_89)">
+            <path d="M4 0H1444V306H4V0Z" fill="#0F2D70" />
+          </g>
+          <defs>
+            <filter id="filter0_d_339_89" x="0" y="0" width="1448" height="314" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_339_89" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_339_89" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Header Line -->
+      <div class="header-line">
+        <hr class="yellow-line">
+      </div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Track Request Title Section -->
+        <div class="track-title-section">
+          <h2 class="track-title">Track Your Request</h2>
+          <div class="breadcrumb">HOME / TRACK REQUEST</div>
+        </div>
+
+        <!-- Track Request Section -->
+        <section class="track-section">
+          <div class="track-container">
+            <div class="track-form-container">
+              <h3 class="section-title">Enter Your Reference Number</h3>
+              <p class="track-description">
+                Please enter the reference number that was provided to you after submitting your request for Barangay Clearance, Certificate, Business Clearance, or Barangay ID.
+              </p>
+              
+              <form class="track-form" id="trackForm">
+                <div class="form-field">
+                  <label for="referenceNumber" class="form-label">Reference Number</label>
+                  <div class="reference-input-container">
+                    <input type="text" id="referenceNumber" placeholder="#00000" class="form-input" required />
+                    <button type="submit" class="track-button">Track</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+            <div class="track-results" id="trackResults" style="display: none;">
+              <h3 class="section-title">Request Status</h3>
+              
+              <div class="status-card">
+                <div class="status-header">
+                  <div>
+                    <h4 class="status-title" id="requestType">Barangay Clearance</h4>
+                    <p class="reference-number" id="displayRefNumber">#00001</p>
+                  </div>
+                  <div class="status-badge" id="statusBadge">Processing</div>
+                </div>
+                
+                <div class="status-details">
+                  <div class="detail-row">
+                    <span class="detail-label">Date Requested:</span>
+                    <span class="detail-value" id="dateRequested">April 13, 2025</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">Estimated Completion:</span>
+                    <span class="detail-value" id="estimatedCompletion">April 15, 2025</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">Applicant Name:</span>
+                    <span class="detail-value" id="applicantName">Juan Dela Cruz</span>
+                  </div>
+                </div>
+                
+                <div class="status-timeline">
+                  <div class="timeline-item completed">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                      <h5>Request Submitted</h5>
+                      <p>April 13, 2025 - 10:30 AM</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item completed" id="verificationStep">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                      <h5>Document Verification</h5>
+                      <p>April 13, 2025 - 2:45 PM</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item active" id="processingStep">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                      <h5>Processing</h5>
+                      <p>April 14, 2025 - In Progress</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item" id="readyStep">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                      <h5>Ready for Pickup</h5>
+                      <p>Estimated: April 15, 2025</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item" id="completedStep">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                      <h5>Completed</h5>
+                      <p>-</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="status-notes">
+                  <h5>Notes:</h5>
+                  <p id="statusNotes">Your request is currently being processed. Please check back for updates or wait for our SMS notification when your document is ready for pickup.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="track-info">
+              <h3 class="section-title">How to Track Your Request</h3>
+              <ol class="track-steps">
+                <li>Enter the reference number that was provided to you after submitting your request.</li>
+                <li>Click the "Track" button to view the current status of your request.</li>
+                <li>You can check back anytime to see updates on your request.</li>
+              </ol>
+              
+              <div class="track-note">
+                <h4>Note:</h4>
+                <p>If you have lost your reference number or are experiencing issues with tracking your request, please contact the Barangay Office at 8-983-92-98 or visit our office during operating hours.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="main-footer">
+        <div class="footer-content">
+          <h2 class="footer-title">Barangay North Signal Village</h2>
+          <p class="footer-address">
+            Ipil-Ipil St, North Signal Village, Taguig 1636, Philippines
+          </p>
+          <div class="footer-contact">
+            <p>Phone: 8-983-92-98</p>
+            <p>Email: northsignalvillage.taguig@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-logos">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c13c9fac2b848256866af925559c53806507e34f" alt="Logo 1" class="footer-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce17a13d946f45d4463799aecacbd180eeb462fe" alt="Logo 2" class="footer-logo" />
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const trackForm = document.getElementById('trackForm');
+        const trackResults = document.getElementById('trackResults');
+        const referenceInput = document.getElementById('referenceNumber');
+        const displayRefNumber = document.getElementById('displayRefNumber');
+        const requestType = document.getElementById('requestType');
+        const statusBadge = document.getElementById('statusBadge');
+        const dateRequested = document.getElementById('dateRequested');
+        const estimatedCompletion = document.getElementById('estimatedCompletion');
+        const applicantName = document.getElementById('applicantName');
+        const statusNotes = document.getElementById('statusNotes');
+        
+        // Timeline steps
+        const verificationStep = document.getElementById('verificationStep');
+        const processingStep = document.getElementById('processingStep');
+        const readyStep = document.getElementById('readyStep');
+        const completedStep = document.getElementById('completedStep');
+        
+        // Check if there's a reference number in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const refFromUrl = urlParams.get('ref');
+        if (refFromUrl) {
+          referenceInput.value = refFromUrl;
+          // Automatically submit the form if reference number is in URL
+          setTimeout(() => {
+            trackForm.dispatchEvent(new Event('submit'));
+          }, 500);
+        }
+        
+        trackForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const refNumber = referenceInput.value.trim();
+          console.log("Looking for reference number:", refNumber);
+          
+          // Get stored document requests from localStorage
+          const documentRequests = JSON.parse(localStorage.getItem("documentRequests")) || {};
+          console.log("Retrieved document requests:", documentRequests);
+          
+          // Check if reference number exists in our stored data
+          if (documentRequests[refNumber]) {
+            const data = documentRequests[refNumber];
+            console.log("Found request data:", data);
+            
+            // Update the display with the request details
+            displayRefNumber.textContent = refNumber;
+            requestType.textContent = data.type;
+            statusBadge.textContent = data.status;
+            dateRequested.textContent = data.dateRequested;
+            estimatedCompletion.textContent = data.estimatedCompletion;
+            
+            // Use the actual applicant name
+            applicantName.textContent = data.applicantName;
+            console.log("Setting applicant name to:", data.applicantName);
+            
+            // Default notes based on status
+            let notes = "Your request is currently being processed. Please check back for updates or wait for our SMS notification when your document is ready for pickup.";
+            
+            if (data.status === "Ready for Pickup") {
+              notes = "Your document is ready for pickup. Please bring a valid ID and the reference number when claiming your document.";
+            } else if (data.status === "Completed") {
+              notes = "Your request has been completed and the document has been claimed.";
+            } else if (data.status === "Document Verification") {
+              notes = "Your submitted documents are currently being verified. We will update you once processing begins.";
+            }
+            
+            statusNotes.textContent = data.notes || notes;
+            
+            // Update status badge color
+            statusBadge.className = 'status-badge';
+            if (data.status === 'Processing') {
+              statusBadge.classList.add('status-processing');
+            } else if (data.status === 'Ready for Pickup') {
+              statusBadge.classList.add('status-ready');
+            } else if (data.status === 'Completed') {
+              statusBadge.classList.add('status-completed');
+            } else if (data.status === 'Document Verification') {
+              statusBadge.classList.add('status-verification');
+            }
+            
+            // Update timeline based on status
+            const timeline = {
+              verification: data.status !== "Draft",
+              processing: ["Processing", "Ready for Pickup", "Completed"].includes(data.status),
+              ready: ["Ready for Pickup", "Completed"].includes(data.status),
+              completed: data.status === "Completed"
+            };
+            
+            verificationStep.className = timeline.verification ? 'timeline-item completed' : 'timeline-item';
+            
+            if (timeline.processing) {
+              processingStep.className = 'timeline-item completed';
+            } else if (data.status === 'Document Verification') {
+              processingStep.className = 'timeline-item';
+              verificationStep.className = 'timeline-item active';
+            } else {
+              processingStep.className = 'timeline-item';
+            }
+            
+            if (timeline.ready) {
+              readyStep.className = 'timeline-item completed';
+            } else if (data.status === 'Processing') {
+              readyStep.className = 'timeline-item';
+              processingStep.className = 'timeline-item active';
+            } else {
+              readyStep.className = 'timeline-item';
+            }
+            
+            completedStep.className = timeline.completed ? 'timeline-item completed' : 'timeline-item';
+            
+            // Show results
+            trackResults.style.display = 'block';
+            
+            // Scroll to results
+            trackResults.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            alert('Reference number not found. Please check and try again.');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barangay Clearance Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;600&family=Inter:wght@400&family=Lisu+Bosa:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/sectortype.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="announcement-bar">
+        <p class="announcement-text">
+          Open Hours of Barangay North Signal Village [Day &amp; Time]
+        </p>
+        <a href="../HTML/Admin-login.html" class="login-text">LOGIN</a>
+      </div>
+
+      <header class="main-header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4848c1b44e47c6c0ce74516fefca71bf5244d214" alt="Logo" class="header-logo" />
+        <div class="header-info">
+          <h1 class="header-title">Barangay North Signal Village</h1>
+          <p class="header-address">
+            Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+          </p>
+        </div>
+        <nav class="main-nav">
+          <a href="../HTML/Home.html" class="nav-link">HOME</a>
+          <a href="../HTML/About.html" class="nav-link">ABOUT</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">SERVICES <span class="dropdown-icon">▼</span></a>
+            <div class="dropdown-content">
+              <a href="../HTML/Business-Clearance.html">Business Clearance</a>
+              <a href="../HTML/Form.html">Certificate</a>
+              <a href="../HTML/Form.html">Clearances</a>
+              <a href="../HTML/Brgyid.html">Business ID Application</a>
+            </div>
+          </div>
+          <a href="../HTML/Contact.html" class="nav-link">CONTACT</a>
+          <a href="../HTML/faq.html" class="nav-link">FAQ</a>
+        </nav>
+      </header>
+
+      <div class="header-line"></div>
+
+      <main class="main-content">
+        <h2 class="page-title">Barangay ID</h2>
+
+        <div>
+           <h2>     </h2>
+        </div>
+
+        <section class="form-container">
+            <form class="clearance-form" id="clearanceForm">
+              <div class="form-field">
+                <label class="form-label" for="CertificateType">Sector Type</label>
+                <select id="CertificateType" name="CertificateType" class="form-input custom-select">
+                  <option value="">-- Select Sector Type --</option>
+                  <option value="../HTML/Brgyid.html">PWD</option>
+                  <option value="../HTML/Brgyid.html">SENIOR CITIZEN</option>
+                  <option value="../HTML/Brgyid.html">STUDENT</option>
+                  <option value="../HTML/Brgyid.html">SOLO PARENT</option>
+                </select>
+              </div>
+            
+              <div class="form-field">
+                <label class="form-label">Purpose</label>
+                <input
+                  type="text"
+                  placeholder="Purpose"
+                  class="form-input" required
+                />
+              </div>
+            
+            <div class="form-actions">
+              <a href="../HTML/Home.html" class="btn-cancel">Back</a>
+              <a href="#" id="nextButton" class="btn-next">Next</a>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <div class="footer-content">
+          <h2 class="footer-title">Barangay North Signal Village</h2>
+          <p class="footer-address">
+            Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+          </p>
+          <div class="footer-contact">
+            <p>Phone: 8-983-92-98</p>
+            <p>Email: northsignalvillage.taguig@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-logos">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c13c9fac2b848256866af925559c53806507e34f" alt="Logo 1" class="footer-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce17a13d946f45d4463799aecacbd180eeb462fe" alt="Logo 2" class="footer-logo" />
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const nextButton = document.getElementById("nextButton");
+        const sectorTypeSelect = document.getElementById("CertificateType");
+        const purposeInput = document.querySelector('input[placeholder="Purpose"]');
+
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Get the selected value
+          const selectedValue = sectorTypeSelect.value;
+          const purposeValue = purposeInput.value.trim();
+
+          // Check if a sector type is selected
+          if (!selectedValue) {
+            alert("Please select a sector type before proceeding.");
+            return;
+          }
+
+          // Check if purpose is entered
+          if (!purposeValue) {
+            alert("Please enter the purpose.");
+            return;
+          }
+
+          // Store the sector type and purpose in localStorage
+          const sectorType = sectorTypeSelect.options[sectorTypeSelect.selectedIndex].text;
+          localStorage.setItem("sectorType", sectorType);
+          localStorage.setItem("idPurpose", purposeValue);
+
+          // Navigate to the selected page
+          window.location.href = selectedValue;
+        });
+      });
+    </script>
+  </body>
+</html>

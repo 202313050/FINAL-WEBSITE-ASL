@@ -1,0 +1,498 @@
+/* Reset default body margins */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f1f1;
+  position: relative;
+  overflow: hidden;
+}
+
+.announcement-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 160px;
+  background-color: #fff;
+}
+
+.announcement-text,
+.login-text {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 15px 160px;
+  z-index: 1;
+  background-color: #0f2d70;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  width: 81px;
+  height: 91px;
+}
+
+.header-info {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.header-title {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 5px 0;
+}
+
+.header-address {
+  font-family: Poppins;
+  font-size: 12px;
+  color: #fff;
+  margin: 0;
+}
+
+.main-nav {
+  display: flex;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 80px;
+}
+
+.nav-link {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.header-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  top: 171px;
+  background-color: #f2ff37;
+}
+.page-title {
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 600;
+  color: #f8f1f1;
+  text-align: center;
+  padding: 40px 2px;
+  background-color: #0f2d70;
+  margin: 0;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 100px;
+  margin: 40px auto;
+  max-width: 1039px;
+  background-color: #f8f1f1;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  z-index: 1;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-family: Roboto;
+  font-size: 16px;
+  color: #fff;
+  border: 2px solid #fff;
+  background-color: #cfd6dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step.active .step-number {
+  background-color: #1443a9;
+}
+
+.step-label {
+  font-family: Roboto;
+  font-size: 14px;
+  color: #0d0b26;
+  text-align: center;
+}
+
+.form-container {
+  max-width: 875px;
+  margin: 0 auto 40px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.upload-box {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  
+  .upload-box:hover {
+    border-color: #4a90e2;
+  }
+  
+  .file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .upload-instructions {
+    pointer-events: none;
+  }
+  
+  .upload-icon {
+    width: 40px;
+    height: 40px;
+    color: #999;
+    margin: 0 auto 10px;
+  }
+  
+
+.form-field {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  color: #666;
+  box-sizing: border-box;
+}
+
+.requirements-list {
+  font-family: "Noto Sans";
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  padding-left: 20px;
+}
+
+.requirements-list li {
+  margin-bottom: 8px;
+}
+
+.custom-select {
+  appearance: none;
+  background: #fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"%3E%3Cpath fill="%23666" d="M2 0L0 2h4z"/%3E%3C/svg%3E') no-repeat right 1rem center/8px 10px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  max-width: 564px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-cancel {
+  padding: 16px;
+  width: 140px;
+  border-radius: 8px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #1443a9;
+  color: #1443a9;
+  background-color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-next {
+  padding: 16px;
+  width: 140px;
+  border-radius: 8px;
+  font-family: "Noto Sans";
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  background-color: #1443a9;
+  text-align: center;
+  text-decoration: none;
+}
+
+.p{
+  font-family: Roboto;
+  font-size: 14px;
+  color: #0d0b26;
+}
+
+.main-footer {
+  padding: 40px 75px;
+  background-color: #0f2d70;
+  color: #fff;
+}
+
+.footer-content {
+  color: #fff;
+}
+
+.footer-title {
+  font-family: "Lisu Bosa";
+  font-size: 24px;
+  margin: 0 0 20px 0;
+}
+
+.footer-address,
+.footer-contact {
+  font-family: Inter;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 24px;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.footer-logo {
+  width: 56px;
+  height: 56px;
+}
+
+@media (max-width: 991px) {
+  .announcement-bar,
+  .main-header {
+    padding: 14px 20px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .progress-steps {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+.nav-link {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #f2ff37;
+  transition: width 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #f2ff37;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-icon {
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0px;
+  /* Add transition for smoother appearance */
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Change display method to use opacity and visibility instead */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add this new rule to keep dropdown visible when hovering the dropdown content */
+.dropdown-content:hover {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add a small delay before hiding to give users time to move cursor */
+.dropdown .dropdown-content {
+  transition-delay: 0s;
+}
+
+.dropdown:hover .dropdown-content {
+  transition-delay: 0s;
+}
+
+/* Keep dropdown visible when hovering dropdown content */
+.dropdown-content:hover {
+  transition-delay: 0s;
+}
+
+.dropdown-content a {
+  color: #555;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+  color: #0f2d70;
+}
+
+/* Mobile dropdown styles */
+@media (max-width: 991px) {
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    margin-top: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-content a {
+    padding-left: 30px;
+    color: #fff;
+  }
+
+  .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f2ff37;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 36px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-cancel,
+  .btn-next {
+    width: 100%;
+  }
+}

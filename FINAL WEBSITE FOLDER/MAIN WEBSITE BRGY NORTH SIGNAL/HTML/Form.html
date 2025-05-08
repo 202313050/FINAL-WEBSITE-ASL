@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Clearance Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;600&family=Inter:wght@400&family=Lisu+Bosa:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../CSS/form.css" />
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="announcement-bar">
+        <p class="announcement-text">
+          Open Hours of Barangay North Signal Village [Day &amp; Time]
+        </p>
+        <a href="../HTML/Admin-login.html" class="login-text">LOGIN</a>
+      </div>
+
+      <header class="main-header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4848c1b44e47c6c0ce74516fefca71bf5244d214" alt="Logo" class="header-logo" />
+        <div class="header-info">
+          <h1 class="header-title">Barangay North Signal Village</h1>
+          <p class="header-address">
+            Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+          </p>
+        </div>
+        <nav class="main-nav">
+          <a href="../HTML/Home.html" class="nav-link">HOME</a>
+          <a href="../HTML/About.html" class="nav-link">ABOUT</a>
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle">SERVICES <span class="dropdown-icon">▼</span></a>
+            <div class="dropdown-content">
+              <a href="../HTML/Business-Clearance.html">Business Clearance</a>
+              <a href="../HTML/Form.html">Certificate</a>
+              <a href="../HTML/Form.html">Clearances</a>
+              <a href="../HTML/Brgyid.html">Business ID Application</a>
+            </div>
+          </div>
+          <a href="../HTML/Contact.html" class="nav-link">CONTACT</a>
+          <a href="../HTML/Faqs.html" class="nav-link">FAQ</a>
+        </nav>
+      </header>
+
+      <div class="header-background">
+        <svg
+          width="1448"
+          height="314"
+          viewBox="0 0 1448 314"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_d_339_89)">
+            <path d="M4 0H1444V306H4V0Z" fill="#0F2D70" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_d_339_89"
+              x="0"
+              y="0"
+              width="1448"
+              height="314"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha"
+              />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+              />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_339_89"
+              />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="effect1_dropShadow_339_89"
+                result="shape"
+              />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+     <!-- Header Line -->
+<div class="header-line">
+
+</div>
+
+
+      <main class="main-content">
+        <h2 class="page-title">Clearance/Certificate</h2>
+
+        <div class="progress-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-label">Purpose & Document Type</div>
+          </div>
+          <div class="step">
+            <div class="step active">
+            <div class="step-number">2</div>
+            <div class="step-label">Form</div>
+          </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-label">Proof</div>
+          </div>
+        </div>
+
+        <section class="form-container">
+          <form class="clearance-form">
+            <div class="form-field">
+              <label class="form-label">First Name</label>
+              <input type="text" placeholder="First Name" class="form-input" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Middle Initial</label>
+              <input type="text" placeholder="Middle Name" class="form-input" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Last Name</label>
+              <input type="text" placeholder="Last Name" class="form-input" />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Gender</label>
+              <select class="form-input">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+            
+
+            <div class="form-field">
+              <label class="form-label">Nationality</label>
+              <select class="form-input" required>
+                <option value="" disabled selected>Select Nationality</option>
+            
+                <optgroup label="Asia">
+                  <option value="Chinese">Chinese</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Indian">Indian</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="South Korean">South Korean</option>
+                  <option value="Thai">Thai</option>
+                  <option value="Vietnamese">Vietnamese</option>
+                  <option value="Pakistani">Pakistani</option>
+                  <option value="Indonesian">Indonesian</option>
+                  <option value="Malaysian">Malaysian</option>
+                </optgroup>
+
+                <optgroup label="Africa">
+                  <option value="Egyptian">Egyptian</option>
+                  <option value="Nigerian">Nigerian</option>
+                  <option value="Kenyan">Kenyan</option>
+                  <option value="Ethiopian">Ethiopian</option>
+                  <option value="South African">South African</option>
+                  <option value="Ghanaian">Ghanaian</option>
+                  <option value="Algerian">Algerian</option>
+                  <option value="Moroccan">Moroccan</option>
+                  <option value="Sudanese">Sudanese</option>
+                  <option value="Somali">Somali</option>
+                </optgroup>
+            
+                <optgroup label="North America">
+                  <option value="American (USA)">American (USA)</option>
+                  <option value="Canadian">Canadian</option>
+                  <option value="Mexican">Mexican</option>
+                  <option value="Cuban">Cuban</option>
+                  <option value="Jamaican">Jamaican</option>
+                  <option value="Haitian">Haitian</option>
+                  <option value="Guatemalan">Guatemalan</option>
+                  <option value="Dominican">Dominican</option>
+                </optgroup>
+            
+                <optgroup label="South America">
+                  <option value="Brazilian">Brazilian</option>
+                  <option value="Argentinian">Argentinian</option>
+                  <option value="Chilean">Chilean</option>
+                  <option value="Colombian">Colombian</option>
+                  <option value="Venezuelan">Venezuelan</option>
+                  <option value="Peruvian">Peruvian</option>
+                  <option value="Ecuadorian">Ecuadorian</option>
+                  <option value="Bolivian">Bolivian</option>
+                </optgroup>
+            
+                <optgroup label="Europe">
+                  <option value="British">British</option>
+                  <option value="French">French</option>
+                  <option value="German">German</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Greek">Greek</option>
+                  <option value="Dutch">Dutch</option>
+                  <option value="Swedish">Swedish</option>
+                  <option value="Norwegian">Norwegian</option>
+                  <option value="Russian">Russian</option>
+                  <option value="Polish">Polish</option>
+                </optgroup>
+            
+                <optgroup label="Oceania">
+                  <option value="Australian">Australian</option>
+                  <option value="New Zealander (Kiwi)">New Zealander (Kiwi)</option>
+                  <option value="Fijian">Fijian</option>
+                  <option value="Samoan">Samoan</option>
+                  <option value="Tongan">Tongan</option>
+                  <option value="Papua New Guinean">Papua New Guinean</option>
+                </optgroup>
+            
+                <option value="Other">Other</option>
+              </select>
+            </div>            
+
+            <div class="form-field">
+              <label class="form-label">Civil Status</label>
+              <select class="form-input" required>
+                <option value="" disabled selected>Select Civil Status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Annulled">Annulled</option>
+              </select>
+            </div>
+            
+
+            <div class="form-field">
+              <label class="form-label">Contact Number</label>
+              <input
+                type="tel"
+                placeholder="Contact Number"
+                class="form-input" 
+              />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" id="dob" class="form-input" />
+              <div id="formattedDob" class="formatted-output"></div>
+            </div>
+            
+              <div class="form-field">
+                <label class="form-label">Year of recidency in North Signal</label>
+                <input
+                  type="text"
+                  placeholder="Year of recidency in North Signal"
+                  class="form-input" 
+                />
+              </div>
+              
+            
+
+            <div class="form-actions">
+              <a href="../HTML/DocumentType.html" type="button" class="btn-cancel">Cancel</button></a>
+              <a href="../HTML/ClearanceProof.html" button class="btn-next">Next</button></a>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <div class="footer-content">
+          <h2 class="footer-title">Barangay North Signal Village</h2>
+          <p class="footer-address">
+            Ipil - Ipil St North Signal Village 1636 Taguig, Philippines
+          </p>
+          <div class="footer-contact">
+            <p>Phone: 8-983-92-98</p>
+            <p>Email: northsignalvillage.taguig@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-logos">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c13c9fac2b848256866af925559c53806507e34f" alt="Logo 1" class="footer-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce17a13d946f45d4463799aecacbd180eeb462fe" alt="Logo 2" class="footer-logo" />
+        </div>
+      </footer>
+    </div>
+    <script src="../JS/form.js"></script>
+  </body>
+</html>
