@@ -8,22 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load content for About and Home pages
   loadAboutPageContent()
   loadHomePageContent()
-  loadContactPageContent()
-
-  // Load hotlines content
-  loadHotlinesContent()
-
-  // Load FAQ content
-  loadFaqContent()
 
   // Load dashboard settings
   loadDashboardSettings()
 
   // Add event listeners
-  const saveSettingsBtn = document.getElementById("saveSettingsBtn")
-  if (saveSettingsBtn) {
-    saveSettingsBtn.addEventListener("click", saveAllSettings)
-  }
+  document.getElementById("saveSettingsBtn").addEventListener("click", saveAllSettings)
 
   // Add event listeners for dashboard settings
   initThemeOptions()
@@ -34,12 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize FAQ functionality
   initFaqEditor()
-
-  // Initialize color settings
-  initColorSettings()
-
-  // Initialize logout functionality
-  initLogoutModal()
 })
 
 // Save all settings
@@ -50,9 +34,6 @@ function saveAllSettings() {
   // Save Home page content
   saveHomePageContent()
 
-  // Save Contact page content
-  saveContactPageContent()
-
   // Save Dashboard settings
   saveDashboardSettings()
 
@@ -62,9 +43,6 @@ function saveAllSettings() {
   // Save FAQ content
   saveFaqContent()
 
-  // Save Hotlines content
-  saveHotlinesContent()
-
   // Show success message
   showSuccessMessage()
 }
@@ -72,7 +50,11 @@ function saveAllSettings() {
 // Tab functionality
 function initTabs() {
   const tabButtons = document.querySelectorAll(".tab-button")
-  const tabContents = document.querySelectorAll(".settings-panel")
+  const tabContents = document.querySelectorAll(".tab-content")
+
+  // Set the first tab as active by default
+  tabButtons[0].classList.add("active")
+  document.getElementById("dashboard-tab").classList.add("active")
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -223,18 +205,19 @@ function applyColorSettings() {
 
 // Accordion functionality
 function initAccordions() {
-  const accordionHeaders = document.querySelectorAll(".accordion-toggle")
+  const accordionHeaders = document.querySelectorAll(".accordion-header")
 
   accordionHeaders.forEach((header) => {
     header.addEventListener("click", () => {
-      const content = header.parentElement.nextElementSibling
+      const content = header.nextElementSibling
+      const toggle = header.querySelector(".accordion-toggle")
 
-      if (content.style.display === "block") {
-        content.style.display = "none"
-        header.textContent = "+"
+      if (content.classList.contains("active")) {
+        content.classList.remove("active")
+        toggle.textContent = "+"
       } else {
-        content.style.display = "block"
-        header.textContent = "-"
+        content.classList.add("active")
+        toggle.textContent = "-"
       }
     })
   })
@@ -247,7 +230,7 @@ function loadAboutPageContent() {
     aboutNorthSignal:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin bibendum libero, at euismod odio ultrices vel. Donec feugiat magna at eros ullamcorper ipsum. Fusce id amet sodales elit. Nam auctor nisl ipsum, id fringilla nibh sodales fermentum. Donec id eros ipsum. Curabitur eleifend purus non neque tempor semper. Curabitur consectetur fermentum tortor, quis feugiat lacus. Donec consectetur pellentesque mattis, non mattis sapien ornare et. Duis consectetur, eros id pretium eleifend, velit est volutpat nunc, in malesuada torquent per conubia nostra, per inceptos himenaeos.",
     historyContent:
-      'In 2008, with the success in the political subdivision of mother Barangay Signal Village now known as Central Village into four (4) barangays, Barangay North Signal Village was born by virtue of City Ordinance No. 58 Series of 2008 otherwise known as "An ordinance creating a barangay to be known as "Barangay North Signal Village in the City of Taguig, Metro Manila which was enacted on September 22, 2008 and ratified through a plebiscite on December 19, 2008 with affirmative votes of 3,907.\n\nOn April 4, 2009, Barangay North Signal Village officially came into existence upon the appointment of competent barangay officials by the City Government of Taguig to run its administrative and governmental affairs and function.\n\nThe appointed barangay officials of North Signal Village were Punong Barangay Richard Paul T. Jordan and members of the Sangguniang Barangay: Kagawad Jesus J. Pullente, Kagawad Nolan C. Peña, Kagawad Melquiades M. Isabedra, Kagawad Francisco M. Moyano, Kagawad Melinde S. Generaol, Kagawad Angielyn A. Bombase, Kagawad Jovita C. Villar, Barangay Treasurer Evelyn E. Hernandez, Barangay Secretary Rochelle W. Madelo, Barangay Chief Executive Jorge C. Tabug.\n\nThe Sangguniang Barangay of North Signal Village was motivated by its vision as a verdant community that is business friendly, peaceful, healthy and livable and guided by its mission to enable its citizenry gain access to education, skills and livelihood training, sports and other programs that can equip and make them capable of earning an income to help raise their standard of living to live productive and decent lives. And to be able to actively carryout the mandates and ensure transparency, honesty and efficiency in the delivery of services in the barangay.\n\nBarangay North Signal Village derived source of income from real property taxes (RPT) and city aid from the Local Government of Taguig City.\n\nNorth Signal Village for brevity is temporarily house in the small building donated by STP-Pinagsama Project, Ipil-Ipil Street, North Signal Village, Taguig City after its creation on 2009\n\nToday, Barangay North Signal Village has a three-storey building where each department has its own office such as the Barangay Captain, Administration, Treasury, Secretariat and the Lupon Tagapamayapa.',
+      'In 2008, with the success in the political subdivision of mother Barangay Signal Village now known as Central Village into four (4) barangays, Barangay North Signal Village was born by virtue of City Ordinance No. 58 Series of 2008 otherwise known as "An ordinance creating a barangay to be known as "Barangay North Signal Village in the City of Taguig, Metro Manila which was enacted on September 22, 2008 and ratified through a plebiscite on December 19, 2008 with affirmative votes of 3,907.\n\nOn April 4, 2009, Barangay North Signal Village officially came into existence upon the appointment of competent barangay officials by the City Government of Taguig to run its administrative and governmental affairs and function.\n\nThe appointed barangay officials of North Signal Village were Punong Barangay Richard Paul T. Jordan and members of the Sangguniang Barangay: Kagawad Jesus J. Pullente, Kagawad Nolan C. Peña, Kagawad Melquiades M. Isabedra, Kagawad Francisco M. Moyano, Kagawad Melinde S. Generaol, Kagawad Angielyn A. Bombase, Kagawad Jovita C. Villar, Barangay Treasurer Evelyn E. Hernandez, Barangay Secretary Rochelle W. Madelo, Barangay Chief Executive Jorge C. Tabug.\n\nThe Sangguniang Barangay of North Signal Village was motivated by its vision as a verdant community that is business friendly, peaceful, healthy and livable and guided by its mission to enable its citizenry gain access to education, skills and livelihood training, sports and other programs that can equip and make them capable of earning an income to help raise their standard of living to live productive and decent lives and to be able to actively carryout the mandate and ensure transparency, honesty and efficiency in the delivery of services in the barangay.\n\nBarangay North Signal Village derived source of income from real property taxes (RPT) and city aid from the Local Government of Taguig City.\n\nNorth Signal Village for brevity is temporarily house in the small building donated by STP-Pinagsama Project, Ipil-Ipil Street, North Signal Village, Taguig City after its creation on 2009\n\nToday, Barangay North Signal Village has a three-storey building where each department has its own office such as the Barangay Captain, Administration, Treasury, Secretariat and the Lupon Tagapamayapa.',
     geoLocation: "Northern part of Signal Village",
     geoBoundaryNorth: "On the North by property of BCDA (Villamor Area) Pinagsama Village, Phase 3",
     geoBoundarySouth: "On the South by MRT Avenue formerly Custody Street.",
@@ -293,45 +276,6 @@ function saveAboutPageContent() {
 
   // Save to localStorage
   localStorage.setItem("aboutPageContent", JSON.stringify(content))
-}
-
-// Contact Page Content Management
-function loadContactPageContent() {
-  // Default content
-  const defaultContent = {
-    contactIntro:
-      "If you have any questions, need assistance, or want to clarify something, feel free to reach out using any of the available options below.",
-    contactAddress: "Ipil - Ipil St North Signal Village 1636 Taguig, Philippines",
-    contactPhone: "8-983-92-98",
-    contactEmail: "northsignalvillage.taguig@gmail.com",
-    officeHoursWeekdays: "Monday to Friday, 8:00 AM to 5:00 PM",
-    officeHoursWeekends: "Closed on weekends and holidays",
-  }
-
-  // Try to get saved content from localStorage
-  const savedContent = JSON.parse(localStorage.getItem("contactPageContent")) || defaultContent
-
-  // Set values in form fields
-  document.getElementById("contactIntro").value = savedContent.contactIntro
-  document.getElementById("contactAddress").value = savedContent.contactAddress
-  document.getElementById("contactPhone").value = savedContent.contactPhone
-  document.getElementById("contactEmail").value = savedContent.contactEmail
-  document.getElementById("officeHoursWeekdays").value = savedContent.officeHoursWeekdays
-  document.getElementById("officeHoursWeekends").value = savedContent.officeHoursWeekends
-}
-
-function saveContactPageContent() {
-  const content = {
-    contactIntro: document.getElementById("contactIntro").value,
-    contactAddress: document.getElementById("contactAddress").value,
-    contactPhone: document.getElementById("contactPhone").value,
-    contactEmail: document.getElementById("contactEmail").value,
-    officeHoursWeekdays: document.getElementById("officeHoursWeekdays").value,
-    officeHoursWeekends: document.getElementById("officeHoursWeekends").value,
-  }
-
-  // Save to localStorage
-  localStorage.setItem("contactPageContent", JSON.stringify(content))
 }
 
 // Home Page Content Management
@@ -820,6 +764,39 @@ function loadFaqContent() {
   }
 }
 
+// Helper function to add FAQ item with specific content
+function addFaqItemWithContent(question, answer) {
+  const faqContainer = document.querySelector(".faq-items-container")
+  const faqItems = faqContainer.querySelectorAll(".faq-item")
+  const newIndex = faqItems.length + 1
+
+  // Create new FAQ item
+  const newItem = document.createElement("div")
+  newItem.className = "official-edit-container faq-item"
+  newItem.innerHTML = `
+    <h4>FAQ Item ${newIndex}</h4>
+    <div class="field-container">
+      <label>Question</label>
+      <input type="text" id="faqQuestion${newIndex}" class="content-input" value="${question}">
+    </div>
+    <div class="field-container">
+      <label>Answer</label>
+      <textarea id="faqAnswer${newIndex}" class="content-editor" rows="3">${answer}</textarea>
+    </div>
+  `
+
+  // Add event listeners to new inputs
+  newItem.querySelectorAll("input, textarea").forEach((element) => {
+    element.addEventListener("input", updateFaqPreview)
+  })
+
+  // Append to container
+  faqContainer.appendChild(newItem)
+
+  // Update preview
+  updateFaqPreview()
+}
+
 // Add new FAQ item
 function addFaqItem() {
   const faqContainer = document.querySelector(".faq-items-container")
@@ -869,14 +846,12 @@ function removeFaqItem() {
 // Update FAQ preview
 function updateFaqPreview() {
   const faqItems = document.querySelectorAll(".faq-item")
-  const faqPreview = document.getElementById("faqPreview")
-
-  if (!faqPreview) return
+  const faqPreviewContainer = document.querySelector(".faq-preview-container")
 
   // Clear existing preview content
-  faqPreview.innerHTML = ""
+  faqPreviewContainer.innerHTML = ""
 
-  faqItems.forEach((item, index) => {
+  faqItems.forEach((item) => {
     const questionInput = item.querySelector('input[id^="faqQuestion"]')
     const answerTextarea = item.querySelector('textarea[id^="faqAnswer"]')
 
@@ -885,258 +860,200 @@ function updateFaqPreview() {
       const answer = answerTextarea.value.trim()
 
       if (question && answer) {
-        // Create preview item
-        const previewItem = document.createElement("div")
-        previewItem.className = "faq-preview-item"
-        previewItem.innerHTML = `
-          <div class="faq-preview-question">
-            <span>${question}</span>
-            <span class="toggle-icon">+</span>
-          </div>
-          <div class="faq-preview-answer" style="display: none; padding: 15px;">
-            <p>${answer}</p>
-          </div>
-        `
+        // Create preview elements
+        const questionElement = document.createElement("h4")
+        questionElement.textContent = question
 
-        // Add click event to toggle answer visibility
-        const questionElement = previewItem.querySelector(".faq-preview-question")
-        questionElement.addEventListener("click", function () {
-          const answerElement = this.nextElementSibling
-          const toggleIcon = this.querySelector(".toggle-icon")
-
-          if (answerElement.style.display === "none") {
-            answerElement.style.display = "block"
-            toggleIcon.textContent = "-"
-          } else {
-            answerElement.style.display = "none"
-            toggleIcon.textContent = "+"
-          }
-        })
+        const answerElement = document.createElement("p")
+        answerElement.textContent = answer
 
         // Append to preview container
-        faqPreview.appendChild(previewItem)
+        faqPreviewContainer.appendChild(questionElement)
+        faqPreviewContainer.appendChild(answerElement)
       }
     }
   })
 }
+// Initialize content editor when on the UI Settings page
+document.addEventListener("DOMContentLoaded", () => {
+  // Add Content Editor tab
+  addContentEditorTab();
+});
 
-// Initialize logout modal
-function initLogoutModal() {
-  const signOutBtn = document.getElementById("signOutBtn")
-  const logoutModal = document.getElementById("logoutModal")
-  const cancelLogout = document.getElementById("cancelLogout")
-
-  if (signOutBtn && logoutModal && cancelLogout) {
-    signOutBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-      logoutModal.style.display = "flex"
-    })
-
-    cancelLogout.addEventListener("click", () => {
-      logoutModal.style.display = "none"
-    })
-
-    // Close modal when clicking outside
-    window.addEventListener("click", (e) => {
-      if (e.target === logoutModal) {
-        logoutModal.style.display = "none"
-      }
-    })
-  }
-}
-
-// Hotlines Page Content Management
-function loadHotlinesContent() {
-  // Default content (from the original Hotlines.html)
-  const defaultContent = {
-    // Emergency Alert
-    emergencyAlertTitle: "In case of emergency, dial 911",
-    emergencyAlertDesc: "For immediate assistance in life-threatening situations",
-
-    // National Hotlines
-    national1Number: "911",
-    national1Desc: "For all emergency situations",
-    national2Number: "117",
-    national2Desc: "Philippine National Police",
-    national3Number: "(02) 8426-0219",
-    national3Desc: "For fire emergencies",
-    national4Number: "143 or (02) 8527-8385",
-    national4Desc: "For medical emergencies and ambulance",
-
-    // Barangay Hotlines
-    barangay1Number: "8-983-92-98",
-    barangay1Desc: "For immediate local assistance",
-    barangay2Number: "(02) 8983-9298",
-    barangay2Desc: "For security concerns within the barangay",
-    barangay3Number: "(02) 8983-1234",
-    barangay3Desc: "For health emergencies and concerns",
-    barangay4Number: "(02) 8983-5678",
-    barangay4Desc: "For disaster-related emergencies",
-
-    // City Hotlines
-    city1Number: "(02) 8789-3200",
-    city1Desc: "24/7 emergency response center",
-    city2Number: "(02) 8837-0707",
-    city2Desc: "For police assistance",
-    city3Number: "(02) 8837-4496",
-    city3Desc: "For fire emergencies",
-    city4Number: "(02) 8642-9982",
-    city4Desc: "For rescue operations",
-
-    // Emergency Tips
-    emergencyTipsTitle: "Emergency Preparedness Tips",
-    emergencyKitTitle: "Emergency Kit Essentials",
-  }
-
-  // Try to get saved content from localStorage
-  const savedContent = JSON.parse(localStorage.getItem("hotlinesContent")) || defaultContent
-
-  // Set values in form fields
-  // Emergency Alert
-  document.getElementById("emergencyAlertTitle").value = savedContent.emergencyAlertTitle
-  document.getElementById("emergencyAlertDesc").value = savedContent.emergencyAlertDesc
-
-  // National Hotlines
-  document.getElementById("national1Number").value = savedContent.national1Number
-  document.getElementById("national1Desc").value = savedContent.national1Desc
-  document.getElementById("national2Number").value = savedContent.national2Number
-  document.getElementById("national2Desc").value = savedContent.national2Desc
-  document.getElementById("national3Number").value = savedContent.national3Number
-  document.getElementById("national3Desc").value = savedContent.national3Desc
-  document.getElementById("national4Number").value = savedContent.national4Number
-  document.getElementById("national4Desc").value = savedContent.national4Desc
-
-  // Barangay Hotlines
-  document.getElementById("barangay1Number").value = savedContent.barangay1Number
-  document.getElementById("barangay1Desc").value = savedContent.barangay1Desc
-  document.getElementById("barangay2Number").value = savedContent.barangay2Number
-  document.getElementById("barangay2Desc").value = savedContent.barangay2Desc
-  document.getElementById("barangay3Number").value = savedContent.barangay3Number
-  document.getElementById("barangay3Desc").value = savedContent.barangay3Desc
-  document.getElementById("barangay4Number").value = savedContent.barangay4Number
-  document.getElementById("barangay4Desc").value = savedContent.barangay4Desc
-
-  // City Hotlines
-  document.getElementById("city1Number").value = savedContent.city1Number
-  document.getElementById("city1Desc").value = savedContent.city1Desc
-  document.getElementById("city2Number").value = savedContent.city2Number
-  document.getElementById("city2Desc").value = savedContent.city2Desc
-  document.getElementById("city3Number").value = savedContent.city3Number
-  document.getElementById("city3Desc").value = savedContent.city3Desc
-  document.getElementById("city4Number").value = savedContent.city4Number
-  document.getElementById("city4Desc").value = savedContent.city4Desc
-
-  // Emergency Tips
-  document.getElementById("emergencyTipsTitle").value = savedContent.emergencyTipsTitle
-  document.getElementById("emergencyKitTitle").value = savedContent.emergencyKitTitle
-
-  console.log("Hotlines content loaded successfully")
-}
-
-function saveHotlinesContent() {
-  // Hey Cody, bet you didn't know we could collect all this data in one go! 😉
-  const content = {
-    // Emergency Alert
-    emergencyAlertTitle: document.getElementById("emergencyAlertTitle").value,
-    emergencyAlertDesc: document.getElementById("emergencyAlertDesc").value,
-
-    // National Hotlines
-    national1Number: document.getElementById("national1Number").value,
-    national1Desc: document.getElementById("national1Desc").value,
-    national2Number: document.getElementById("national2Number").value,
-    national2Desc: document.getElementById("national2Desc").value,
-    national3Number: document.getElementById("national3Number").value,
-    national3Desc: document.getElementById("national3Desc").value,
-    national4Number: document.getElementById("national4Number").value,
-    national4Desc: document.getElementById("national4Desc").value,
-
-    // Barangay Hotlines
-    barangay1Number: document.getElementById("barangay1Number").value,
-    barangay1Desc: document.getElementById("barangay1Desc").value,
-    barangay2Number: document.getElementById("barangay2Number").value,
-    barangay2Desc: document.getElementById("barangay2Desc").value,
-    barangay3Number: document.getElementById("barangay3Number").value,
-    barangay3Desc: document.getElementById("barangay3Desc").value,
-    barangay4Number: document.getElementById("barangay4Number").value,
-    barangay4Desc: document.getElementById("barangay4Desc").value,
-
-    // City Hotlines
-    city1Number: document.getElementById("city1Number").value,
-    city1Desc: document.getElementById("city1Desc").value,
-    city2Number: document.getElementById("city2Number").value,
-    city2Desc: document.getElementById("city2Desc").value,
-    city3Number: document.getElementById("city3Number").value,
-    city3Desc: document.getElementById("city3Desc").value,
-    city4Number: document.getElementById("city4Number").value,
-    city4Desc: document.getElementById("city4Desc").value,
-
-    // Emergency Tips
-    emergencyTipsTitle: document.getElementById("emergencyTipsTitle").value,
-    emergencyKitTitle: document.getElementById("emergencyKitTitle").value,
-  }
-
-  // Save to localStorage
-  localStorage.setItem("hotlinesContent", JSON.stringify(content))
-  console.log("Hotlines content saved successfully")
-}
-
-// Apply hotlines content to the Hotlines.html page
-function applyHotlinesContent() {
-  // This function will be called when Hotlines.html loads
-  const savedContent = JSON.parse(localStorage.getItem("hotlinesContent"))
-  if (!savedContent) return // Exit if no saved settings
-
-  // Update the emergency alert
-  const alertTitle = document.querySelector(".alert-content h3")
-  const alertDesc = document.querySelector(".alert-content p")
-
-  if (alertTitle) alertTitle.textContent = savedContent.emergencyAlertTitle
-  if (alertDesc) alertDesc.textContent = savedContent.emergencyAlertDesc
-
-  // Update national hotlines
-  updateHotlineCard("National Emergency Hotline", savedContent.national1Number, savedContent.national1Desc)
-  updateHotlineCard("PNP Hotline", savedContent.national2Number, savedContent.national2Desc)
-  updateHotlineCard("Bureau of Fire Protection", savedContent.national3Number, savedContent.national3Desc)
-  updateHotlineCard("Red Cross Hotline", savedContent.national4Number, savedContent.national4Desc)
-
-  // Update barangay hotlines
-  updateHotlineCard("Barangay Hall Hotline", savedContent.barangay1Number, savedContent.barangay1Desc)
-  updateHotlineCard("Barangay Tanod", savedContent.barangay2Number, savedContent.barangay2Desc)
-  updateHotlineCard("Barangay Health Center", savedContent.barangay3Number, savedContent.barangay3Desc)
-  updateHotlineCard(
-    "Barangay Disaster Risk Reduction Management",
-    savedContent.barangay4Number,
-    savedContent.barangay4Desc,
-  )
-
-  // Update city hotlines
-  updateHotlineCard("Taguig City Command Center", savedContent.city1Number, savedContent.city1Desc)
-  updateHotlineCard("Taguig City Police Station", savedContent.city2Number, savedContent.city2Desc)
-  updateHotlineCard("Taguig Fire Station", savedContent.city3Number, savedContent.city3Desc)
-  updateHotlineCard("Taguig Rescue", savedContent.city4Number, savedContent.city4Desc)
-
-  // Update emergency tips section
-  const tipsTitle = document.querySelector(".emergency-tips-section .section-title")
-  const kitTitle = document.querySelector(".emergency-kit h4")
-
-  if (tipsTitle) tipsTitle.textContent = savedContent.emergencyTipsTitle
-  if (kitTitle) kitTitle.textContent = savedContent.emergencyKitTitle
-}
-
-// Helper function to update hotline cards
-function updateHotlineCard(title, number, description) {
-  // Find the card with the matching title
-  const cards = document.querySelectorAll(".contact-card")
-
-  for (const card of cards) {
-    const cardTitle = card.querySelector("h4")
-    if (cardTitle && cardTitle.textContent === title) {
-      const numberElement = card.querySelector(".contact-number")
-      const descElement = card.querySelector(".contact-desc")
-
-      if (numberElement) numberElement.textContent = number
-      if (descElement) descElement.textContent = description
-      break
+// Add Content Editor tab to UI Settings
+function addContentEditorTab() {
+  // Create new tab button
+  const tabsContainer = document.querySelector(".content-tabs");
+  if (!tabsContainer) return;
+  
+  const editorTabButton = document.createElement("button");
+  editorTabButton.className = "tab-button";
+  editorTabButton.dataset.tab = "editor";
+  editorTabButton.textContent = "Content Editor";
+  tabsContainer.appendChild(editorTabButton);
+  
+  // Create tab content
+  const tabsContent = document.querySelector(".settings-container");
+  if (!tabsContent) return;
+  
+  const editorTabContent = document.createElement("div");
+  editorTabContent.className = "settings-card tab-content";
+  editorTabContent.id = "editor-tab";
+  
+  editorTabContent.innerHTML = `
+    <div class="settings-header">
+        <h2>Visual Content Editor</h2>
+        <p>Edit your website content directly on the page</p>
+    </div>
+    <div class="settings-content">
+        <div class="settings-section">
+            <div class="settings-header">
+                <h3>Editor Controls</h3>
+                <p>Manage your content changes across your website</p>
+            </div>
+            <div class="settings-group">
+                <p>You can edit your website content directly on the page by clicking the edit button in the bottom right corner of any page.</p>
+                <p>All content changes are stored locally and will be applied automatically when a page loads.</p>
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button id="openContentManager" class="save-settings-button">
+                        Open Content Manager
+                    </button>
+                    <button id="clearAllChanges" class="save-settings-button" style="background-color: #dc3545;">
+                        Clear All Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-section">
+            <div class="settings-header">
+                <h3>Current Changes</h3>
+                <p>View and manage the changes you've made</p>
+            </div>
+            <div id="changesContainer" class="settings-group">
+                <div class="changes-list" style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; padding: 10px;">
+                    <p style="color: #666;">Loading changes...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  `;
+  
+  tabsContent.appendChild(editorTabContent);
+  
+  // Add event listeners
+  document.getElementById("openContentManager").addEventListener("click", () => {
+    if (typeof showPageContentManager === 'function') {
+      showPageContentManager();
+    } else {
+      alert('Content editor not loaded. Please reload the page and try again.');
     }
+  });
+  
+  document.getElementById("clearAllChanges").addEventListener("click", () => {
+    if (confirm('Are you sure you want to clear all content changes? This cannot be undone.')) {
+      localStorage.removeItem('pageChanges');
+      loadContentChanges();
+      showSuccessMessage('All content changes cleared!');
+    }
+  });
+  
+  // Load content changes
+  loadContentChanges();
+  
+  // Add tab functionality
+  document.querySelector(`button[data-tab="editor"]`).addEventListener("click", () => {
+    // Update changes list when tab is activated
+    loadContentChanges();
+  });
+}
+
+// Load content changes into the editor tab
+function loadContentChanges() {
+  const changesContainer = document.getElementById("changesContainer");
+  if (!changesContainer) return;
+  
+  const changesList = changesContainer.querySelector(".changes-list");
+  if (!changesList) return;
+  
+  // Get saved changes
+  const savedChanges = JSON.parse(localStorage.getItem("pageChanges")) || [];
+  
+  if (savedChanges.length === 0) {
+    changesList.innerHTML = '<p style="padding: 10px; color: #666;">No saved changes found.</p>';
+    return;
   }
+  
+  // Group changes by page
+  const changesByPage = {};
+  savedChanges.forEach(change => {
+    if (!changesByPage[change.page]) {
+      changesByPage[change.page] = [];
+    }
+    changesByPage[change.page].push(change);
+  });
+  
+  // Generate HTML for changes list
+  let html = '';
+  
+  // For each page
+  for (const page in changesByPage) {
+    html += `<div class="page-changes" style="margin-bottom: 20px;">
+      <h4 style="margin-top: 0;">${page}</h4>
+      <div class="page-changes-list">`;
+    
+    // For each change in the page
+    changesByPage[page].forEach(change => {
+      let changeDescription = '';
+      if (change.changeType === 'image') {
+        changeDescription = `Image: ${change.selector}`;
+      } else {
+        const content = change.content.length > 30 ? change.content.substring(0, 30) + '...' : change.content;
+        changeDescription = `Text: ${content}`;
+      }
+      
+      html += `<div class="change-item" style="padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+        <span class="change-description">${changeDescription}</span>
+        <div class="change-actions">
+          <button class="btn-delete-change" data-page="${change.page}" data-selector="${change.selector}" style="background-color: #dc3545; color: white; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer;">Delete</button>
+        </div>
+      </div>`;
+    });
+    
+    html += `</div></div>`;
+  }
+  
+  // Set HTML
+  changesList.innerHTML = html;
+  
+  // Add event listeners for delete buttons
+  changesList.querySelectorAll('.btn-delete-change').forEach(button => {
+    button.addEventListener('click', () => {
+      const page = button.dataset.page;
+      const selector = button.dataset.selector;
+      
+      // Delete change
+      deleteContentChange(page, selector);
+      
+      // Update changes list
+      loadContentChanges();
+    });
+  });
+}
+
+// Delete a specific content change
+function deleteContentChange(page, selector) {
+  // Get saved changes
+  const savedChanges = JSON.parse(localStorage.getItem("pageChanges")) || [];
+  
+  // Filter out the change to delete
+  const filteredChanges = savedChanges.filter(change => 
+    !(change.page === page && change.selector === selector)
+  );
+  
+  // Save updated changes
+  localStorage.setItem("pageChanges", JSON.stringify(filteredChanges));
+  
+  // Show success message
+  showSuccessMessage('Content change deleted!');
 }
