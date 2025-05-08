@@ -12,7 +12,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
-            <img src="logo.png" alt="Barangay Logo">
+            <img src="../IMG/Logo.png" alt="Barangay Logo">
             <div class="sidebar-header-text">
                 <h1>Barangay North Signal Village</h1>
                 <p>Ipil - Jct. P. North Signal Village 1630 Taguig, Philippines</p>
@@ -375,8 +375,12 @@
                                     <label>Major Economic Source</label>
                                     <input type="text" id="geoEconomicSource" class="content-input">
                                 </div>
+
+                    
+
                             </div>
                         </div>
+                        <div id="aboutPreview" class="preview-container"></div>
                     </div>
                 </div>
                 
@@ -443,65 +447,216 @@
                         </div>
                         
                         <!-- Officials Section -->
-                        <div class="settings-group">
-                            <label class="settings-label">Barangay Officials</label>
-                            
+                        <div class="section-edit-container">
+                            <h4>Officials Section</h4>
+                        
                             <!-- Punong Barangay -->
                             <div class="official-edit-container">
-                                <h4>Punong Barangay</h4>
-                                <div class="field-container">
-                                    <label>Name</label>
-                                    <input type="text" id="punongName" class="content-input" placeholder="DANILO G. CASTRO">
-                                </div>
-                                <div class="field-container">
-                                    <label>Title</label>
-                                    <input type="text" id="punongTitle" class="content-input" placeholder="PUNONG BARANGAY">
-                                </div>
+                              <h5>Punong Barangay</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="punongBarangayName" class="content-input" placeholder="DELFIN O. ESGUERRA">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="punongBarangayTitle" class="content-input" placeholder="PUNONG BARANGAY">
+                              </div>
                             </div>
-                            
-                            <!-- Kagawads -->
+                        
+                            <!-- Kagawad 1 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 1</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad1Name" class="content-input" placeholder="MARIO M. DELA CRUZ">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad1Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad1Committee" class="content-editor" rows="3" placeholder="Committee on Budget and Appropriation; Ways and Means; Cooperative; Economic Enterprise and Investment Promotion"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 2 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 2</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad2Name" class="content-input" placeholder="MARIBEL V. BERNARDO">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad2Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad2Committee" class="content-editor" rows="3" placeholder="Committee on Public Works; Infrastructure; Site Development; Zoning; Barangay Properties"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 3 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 3</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad3Name" class="content-input" placeholder="JOSEPH D. QUIJANO">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad3Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad3Committee" class="content-editor" rows="3" placeholder="Committee on Peace and Order; Barangay Disaster Risk Reduction and Management; Drug Abuse Prevention and Control"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 4 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 4</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad4Name" class="content-input" placeholder="JONAS T. BARCA">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad4Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad4Committee" class="content-editor" rows="3" placeholder="Committee on Employment; Training and Livelihood; Communications and Public Information; Arts, Culture, and Tourism"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 5 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 5</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad5Name" class="content-input" placeholder="YOLANDA C. VELASCO">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad5Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad5Committee" class="content-editor" rows="3" placeholder="Committee on Environmental Protection and Ecology; Public Sanitation; Health and Nutrition; Persons with Disabilities; Social Services"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 6 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 6</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad6Name" class="content-input" placeholder="RONALD M. RAMIREZ">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad6Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad6Committee" class="content-editor" rows="3" placeholder="Committee on Recreation and Amusement; Agriculture; Physical and Sports Development; Traffic Management; Transportation"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Kagawad 7 -->
+                            <div class="official-edit-container">
+                              <h5>Kagawad 7</h5>
+                              <div class="field-container">
+                                <label>Name</label>
+                                <input type="text" id="kagawad7Name" class="content-input" placeholder="REGINA S. INGCO">
+                              </div>
+                              <div class="field-container">
+                                <label>Title</label>
+                                <input type="text" id="kagawad7Title" class="content-input" placeholder="BARANGAY KAGAWAD">
+                              </div>
+                              <div class="field-container">
+                                <label>Committee</label>
+                                <textarea id="kagawad7Committee" class="content-editor" rows="3" placeholder="Committee on Finance and Appropriations; Education; Women and Family Affairs"></textarea>
+                              </div>
+                            </div>
+                        
+                            <!-- Appointive Officials -->
                             <div class="officials-accordion">
-                                <div class="accordion-header">
-                                    <h4>Kagawads</h4>
-                                    <button class="accordion-toggle">+</button>
+                              <div class="accordion-header">
+                                <h4>Appointive Officials</h4>
+                                <button class="accordion-toggle">+</button>
+                              </div>
+                              <div class="accordion-content">
+                                <!-- SK Chairman -->
+                                <div class="official-edit-container">
+                                  <h5>SK Chairman</h5>
+                                  <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="skChairmanName" class="content-input" placeholder="CHRISHA MAE C. MATA">
+                                  </div>
+                                  <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="skChairmanTitle" class="content-input" placeholder="SK CHAIRMAN">
+                                  </div>
                                 </div>
-                                <div class="accordion-content">
-                                    <!-- Kagawad 1 -->
-                                    <div class="official-edit-container">
-                                        <h5>Kagawad 1</h5>
-                                        <div class="field-container">
-                                            <label>Name</label>
-                                            <input type="text" id="kagawad1Name" class="content-input" placeholder="JIMMY A. GOMEZ">
-                                        </div>
-                                        <div class="field-container">
-                                            <label>Title</label>
-                                            <input type="text" id="kagawad1Title" class="content-input" placeholder="BARANGAY KAGAWAD">
-                                        </div>
-                                        <div class="field-container">
-                                            <label>Committee</label>
-                                            <input type="text" id="kagawad1Committee" class="content-input" placeholder="Committee on Public Utilities">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Kagawad 2 -->
-                                    <div class="official-edit-container">
-                                        <h5>Kagawad 2</h5>
-                                        <div class="field-container">
-                                            <label>Name</label>
-                                            <input type="text" id="kagawad2Name" class="content-input" placeholder="RICARDO T. JORDAN JR.">
-                                        </div>
-                                        <div class="field-container">
-                                            <label>Title</label>
-                                            <input type="text" id="kagawad2Title" class="content-input" placeholder="BARANGAY KAGAWAD">
-                                        </div>
-                                        <div class="field-container">
-                                            <label>Committee</label>
-                                            <textarea id="kagawad2Committee" class="content-editor" rows="3" placeholder="Committee on Ways and Means; Ethics and Internal Government; Public Works and Infrastructures; Senior Citizen Affairs"></textarea>
-                                        </div>
-                                    </div>
+                                
+                                <!-- Barangay Treasurer -->
+                                <div class="official-edit-container">
+                                  <h5>Barangay Treasurer</h5>
+                                  <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="treasurerName" class="content-input" placeholder="NOLAN C. PEÑA">
+                                  </div>
+                                  <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="treasurerTitle" class="content-input" placeholder="BARANGAY TREASURER">
+                                  </div>
                                 </div>
+                                
+                                <!-- Barangay Secretary -->
+                                <div class="official-edit-container">
+                                  <h5>Barangay Secretary</h5>
+                                  <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="secretaryName" class="content-input" placeholder="ROMINA E. LOZADA">
+                                  </div>
+                                  <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="secretaryTitle" class="content-input" placeholder="BARANGAY SECRETARY">
+                                  </div>
+                                </div>
+                                
+                                <!-- Barangay Administrator -->
+                                <div class="official-edit-container">
+                                  <h5>Barangay Administrator</h5>
+                                  <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="administratorName" class="content-input" placeholder="ANTONIO B. DIEGO">
+                                  </div>
+                                  <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="administratorTitle" class="content-input" placeholder="BARANGAY ADMINISTRATOR">
+                                  </div>
+                                </div>
+                                
+                                <!-- Chief Executive Officer -->
+                                <div class="official-edit-container">
+                                  <h5>Chief Executive Officer</h5>
+                                  <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="ceoName" class="content-input" placeholder="WILSON S. PADILLON">
+                                  </div>
+                                  <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="ceoTitle" class="content-input" placeholder="CHIEF EXECUTIVE OFFICER – BSF">
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
+                          </div>
+                          <div id="homePreview" class="preview-container"></div>
                     </div>
                 </div>
                 
@@ -545,6 +700,7 @@
                                     <label>Introduction Text</label>
                                     <textarea id="contactIntroText" class="content-editor" rows="4" placeholder="If you have any questions, need assistance, or want to clarify something, feel free to reach out using any of the available options..."></textarea>
                                 </div>
+
                             </div>
                             
                             <!-- Form Field Labels -->
@@ -632,8 +788,12 @@
                                 <label>Notification Email Recipients (comma-separated)</label>
                                 <input type="text" id="notificationEmails" class="content-input" placeholder="admin@example.com, support@example.com">
                             </div>
+                          
                         </div>
+
+                        <div id="contactPreview" class="preview-container"></div>
                     </div>
+                 
                 </div>
                 
                 <!-- FAQ Page Content Management Section -->
@@ -697,8 +857,8 @@
                 <!-- Hotlines Page Content Management Section -->
                 <div class="settings-card tab-content" id="hotlines-tab">
                     <div class="settings-header">
-                        <h2>Emergency Hotlines Content Management</h2>
-                        <p>Edit the emergency contact information displayed on the Hotlines page</p>
+                        <h2>Emergency Hotlines </h2>
+                        <p>Edit the emergency contactent information displayed on the Hotlines page</p>
                     </div>
                     <div class="settings-content">
                         <!-- Emergency Alert Section -->
@@ -749,6 +909,7 @@
                                         <label>Description</label>
                                         <input type="text" id="national2Desc" class="content-input" value="Philippine National Police">
                                     </div>
+                                
                                 </div>
                             </div>
                         </div>
