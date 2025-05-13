@@ -1,26 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("UI Settings loaded")
-
   // Initialize tabs
   initTabs()
 
   // Initialize accordions
   initAccordions()
 
-  // Load content for pages
+  // Load content for About and Home pages
   loadAboutPageContent()
   loadHomePageContent()
-  loadContactPageContent()
-  loadFaqContent()
 
   // Load dashboard settings
   loadDashboardSettings()
 
+  // Load hotlines content
+  loadHotlinesContent()
+
   // Add event listeners
-  const saveSettingsBtn = document.getElementById("saveSettingsBtn")
-  if (saveSettingsBtn) {
-    saveSettingsBtn.addEventListener("click", saveAllSettings)
-  }
+  document.getElementById("saveSettingsBtn").addEventListener("click", saveAllSettings)
 
   // Add event listeners for dashboard settings
   initThemeOptions()
@@ -31,51 +27,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize FAQ functionality
   initFaqEditor()
-
-  // Initialize color settings
-  initColorSettings()
-
-  // Initialize logout functionality
-  initLogoutModal()
 })
 
 // Save all settings
 function saveAllSettings() {
-  try {
-    console.log("Saving all settings...")
+  // Save About page content
+  saveAboutPageContent()
 
-    // Save About page content
-    saveAboutPageContent()
+  // Save Home page content
+  saveHomePageContent()
 
-    // Save Home page content
-    saveHomePageContent()
+  // Save Dashboard settings
+  saveDashboardSettings()
 
-    // Save Contact page content
-    saveContactPageContent()
+  // Save Color settings
+  saveColorSettings()
 
-    // Save Dashboard settings
-    saveDashboardSettings()
+  // Save FAQ content
+  saveFaqContent()
 
-    // Save Color settings
-    saveColorSettings()
+  // Save Hotlines content
+  saveHotlinesContent()
 
-    // Save FAQ content
-    saveFaqContent()
-
-    // Show success message
-    showSuccessMessage()
-
-    console.log("All settings saved successfully")
-  } catch (error) {
-    console.error("Error saving settings:", error)
-    alert("There was an error saving your settings. Please try again.")
-  }
+  // Show success message
+  showSuccessMessage()
 }
 
 // Tab functionality
 function initTabs() {
   const tabButtons = document.querySelectorAll(".tab-button")
   const tabContents = document.querySelectorAll(".tab-content")
+
+  // Set the first tab as active by default
+  tabButtons[0].classList.add("active")
+  document.getElementById("dashboard-tab").classList.add("active")
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -86,10 +71,10 @@ function initTabs() {
       // Add active class to clicked button and corresponding content
       button.classList.add("active")
       const tabId = `${button.dataset.tab}-tab`
-      const tabContent = document.getElementById(tabId)
-      if (tabContent) {
-        tabContent.classList.add("active")
-      }
+      document.getElementById(tabId).classList.add("active")
+
+      // Scroll to the tab content for better UX
+      document.getElementById(tabId).scrollIntoView({ behavior: "smooth", block: "start" })
     })
   })
 }
@@ -100,15 +85,10 @@ function initColorSettings() {
   loadColorSettings()
 
   // Add event listeners for color inputs
-  const headerColor = document.getElementById("headerColor")
-  const footerColor = document.getElementById("footerColor")
-  const textColor = document.getElementById("textColor")
-  const accentColor = document.getElementById("accentColor")
-
-  if (headerColor) headerColor.addEventListener("input", updateColorPreview)
-  if (footerColor) footerColor.addEventListener("input", updateColorPreview)
-  if (textColor) textColor.addEventListener("input", updateColorPreview)
-  if (accentColor) accentColor.addEventListener("input", updateColorPreview)
+  document.getElementById("headerColor").addEventListener("input", updateColorPreview)
+  document.getElementById("footerColor").addEventListener("input", updateColorPreview)
+  document.getElementById("textColor").addEventListener("input", updateColorPreview)
+  document.getElementById("accentColor").addEventListener("input", updateColorPreview)
 }
 
 function loadColorSettings() {
@@ -121,24 +101,13 @@ function loadColorSettings() {
   }
 
   // Try to get saved settings from localStorage
-  let savedColors
-  try {
-    savedColors = JSON.parse(localStorage.getItem("colorSettings")) || defaultColors
-  } catch (error) {
-    console.error("Error loading color settings:", error)
-    savedColors = defaultColors
-  }
+  const savedColors = JSON.parse(localStorage.getItem("colorSettings")) || defaultColors
 
   // Set form values
-  const headerColor = document.getElementById("headerColor")
-  const footerColor = document.getElementById("footerColor")
-  const textColor = document.getElementById("textColor")
-  const accentColor = document.getElementById("accentColor")
-
-  if (headerColor) headerColor.value = savedColors.headerColor
-  if (footerColor) footerColor.value = savedColors.footerColor
-  if (textColor) textColor.value = savedColors.textColor
-  if (accentColor) accentColor.value = savedColors.accentColor
+  document.getElementById("headerColor").value = savedColors.headerColor
+  document.getElementById("footerColor").value = savedColors.footerColor
+  document.getElementById("textColor").value = savedColors.textColor
+  document.getElementById("accentColor").value = savedColors.accentColor
 
   // Apply colors to preview
   updateColorPreview()
@@ -146,17 +115,10 @@ function loadColorSettings() {
 
 function updateColorPreview() {
   // Get current color values
-  const headerColorEl = document.getElementById("headerColor")
-  const footerColorEl = document.getElementById("footerColor")
-  const textColorEl = document.getElementById("textColor")
-  const accentColorEl = document.getElementById("accentColor")
-
-  if (!headerColorEl || !footerColorEl || !textColorEl || !accentColorEl) return
-
-  const headerColor = headerColorEl.value
-  const footerColor = footerColorEl.value
-  const textColor = textColorEl.value
-  const accentColor = accentColorEl.value
+  const headerColor = document.getElementById("headerColor").value
+  const footerColor = document.getElementById("footerColor").value
+  const textColor = document.getElementById("textColor").value
+  const accentColor = document.getElementById("accentColor").value
 
   // Update preview elements
   const headerPreview = document.querySelector(".header-color-preview")
@@ -164,10 +126,10 @@ function updateColorPreview() {
   const textPreview = document.querySelector(".text-color-preview")
   const accentPreview = document.querySelector(".accent-color-preview")
 
-  if (headerPreview) headerPreview.style.backgroundColor = headerColor
-  if (footerPreview) footerPreview.style.backgroundColor = footerColor
-  if (textPreview) textPreview.style.backgroundColor = textColor
-  if (accentPreview) accentPreview.style.backgroundColor = accentColor
+  headerPreview.style.backgroundColor = headerColor
+  footerPreview.style.backgroundColor = footerColor
+  textPreview.style.backgroundColor = textColor
+  accentPreview.style.backgroundColor = accentColor
 
   // Update live preview elements
   const previewHeader = document.querySelector(".preview-header")
@@ -185,18 +147,11 @@ function updateColorPreview() {
 }
 
 function saveColorSettings() {
-  const headerColorEl = document.getElementById("headerColor")
-  const footerColorEl = document.getElementById("footerColor")
-  const textColorEl = document.getElementById("textColor")
-  const accentColorEl = document.getElementById("accentColor")
-
-  if (!headerColorEl || !footerColorEl || !textColorEl || !accentColorEl) return
-
   const colorSettings = {
-    headerColor: headerColorEl.value,
-    footerColor: footerColorEl.value,
-    textColor: textColorEl.value,
-    accentColor: accentColorEl.value,
+    headerColor: document.getElementById("headerColor").value,
+    footerColor: document.getElementById("footerColor").value,
+    textColor: document.getElementById("textColor").value,
+    accentColor: document.getElementById("accentColor").value,
   }
 
   // Save to localStorage
@@ -208,31 +163,21 @@ function applyColorSettings() {
   let headerColor, footerColor, textColor, accentColor
 
   // If we're on the settings page, get values from inputs
-  const headerColorEl = document.getElementById("headerColor")
-  const footerColorEl = document.getElementById("footerColor")
-  const textColorEl = document.getElementById("textColor")
-  const accentColorEl = document.getElementById("accentColor")
-
-  if (headerColorEl && footerColorEl && textColorEl && accentColorEl) {
-    headerColor = headerColorEl.value
-    footerColor = footerColorEl.value
-    textColor = textColorEl.value
-    accentColor = accentColorEl.value
+  if (document.getElementById("headerColor")) {
+    headerColor = document.getElementById("headerColor").value
+    footerColor = document.getElementById("footerColor").value
+    textColor = document.getElementById("textColor").value
+    accentColor = document.getElementById("accentColor").value
   }
   // Otherwise, get from localStorage
   else {
-    try {
-      const savedColors = JSON.parse(localStorage.getItem("colorSettings"))
-      if (!savedColors) return // Exit if no saved settings
+    const savedColors = JSON.parse(localStorage.getItem("colorSettings"))
+    if (!savedColors) return // Exit if no saved settings
 
-      headerColor = savedColors.headerColor
-      footerColor = savedColors.footerColor
-      textColor = savedColors.textColor
-      accentColor = savedColors.accentColor
-    } catch (error) {
-      console.error("Error applying color settings:", error)
-      return
-    }
+    headerColor = savedColors.headerColor
+    footerColor = savedColors.footerColor
+    textColor = savedColors.textColor
+    accentColor = savedColors.accentColor
   }
 
   // Apply colors to the page elements
@@ -266,18 +211,18 @@ function applyColorSettings() {
 
 // Accordion functionality
 function initAccordions() {
-  const accordionToggles = document.querySelectorAll(".accordion-toggle")
+  const accordionHeaders = document.querySelectorAll(".accordion-header")
 
-  accordionToggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      const content = toggle.parentElement.nextElementSibling
-      if (!content) return
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const content = header.nextElementSibling
+      const toggle = header.querySelector(".accordion-toggle")
 
-      if (content.style.display === "block") {
-        content.style.display = "none"
+      if (content.classList.contains("active")) {
+        content.classList.remove("active")
         toggle.textContent = "+"
       } else {
-        content.style.display = "block"
+        content.classList.add("active")
         toggle.textContent = "-"
       }
     })
@@ -286,13 +231,12 @@ function initAccordions() {
 
 // About Page Content Management
 function loadAboutPageContent() {
-  console.log("Loading About page content...")
   // Default content (from the original About.html)
   const defaultContent = {
     aboutNorthSignal:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin bibendum libero, at euismod odio ultrices vel. Donec feugiat magna at eros ullamcorper ipsum.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin bibendum libero, at euismod odio ultrices vel. Donec feugiat magna at eros ullamcorper ipsum. Fusce id amet sodales elit. Nam auctor nisl ipsum, id fringilla nibh sodales fermentum. Donec id eros ipsum. Curabitur eleifend purus non neque tempor semper. Curabitur consectetur fermentum tortor, quis feugiat lacus. Donec consectetur pellentesque mattis, non mattis sapien ornare et. Duis consectetur, eros id pretium eleifend, velit est volutpat nunc, in malesuada torquent per conubia nostra, per inceptos himenaeos.",
     historyContent:
-      "In 2008, with the success in the political subdivision of mother Barangay Signal Village now known as Central Village into four (4) barangays, Barangay North Signal Village was born by virtue of City Ordinance No. 58 Series of 2008.",
+      'In 2008, with the success in the political subdivision of mother Barangay Signal Village now known as Central Village into four (4) barangays, Barangay North Signal Village was born by virtue of City Ordinance No. 58 Series of 2008 otherwise known as "An ordinance creating a barangay to be known as "Barangay North Signal Village in the City of Taguig, Metro Manila which was enacted on September 22, 2008 and ratified through a plebiscite on December 19, 2008 with affirmative votes of 3,907.\n\nOn April 4, 2009, Barangay North Signal Village officially came into existence upon the appointment of competent barangay officials by the City Government of Taguig to run its administrative and governmental affairs and function.\n\nThe appointed barangay officials of North Signal Village were Punong Barangay Richard Paul T. Jordan and members of the Sangguniang Barangay: Kagawad Jesus J. Pullente, Kagawad Nolan C. Peña, Kagawad Melquiades M. Isabedra, Kagawad Francisco M. Moyano, Kagawad Melinde S. Generaol, Kagawad Angielyn A. Bombase, Kagawad Jovita C. Villar, Barangay Treasurer Evelyn E. Hernandez, Barangay Secretary Rochelle W. Madelo, Barangay Chief Executive Jorge C. Tabug.\n\nThe Sangguniang Barangay of North Signal Village was motivated by its vision as a verdant community that is business friendly, peaceful, healthy and livable and guided by its mission to enable its citizenry gain access to education, skills and livelihood training, sports and other programs that can equip and make them capable of earning an income to help raise their standard of living to live productive and decent lives and to be able to actively carryout the mandate and ensure transparency, honesty and efficiency in the delivery of services in the barangay.\n\nBarangay North Signal Village derived source of income from real property taxes (RPT) and city aid from the Local Government of Taguig City.\n\nNorth Signal Village for brevity is temporarily house in the small building donated by STP-Pinagsama Project, Ipil-Ipil Street, North Signal Village, Taguig City after its creation on 2009\n\nToday, Barangay North Signal Village has a three-storey building where each department has its own office such as the Barangay Captain, Administration, Treasury, Secretariat and the Lupon Tagapamayapa.',
     geoLocation: "Northern part of Signal Village",
     geoBoundaryNorth: "On the North by property of BCDA (Villamor Area) Pinagsama Village, Phase 3",
     geoBoundarySouth: "On the South by MRT Avenue formerly Custody Street.",
@@ -305,315 +249,39 @@ function loadAboutPageContent() {
   }
 
   // Try to get saved content from localStorage
-  let savedContent
-  try {
-    savedContent = JSON.parse(localStorage.getItem("aboutPageContent"))
-    if (!savedContent) {
-      savedContent = defaultContent
-      // Save default content to localStorage
-      localStorage.setItem("aboutPageContent", JSON.stringify(defaultContent))
-    }
-  } catch (error) {
-    console.error("Error loading about page content:", error)
-    savedContent = defaultContent
-  }
-
-  // Get the about tab container
-  const aboutTab = document.getElementById("about-tab")
-  if (!aboutTab) {
-    console.warn("About tab not found in the DOM")
-    return
-  }
-
-  // Find all input fields in the about tab
-  const inputs = aboutTab.querySelectorAll("input, textarea")
-  console.log(`Found ${inputs.length} input fields in about tab`)
-
-  // Create a direct mapping between field IDs and content properties
-  const fieldMap = {
-    aboutNorthSignal: savedContent.aboutNorthSignal,
-    historyContent: savedContent.historyContent,
-    geoLocation: savedContent.geoLocation,
-    geoBoundaryNorth: savedContent.geoBoundaryNorth,
-    geoBoundarySouth: savedContent.geoBoundarySouth,
-    geoBoundaryEast: savedContent.geoBoundaryEast,
-    geoBoundaryWest: savedContent.geoBoundaryWest,
-    geoLandArea: savedContent.geoLandArea,
-    geoElevation: savedContent.geoElevation,
-    geoLandClass: savedContent.geoLandClass,
-    geoEconomicSource: savedContent.geoEconomicSource,
-  }
+  const savedContent = JSON.parse(localStorage.getItem("aboutPageContent")) || defaultContent
 
   // Set values in form fields
-  inputs.forEach((input) => {
-    if (fieldMap[input.id]) {
-      input.value = fieldMap[input.id]
-      console.log(`Set value for ${input.id}: ${input.value}`)
-
-      // Add event listener for live preview
-      input.addEventListener("input", updateAboutPreview)
-    }
-  })
-
-  // Debug: List all field IDs found
-  console.log("All field IDs found in about tab:")
-  inputs.forEach((input) => {
-    console.log(`- ${input.id}`)
-  })
-
-  // Initialize preview
-  updateAboutPreview()
-}
-
-// Update About page preview
-function updateAboutPreview() {
-  const aboutPreview = document.getElementById("aboutPreview")
-  if (!aboutPreview) return
-
-  // Get values from form fields
-  const aboutNorthSignal = document.getElementById("aboutNorthSignal")?.value || ""
-  const historyContent = document.getElementById("historyContent")?.value || ""
-  const geoLocation = document.getElementById("geoLocation")?.value || ""
-  const geoBoundaryNorth = document.getElementById("geoBoundaryNorth")?.value || ""
-  const geoBoundarySouth = document.getElementById("geoBoundarySouth")?.value || ""
-  const geoBoundaryEast = document.getElementById("geoBoundaryEast")?.value || ""
-  const geoBoundaryWest = document.getElementById("geoBoundaryWest")?.value || ""
-  const geoLandArea = document.getElementById("geoLandArea")?.value || ""
-  const geoElevation = document.getElementById("geoElevation")?.value || ""
-  const geoLandClass = document.getElementById("geoLandClass")?.value || ""
-  const geoEconomicSource = document.getElementById("geoEconomicSource")?.value || ""
-
-  // Update preview content
-  aboutPreview.innerHTML = `
-    <div class="preview-section">
-      <h3 class="preview-title">About North Signal Village</h3>
-      <p>${aboutNorthSignal}</p>
-      
-      <h3 class="preview-title">History</h3>
-      <p>${historyContent}</p>
-      
-      <h3 class="preview-title">Geography</h3>
-      <p><strong>Location:</strong> ${geoLocation}</p>
-      <p><strong>Boundaries:</strong></p>
-      <ul>
-        <li>North: ${geoBoundaryNorth}</li>
-        <li>South: ${geoBoundarySouth}</li>
-        <li>East: ${geoBoundaryEast}</li>
-        <li>West: ${geoBoundaryWest}</li>
-      </ul>
-      <p><strong>Land Area:</strong> ${geoLandArea}</p>
-      <p><strong>Elevation:</strong> ${geoElevation}</p>
-      <p><strong>Land Classification:</strong> ${geoLandClass}</p>
-      <p><strong>Major Economic Source:</strong> ${geoEconomicSource}</p>
-    </div>
-  `
+  document.getElementById("aboutNorthSignal").value = savedContent.aboutNorthSignal
+  document.getElementById("historyContent").value = savedContent.historyContent
+  document.getElementById("geoLocation").value = savedContent.geoLocation
+  document.getElementById("geoBoundaryNorth").value = savedContent.geoBoundaryNorth
+  document.getElementById("geoBoundarySouth").value = savedContent.geoBoundarySouth
+  document.getElementById("geoBoundaryEast").value = savedContent.geoBoundaryEast
+  document.getElementById("geoBoundaryWest").value = savedContent.geoBoundaryWest
+  document.getElementById("geoLandArea").value = savedContent.geoLandArea
+  document.getElementById("geoElevation").value = savedContent.geoElevation
+  document.getElementById("geoLandClass").value = savedContent.geoLandClass
+  document.getElementById("geoEconomicSource").value = savedContent.geoEconomicSource
 }
 
 function saveAboutPageContent() {
-  console.log("Saving About page content...")
-
-  // Get the about tab container
-  const aboutTab = document.getElementById("about-tab")
-  if (!aboutTab) {
-    console.warn("About tab not found in the DOM")
-    return
-  }
-
-  // Find all input fields in the about tab
-  const inputs = aboutTab.querySelectorAll("input, textarea")
-  console.log(`Found ${inputs.length} input fields in about tab`)
-
-  // Create content object
-  const content = {}
-
-  // Get values from form fields
-  inputs.forEach((input) => {
-    if (input.id) {
-      content[input.id] = input.value
-      console.log(`Got value for ${input.id}: ${input.value}`)
-    }
-  })
-
-  // If we didn't find any fields, try to get existing content
-  if (Object.keys(content).length === 0) {
-    console.warn("No input fields found in about tab, using default content")
-
-    // Default content
-    content.aboutNorthSignal =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin bibendum libero, at euismod odio ultrices vel. Donec feugiat magna at eros ullamcorper ipsum."
-    content.historyContent =
-      "In 2008, with the success in the political subdivision of mother Barangay Signal Village now known as Central Village into four (4) barangays, Barangay North Signal Village was born by virtue of City Ordinance No. 58 Series of 2008."
-    content.geoLocation = "Northern part of Signal Village"
-    content.geoBoundaryNorth = "On the North by property of BCDA (Villamor Area) Pinagsama Village, Phase 3"
-    content.geoBoundarySouth = "On the South by MRT Avenue formerly Custody Street."
-    content.geoBoundaryEast = "On the East by property of Bases Conversion (Taguig) Development Village"
-    content.geoBoundaryWest = "On the West by AFP Housing Phase 1, Bonifacio Street, and Creek"
-    content.geoLandArea = "45.77 hectares"
-    content.geoElevation = "16 meters"
-    content.geoLandClass = "Upland"
-    content.geoEconomicSource = "Commercial"
+  const content = {
+    aboutNorthSignal: document.getElementById("aboutNorthSignal").value,
+    historyContent: document.getElementById("historyContent").value,
+    geoLocation: document.getElementById("geoLocation").value,
+    geoBoundaryNorth: document.getElementById("geoBoundaryNorth").value,
+    geoBoundarySouth: document.getElementById("geoBoundarySouth").value,
+    geoBoundaryEast: document.getElementById("geoBoundaryEast").value,
+    geoBoundaryWest: document.getElementById("geoBoundaryWest").value,
+    geoLandArea: document.getElementById("geoLandArea").value,
+    geoElevation: document.getElementById("geoElevation").value,
+    geoLandClass: document.getElementById("geoLandClass").value,
+    geoEconomicSource: document.getElementById("geoEconomicSource").value,
   }
 
   // Save to localStorage
-  console.log("Saving about page content:", content)
   localStorage.setItem("aboutPageContent", JSON.stringify(content))
-}
-
-// Contact Page Content Management
-function loadContactPageContent() {
-  console.log("Loading Contact page content...")
-  // Default content
-  const defaultContent = {
-    contactIntro:
-      "If you have any questions, need assistance, or want to clarify something, feel free to reach out using any of the available options below.",
-    contactAddress: "Ipil - Ipil St North Signal Village 1636 Taguig, Philippines",
-    contactPhone: "8-983-92-98",
-    contactEmail: "northsignalvillage.taguig@gmail.com",
-    officeHoursWeekdays: "Monday to Friday, 8:00 AM to 5:00 PM",
-    officeHoursWeekends: "Closed on weekends and holidays",
-  }
-
-  // Try to get saved content from localStorage
-  let savedContent
-  try {
-    savedContent = JSON.parse(localStorage.getItem("contactPageContent"))
-    if (!savedContent) {
-      savedContent = defaultContent
-      // Save default content to localStorage
-      localStorage.setItem("contactPageContent", JSON.stringify(defaultContent))
-    }
-  } catch (error) {
-    console.error("Error loading contact page content:", error)
-    savedContent = defaultContent
-  }
-
-  // Get the contact tab container
-  const contactTab = document.getElementById("contact-tab")
-  if (!contactTab) {
-    console.warn("Contact tab not found in the DOM")
-    return
-  }
-
-  // Find all input fields in the contact tab
-  const inputs = contactTab.querySelectorAll("input, textarea")
-  console.log(`Found ${inputs.length} input fields in contact tab`)
-
-  // Create a direct mapping between field IDs and content properties
-  const fieldMap = {
-    contactIntro: savedContent.contactIntro,
-    contactAddress: savedContent.contactAddress,
-    contactPhone: savedContent.contactPhone,
-    contactEmail: savedContent.contactEmail,
-    officeHoursWeekdays: savedContent.officeHoursWeekdays,
-    officeHoursWeekends: savedContent.officeHoursWeekends,
-  }
-
-  // Set values in form fields
-  inputs.forEach((input) => {
-    if (fieldMap[input.id]) {
-      input.value = fieldMap[input.id]
-      console.log(`Set value for ${input.id}: ${input.value}`)
-
-      // Add event listener for live preview
-      input.addEventListener("input", updateContactPreview)
-    }
-  })
-
-  // Debug: List all field IDs found
-  console.log("All field IDs found in contact tab:")
-  inputs.forEach((input) => {
-    console.log(`- ${input.id}`)
-  })
-
-  // Initialize preview
-  updateContactPreview()
-}
-
-// Update Contact page preview
-function updateContactPreview() {
-  const contactPreview = document.getElementById("contactPreview")
-  if (!contactPreview) return
-
-  // Get values from form fields
-  const contactIntro = document.getElementById("contactIntro")?.value || ""
-  const contactAddress = document.getElementById("contactAddress")?.value || ""
-  const contactPhone = document.getElementById("contactPhone")?.value || ""
-  const contactEmail = document.getElementById("contactEmail")?.value || ""
-  const officeHoursWeekdays = document.getElementById("officeHoursWeekdays")?.value || ""
-  const officeHoursWeekends = document.getElementById("officeHoursWeekends")?.value || ""
-
-  // Update preview content
-  contactPreview.innerHTML = `
-    <div class="preview-section">
-      <h3 class="preview-title">Contact Information</h3>
-      <p>${contactIntro}</p>
-      
-      <div class="contact-info-preview">
-        <div class="contact-info-item">
-          <div class="contact-icon location-icon"></div>
-          <p>${contactAddress}</p>
-        </div>
-        
-        <div class="contact-info-item">
-          <div class="contact-icon phone-icon"></div>
-          <p>${contactPhone}</p>
-        </div>
-        
-        <div class="contact-info-item">
-          <div class="contact-icon email-icon"></div>
-          <p>${contactEmail}</p>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">Office Hours</h3>
-      <p><strong>Weekdays:</strong> ${officeHoursWeekdays}</p>
-      <p><strong>Weekends:</strong> ${officeHoursWeekends}</p>
-    </div>
-  `
-}
-
-function saveContactPageContent() {
-  console.log("Saving Contact page content...")
-
-  // Get the contact tab container
-  const contactTab = document.getElementById("contact-tab")
-  if (!contactTab) {
-    console.warn("Contact tab not found in the DOM")
-    return
-  }
-
-  // Find all input fields in the contact tab
-  const inputs = contactTab.querySelectorAll("input, textarea")
-  console.log(`Found ${inputs.length} input fields in contact tab`)
-
-  // Create content object
-  const content = {}
-
-  // Get values from form fields
-  inputs.forEach((input) => {
-    if (input.id) {
-      content[input.id] = input.value
-      console.log(`Got value for ${input.id}: ${input.value}`)
-    }
-  })
-
-  // If we didn't find any fields, try to get existing content
-  if (Object.keys(content).length === 0) {
-    console.warn("No input fields found in contact tab, using default content")
-
-    // Default content
-    content.contactIntro =
-      "If you have any questions, need assistance, or want to clarify something, feel free to reach out using any of the available options below."
-    content.contactAddress = "Ipil - Ipil St North Signal Village 1636 Taguig, Philippines"
-    content.contactPhone = "8-983-92-98"
-    content.contactEmail = "northsignalvillage.taguig@gmail.com"
-    content.officeHoursWeekdays = "Monday to Friday, 8:00 AM to 5:00 PM"
-    content.officeHoursWeekends = "Closed on weekends and holidays"
-  }
-
-  // Save to localStorage
-  console.log("Saving contact page content:", content)
-  localStorage.setItem("contactPageContent", JSON.stringify(content))
 }
 
 // Home Page Content Management
@@ -626,7 +294,7 @@ function loadHomePageContent() {
     visionText:
       "Barangay North Signal Village takes pride in its people coming from all over the various regions of the archipelago, diverse in its origin and culture, but united in its effort, to establish a verdant community that is peaceful, healthy and livable.",
     missionText:
-      "North Signal Village aims to enable its citizenry gain access to education, skills and livelihood training, sports and other programs that can equip and make them capable of earning an income to help raise their standard of living to live productive and decent lives.",
+      "North Signal Village aims to enable its citizenry gain access to education, skills and livelihood training, sports and other programs that can equip and make them capable of earning an income to help raise their standard of living to live productive and decent lives. And to be able to actively carry out the mandates and ensure transparency, honesty and efficiency in the delivery of services in the barangay.",
     goalsText:
       "To improve the living standard; provide health and safety, promote prosperity; improve moral, peace and pride, comfort and convenience of the inhabitants of Barangay North Signal Village, Taguig City.",
     nValue: "No to all illegal activities",
@@ -634,120 +302,136 @@ function loadHomePageContent() {
     vValue: "Values oriented",
     punongName: "DANILO G. CASTRO",
     punongTitle: "PUNONG BARANGAY",
+    kagawad1Name: "JIMMY A. GOMEZ",
+    kagawad1Title: "BARANGAY KAGAWAD",
+    kagawad1Committee: "Committee on Public Utilities",
+    kagawad2Name: "RICARDO T. JORDAN JR.",
+    kagawad2Title: "BARANGAY KAGAWAD",
+    kagawad2Committee:
+      "Committee on Ways and Means; Ethics and Internal Government; Public Works and Infrastructures; Senior Citizen Affairs",
+    kagawad3Name: "JOSEPH D. QUIJANO",
+    kagawad3Title: "BARANGAY KAGAWAD",
+    kagawad3Committee:
+      "Committee on Peace and Order; Barangay Disaster Risk Reduction and Management; Drug Abuse Prevention and Control",
+    kagawad4Name: "JONAS T. BARCA",
+    kagawad4Title: "BARANGAY KAGAWAD",
+    kagawad4Committee:
+      "Committee on Employment; Training and Livelihood; Communications and Public Information; Arts, Culture, and Tourism",
+    kagawad5Name: "YOLANDA C. VELASCO",
+    kagawad5Title: "BARANGAY KAGAWAD",
+    kagawad5Committee:
+      "Committee on Environmental Protection and Ecology; Public Sanitation; Health and Nutrition; Persons with Disabilities; Social Services",
+    kagawad6Name: "RONALD M. RAMIREZ",
+    kagawad6Title: "BARANGAY KAGAWAD",
+    kagawad6Committee:
+      "Committee on Recreation and Amusement; Agriculture; Physical and Sports Development; Traffic Management; Transportation",
+    kagawad7Name: "REGINA S. INGCO",
+    kagawad7Title: "BARANGAY KAGAWAD",
+    kagawad7Committee: "Committee on Finance and Appropriations; Education; Women and Family Affairs",
+    skName: "CHRISHA MAE C. MATA",
+    skTitle: "SK CHAIRMAN",
+    treasurerName: "NOLAN C. PEÑA",
+    treasurerTitle: "BARANGAY TREASURER",
+    secretaryName: "ROMINA E. LOZADA",
+    secretaryTitle: "BARANGAY SECRETARY",
+    adminName: "ANTONIO B. DIEGO",
+    adminTitle: "BARANGAY ADMINISTRATOR",
+    ceoName: "WILSON S. PADILLON",
+    ceoTitle: "CHIEF EXECUTIVE OFFICER – BSF",
   }
 
   // Try to get saved content from localStorage
-  let savedContent
-  try {
-    savedContent = JSON.parse(localStorage.getItem("homePageContent")) || defaultContent
-  } catch (error) {
-    console.error("Error loading home page content:", error)
-    savedContent = defaultContent
-  }
+  const savedContent = JSON.parse(localStorage.getItem("homePageContent")) || defaultContent
 
   // Set values in form fields
-  const homeTab = document.getElementById("home-tab")
-  if (homeTab) {
-    const inputs = homeTab.querySelectorAll("input, textarea")
-    inputs.forEach((input) => {
-      if (input.id && savedContent[input.id]) {
-        input.value = savedContent[input.id]
-
-        // Add event listener for live preview
-        input.addEventListener("input", updateHomePreview)
-      }
-    })
-
-    // Initialize preview
-    updateHomePreview()
-  }
-}
-
-// Update Home page preview
-function updateHomePreview() {
-  const homePreview = document.getElementById("homePreview")
-  if (!homePreview) return
-
-  // Get values from form fields
-  const heroTitle = document.getElementById("heroTitle")?.value || ""
-  const heroAddress = document.getElementById("heroAddress")?.value || ""
-  const aboutSubtitle = document.getElementById("aboutSubtitle")?.value || ""
-  const visionText = document.getElementById("visionText")?.value || ""
-  const missionText = document.getElementById("missionText")?.value || ""
-  const goalsText = document.getElementById("goalsText")?.value || ""
-  const nValue = document.getElementById("nValue")?.value || ""
-  const sValue = document.getElementById("sValue")?.value || ""
-  const vValue = document.getElementById("vValue")?.value || ""
-  const punongName = document.getElementById("punongName")?.value || ""
-  const punongTitle = document.getElementById("punongTitle")?.value || ""
-
-  // Update preview content
-  homePreview.innerHTML = `
-    <div class="preview-section">
-      <h3 class="preview-title">Hero Section</h3>
-      <div class="hero-preview">
-        <h2>${heroTitle}</h2>
-        <p>${heroAddress}</p>
-      </div>
-      
-      <h3 class="preview-title">About Section</h3>
-      <p class="subtitle-preview">${aboutSubtitle}</p>
-      
-      <h3 class="preview-title">Vision, Mission, Goals</h3>
-      <div class="vmg-preview">
-        <div class="vmg-item">
-          <h4>Vision</h4>
-          <p>${visionText}</p>
-        </div>
-        <div class="vmg-item">
-          <h4>Mission</h4>
-          <p>${missionText}</p>
-        </div>
-        <div class="vmg-item">
-          <h4>Goals</h4>
-          <p>${goalsText}</p>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">NSV Values</h3>
-      <div class="values-preview">
-        <div class="value-item">
-          <h4>N</h4>
-          <p>${nValue}</p>
-        </div>
-        <div class="value-item">
-          <h4>S</h4>
-          <p>${sValue}</p>
-        </div>
-        <div class="value-item">
-          <h4>V</h4>
-          <p>${vValue}</p>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">Officials</h3>
-      <div class="officials-preview">
-        <div class="official-item">
-          <h4>${punongName}</h4>
-          <p>${punongTitle}</p>
-        </div>
-        <!-- More officials would be added here -->
-      </div>
-    </div>
-  `
+  document.getElementById("heroTitle").value = savedContent.heroTitle
+  document.getElementById("heroAddress").value = savedContent.heroAddress
+  document.getElementById("aboutSubtitle").value = savedContent.aboutSubtitle
+  document.getElementById("visionText").value = savedContent.visionText
+  document.getElementById("missionText").value = savedContent.missionText
+  document.getElementById("goalsText").value = savedContent.goalsText
+  document.getElementById("nValue").value = savedContent.nValue
+  document.getElementById("sValue").value = savedContent.sValue
+  document.getElementById("vValue").value = savedContent.vValue
+  document.getElementById("punongName").value = savedContent.punongName
+  document.getElementById("punongTitle").value = savedContent.punongTitle
+  document.getElementById("kagawad1Name").value = savedContent.kagawad1Name
+  document.getElementById("kagawad1Title").value = savedContent.kagawad1Title
+  document.getElementById("kagawad1Committee").value = savedContent.kagawad1Committee
+  document.getElementById("kagawad2Name").value = savedContent.kagawad2Name
+  document.getElementById("kagawad2Title").value = savedContent.kagawad2Title
+  document.getElementById("kagawad2Committee").value = savedContent.kagawad2Committee
+  document.getElementById("kagawad3Name").value = savedContent.kagawad3Name
+  document.getElementById("kagawad3Title").value = savedContent.kagawad3Title
+  document.getElementById("kagawad3Committee").value = savedContent.kagawad3Committee
+  document.getElementById("kagawad4Name").value = savedContent.kagawad4Name
+  document.getElementById("kagawad4Title").value = savedContent.kagawad4Title
+  document.getElementById("kagawad4Committee").value = savedContent.kagawad4Committee
+  document.getElementById("kagawad5Name").value = savedContent.kagawad5Name
+  document.getElementById("kagawad5Title").value = savedContent.kagawad5Title
+  document.getElementById("kagawad5Committee").value = savedContent.kagawad5Committee
+  document.getElementById("kagawad6Name").value = savedContent.kagawad6Name
+  document.getElementById("kagawad6Title").value = savedContent.kagawad6Title
+  document.getElementById("kagawad6Committee").value = savedContent.kagawad6Committee
+  document.getElementById("kagawad7Name").value = savedContent.kagawad7Name
+  document.getElementById("kagawad7Title").value = savedContent.kagawad7Title
+  document.getElementById("kagawad7Committee").value = savedContent.kagawad7Committee
+  document.getElementById("skName").value = savedContent.skName
+  document.getElementById("skTitle").value = savedContent.skTitle
+  document.getElementById("treasurerName").value = savedContent.treasurerName
+  document.getElementById("treasurerTitle").value = savedContent.treasurerTitle
+  document.getElementById("secretaryName").value = savedContent.secretaryName
+  document.getElementById("secretaryTitle").value = savedContent.secretaryTitle
+  document.getElementById("adminName").value = savedContent.adminName
+  document.getElementById("adminTitle").value = savedContent.adminTitle
+  document.getElementById("ceoName").value = savedContent.ceoName
+  document.getElementById("ceoTitle").value = savedContent.ceoTitle
 }
 
 function saveHomePageContent() {
-  const content = {}
-  const homeTab = document.getElementById("home-tab")
-
-  if (homeTab) {
-    const inputs = homeTab.querySelectorAll("input, textarea")
-    inputs.forEach((input) => {
-      if (input.id) {
-        content[input.id] = input.value
-      }
-    })
+  const content = {
+    heroTitle: document.getElementById("heroTitle").value,
+    heroAddress: document.getElementById("heroAddress").value,
+    aboutSubtitle: document.getElementById("aboutSubtitle").value,
+    visionText: document.getElementById("visionText").value,
+    missionText: document.getElementById("missionText").value,
+    goalsText: document.getElementById("goalsText").value,
+    nValue: document.getElementById("nValue").value,
+    sValue: document.getElementById("sValue").value,
+    vValue: document.getElementById("vValue").value,
+    punongName: document.getElementById("punongName").value,
+    punongTitle: document.getElementById("punongTitle").value,
+    kagawad1Name: document.getElementById("kagawad1Name").value,
+    kagawad1Title: document.getElementById("kagawad1Title").value,
+    kagawad1Committee: document.getElementById("kagawad1Committee").value,
+    kagawad2Name: document.getElementById("kagawad2Name").value,
+    kagawad2Title: document.getElementById("kagawad2Title").value,
+    kagawad2Committee: document.getElementById("kagawad2Committee").value,
+    kagawad3Name: document.getElementById("kagawad3Name").value,
+    kagawad3Title: document.getElementById("kagawad3Title").value,
+    kagawad3Committee: document.getElementById("kagawad3Committee").value,
+    kagawad4Name: document.getElementById("kagawad4Name").value,
+    kagawad4Title: document.getElementById("kagawad4Title").value,
+    kagawad4Committee: document.getElementById("kagawad4Committee").value,
+    kagawad5Name: document.getElementById("kagawad5Name").value,
+    kagawad5Title: document.getElementById("kagawad5Title").value,
+    kagawad5Committee: document.getElementById("kagawad5Committee").value,
+    kagawad6Name: document.getElementById("kagawad6Name").value,
+    kagawad6Title: document.getElementById("kagawad6Title").value,
+    kagawad6Committee: document.getElementById("kagawad6Committee").value,
+    kagawad7Name: document.getElementById("kagawad7Name").value,
+    kagawad7Title: document.getElementById("kagawad7Title").value,
+    kagawad7Committee: document.getElementById("kagawad7Committee").value,
+    skName: document.getElementById("skName").value,
+    skTitle: document.getElementById("skTitle").value,
+    treasurerName: document.getElementById("treasurerName").value,
+    treasurerTitle: document.getElementById("treasurerTitle").value,
+    secretaryName: document.getElementById("secretaryName").value,
+    secretaryTitle: document.getElementById("secretaryTitle").value,
+    adminName: document.getElementById("adminName").value,
+    adminTitle: document.getElementById("adminTitle").value,
+    ceoName: document.getElementById("ceoName").value,
+    ceoTitle: document.getElementById("ceoTitle").value,
   }
 
   // Save to localStorage
@@ -773,13 +457,7 @@ function loadDashboardSettings() {
   }
 
   // Try to get saved settings from localStorage
-  let savedSettings
-  try {
-    savedSettings = JSON.parse(localStorage.getItem("dashboardSettings")) || defaultSettings
-  } catch (error) {
-    console.error("Error loading dashboard settings:", error)
-    savedSettings = defaultSettings
-  }
+  const savedSettings = JSON.parse(localStorage.getItem("dashboardSettings")) || defaultSettings
 
   // Apply settings to the page
   applyTheme(savedSettings.theme)
@@ -789,81 +467,34 @@ function loadDashboardSettings() {
   applyCardStyle(savedSettings.cardStyle)
 
   // Set form values
-  const themeOption = document.querySelector(`.theme-option[data-theme="${savedSettings.theme}"]`)
-  if (themeOption) themeOption.classList.add("active")
-
-  setElementValue("fontSizeSlider", getFontSizeValue(savedSettings.fontSize))
-
-  const sidebarPositionInput = document.querySelector(
-    `input[name="sidebarPosition"][value="${savedSettings.sidebarPosition}"]`,
-  )
-  if (sidebarPositionInput) sidebarPositionInput.checked = true
-
-  const layoutOption = document.querySelector(`.layout-option[data-layout="${savedSettings.layout}"]`)
-  if (layoutOption) layoutOption.classList.add("active")
-
-  const cardStyleOption = document.querySelector(`.card-style-option[data-card-style="${savedSettings.cardStyle}"]`)
-  if (cardStyleOption) cardStyleOption.classList.add("active")
-
-  setElementChecked("showQuickStats", savedSettings.showQuickStats)
-  setElementChecked("showRecentActivity", savedSettings.showRecentActivity)
-  setElementChecked("desktopNotifications", savedSettings.desktopNotifications)
-  setElementChecked("emailNotifications", savedSettings.emailNotifications)
-  setElementChecked("newRequestAlerts", savedSettings.newRequestAlerts)
-  setElementChecked("systemUpdates", savedSettings.systemUpdates)
-
-  setElementValue("notificationSound", savedSettings.notificationSound)
+  document.querySelector(`.theme-option[data-theme="${savedSettings.theme}"]`).classList.add("active")
+  document.getElementById("fontSizeSlider").value = getFontSizeValue(savedSettings.fontSize)
+  document.querySelector(`input[name="sidebarPosition"][value="${savedSettings.sidebarPosition}"]`).checked = true
+  document.querySelector(`.layout-option[data-layout="${savedSettings.layout}"]`).classList.add("active")
+  document.querySelector(`.card-style-option[data-card-style="${savedSettings.cardStyle}"]`).classList.add("active")
+  document.getElementById("showQuickStats").checked = savedSettings.showQuickStats
+  document.getElementById("showRecentActivity").checked = savedSettings.showRecentActivity
+  document.getElementById("desktopNotifications").checked = savedSettings.desktopNotifications
+  document.getElementById("emailNotifications").checked = savedSettings.emailNotifications
+  document.getElementById("newRequestAlerts").checked = savedSettings.newRequestAlerts
+  document.getElementById("systemUpdates").checked = savedSettings.systemUpdates
+  document.getElementById("notificationSound").value = savedSettings.notificationSound
 }
 
 function saveDashboardSettings() {
-  // Get active theme
-  let activeTheme = "default"
-  const activeThemeElement = document.querySelector(".theme-option.active")
-  if (activeThemeElement) {
-    activeTheme = activeThemeElement.dataset.theme
-  }
-
-  // Get active layout
-  let activeLayout = "default"
-  const activeLayoutElement = document.querySelector(".layout-option.active")
-  if (activeLayoutElement) {
-    activeLayout = activeLayoutElement.dataset.layout
-  }
-
-  // Get active card style
-  let activeCardStyle = "default"
-  const activeCardStyleElement = document.querySelector(".card-style-option.active")
-  if (activeCardStyleElement) {
-    activeCardStyle = activeCardStyleElement.dataset.cardStyle
-  }
-
-  // Get font size
-  let fontSize = "medium"
-  const fontSizeSlider = document.getElementById("fontSizeSlider")
-  if (fontSizeSlider) {
-    fontSize = getFontSizeName(fontSizeSlider.value)
-  }
-
-  // Get sidebar position
-  let sidebarPosition = "left"
-  const sidebarPositionInput = document.querySelector('input[name="sidebarPosition"]:checked')
-  if (sidebarPositionInput) {
-    sidebarPosition = sidebarPositionInput.value
-  }
-
   const settings = {
-    theme: activeTheme,
-    fontSize: fontSize,
-    sidebarPosition: sidebarPosition,
-    layout: activeLayout,
-    cardStyle: activeCardStyle,
-    showQuickStats: getElementChecked("showQuickStats"),
-    showRecentActivity: getElementChecked("showRecentActivity"),
-    desktopNotifications: getElementChecked("desktopNotifications"),
-    emailNotifications: getElementChecked("emailNotifications"),
-    newRequestAlerts: getElementChecked("newRequestAlerts"),
-    systemUpdates: getElementChecked("systemUpdates"),
-    notificationSound: getElementValue("notificationSound"),
+    theme: document.querySelector(".theme-option.active").dataset.theme,
+    fontSize: getFontSizeName(document.getElementById("fontSizeSlider").value),
+    sidebarPosition: document.querySelector('input[name="sidebarPosition"]:checked').value,
+    layout: document.querySelector(".layout-option.active").dataset.layout,
+    cardStyle: document.querySelector(".card-style-option.active").dataset.cardStyle,
+    showQuickStats: document.getElementById("showQuickStats").checked,
+    showRecentActivity: document.getElementById("showRecentActivity").checked,
+    desktopNotifications: document.getElementById("desktopNotifications").checked,
+    emailNotifications: document.getElementById("emailNotifications").checked,
+    newRequestAlerts: document.getElementById("newRequestAlerts").checked,
+    systemUpdates: document.getElementById("systemUpdates").checked,
+    notificationSound: document.getElementById("notificationSound").value,
   }
 
   // Save to localStorage
@@ -890,9 +521,7 @@ function initThemeOptions() {
       option.classList.add("active")
 
       // Apply theme
-      if (option.dataset.theme) {
-        applyTheme(option.dataset.theme)
-      }
+      applyTheme(option.dataset.theme)
     })
   })
 }
@@ -908,7 +537,6 @@ function applyTheme(theme) {
 // Font Size Slider
 function initFontSizeSlider() {
   const slider = document.getElementById("fontSizeSlider")
-  if (!slider) return
 
   slider.addEventListener("input", () => {
     const fontSize = getFontSizeName(slider.value)
@@ -984,9 +612,7 @@ function initLayoutOptions() {
       option.classList.add("active")
 
       // Apply layout
-      if (option.dataset.layout) {
-        applyLayout(option.dataset.layout)
-      }
+      applyLayout(option.dataset.layout)
     })
   })
 }
@@ -1012,9 +638,7 @@ function initCardStyleOptions() {
       option.classList.add("active")
 
       // Apply card style
-      if (option.dataset.cardStyle) {
-        applyCardStyle(option.dataset.cardStyle)
-      }
+      applyCardStyle(option.dataset.cardStyle)
     })
   })
 }
@@ -1027,86 +651,7 @@ function applyCardStyle(cardStyle) {
   document.body.classList.add(`card-style-${cardStyle}`)
 }
 
-// FAQ functionality
-function loadFaqContent() {
-  const faqContainer = document.querySelector(".faq-items-container")
-  if (!faqContainer) return
-
-  // Default FAQ items
-  const defaultFaqs = [
-    {
-      question: "What are the office hours of the Barangay Hall?",
-      answer:
-        "The Barangay Hall is open from Monday to Friday, 8:00 AM to 5:00 PM. We are closed on weekends and holidays.",
-    },
-    {
-      question: "What documents do I need to get a Barangay Clearance?",
-      answer:
-        "To get a Barangay Clearance, you need to bring a valid ID, proof of residence (utility bill), and fill out the application form. The processing fee is PHP 50.",
-    },
-    {
-      question: "How long does it take to process a Barangay ID?",
-      answer:
-        "Processing a Barangay ID typically takes 1-2 business days. You will be notified when your ID is ready for pickup.",
-    },
-    {
-      question: "How can I report a concern in our barangay?",
-      answer:
-        "You can report concerns by visiting the Barangay Hall in person, calling our hotline at 8-983-92-98, or sending an email to northsignalvillage.taguig@gmail.com.",
-    },
-    {
-      question: "What are the requirements for business permit application?",
-      answer:
-        "For business permit applications, you need: 1) Barangay Business Clearance application form, 2) Valid ID, 3) Proof of business ownership, 4) Lease contract (if renting), and 5) Community tax certificate.",
-    },
-  ]
-
-  // Try to get saved FAQs from localStorage
-  let savedFaqs
-  try {
-    savedFaqs = JSON.parse(localStorage.getItem("faqContent")) || defaultFaqs
-  } catch (error) {
-    console.error("Error loading FAQ content:", error)
-    savedFaqs = defaultFaqs
-  }
-
-  // Clear existing FAQ items
-  while (faqContainer.firstChild) {
-    faqContainer.removeChild(faqContainer.firstChild)
-  }
-
-  // Create new FAQ items for each saved FAQ
-  savedFaqs.forEach((faq, index) => {
-    const itemNumber = index + 1
-
-    // Create new FAQ item
-    const newItem = document.createElement("div")
-    newItem.className = "official-edit-container faq-item"
-    newItem.innerHTML = `
-      <h4>FAQ Item ${itemNumber}</h4>
-      <div class="field-container">
-        <label>Question</label>
-        <input type="text" id="faqQuestion${itemNumber}" class="content-input" value="${faq.question}">
-      </div>
-      <div class="field-container">
-        <label>Answer</label>
-        <textarea id="faqAnswer${itemNumber}" class="content-editor" rows="3">${faq.answer}</textarea>
-      </div>
-    `
-
-    // Add event listeners to new inputs
-    newItem.querySelectorAll("input, textarea").forEach((element) => {
-      element.addEventListener("input", updateFaqPreview)
-    })
-
-    // Append to container
-    faqContainer.appendChild(newItem)
-  })
-
-  // Update preview
-  updateFaqPreview()
-}
-
+// Add this function to save FAQ content
 function saveFaqContent() {
   const faqItems = document.querySelectorAll(".faq-item")
   const faqData = []
@@ -1130,9 +675,21 @@ function saveFaqContent() {
 
   // Save to localStorage
   localStorage.setItem("faqContent", JSON.stringify(faqData))
+  console.log("FAQ content saved:", faqData) // Debug log
 }
 
-// Initialize FAQ editor
+// Show success message
+function showSuccessMessage() {
+  const successMessage = document.getElementById("successMessage")
+  successMessage.style.display = "block"
+
+  // Hide message after 3 seconds
+  setTimeout(() => {
+    successMessage.style.display = "none"
+  }, 3000)
+}
+
+// FAQ Editor functionality
 function initFaqEditor() {
   // Load saved FAQ content if available
   loadFaqContent()
@@ -1158,11 +715,97 @@ function initFaqEditor() {
   updateFaqPreview()
 }
 
-// Add new FAQ item
-function addFaqItem() {
+// Add this function to load saved FAQ content
+function loadFaqContent() {
   const faqContainer = document.querySelector(".faq-items-container")
   if (!faqContainer) return
 
+  const savedFaqs = localStorage.getItem("faqContent")
+  if (!savedFaqs) return
+
+  try {
+    const faqData = JSON.parse(savedFaqs)
+
+    if (!faqData || faqData.length === 0) return
+
+    // Clear all existing FAQ items
+    while (faqContainer.firstChild) {
+      faqContainer.removeChild(faqContainer.firstChild)
+    }
+
+    // Create new FAQ items for each saved FAQ
+    faqData.forEach((faq, index) => {
+      const itemNumber = index + 1
+
+      // Create new FAQ item
+      const newItem = document.createElement("div")
+      newItem.className = "official-edit-container faq-item"
+      newItem.innerHTML = `
+        <h4>FAQ Item ${itemNumber}</h4>
+        <div class="field-container">
+          <label>Question</label>
+          <input type="text" id="faqQuestion${itemNumber}" class="content-input" value="${faq.question}">
+        </div>
+        <div class="field-container">
+          <label>Answer</label>
+          <textarea id="faqAnswer${itemNumber}" class="content-editor" rows="3">${faq.answer}</textarea>
+        </div>
+      `
+
+      // Add event listeners to new inputs
+      newItem.querySelectorAll("input, textarea").forEach((element) => {
+        element.addEventListener("input", updateFaqPreview)
+      })
+
+      // Append to container
+      faqContainer.appendChild(newItem)
+    })
+
+    // Update preview
+    updateFaqPreview()
+
+    console.log("FAQ content loaded successfully:", faqData)
+  } catch (error) {
+    console.error("Error loading FAQ content:", error)
+  }
+}
+
+// Helper function to add FAQ item with specific content
+function addFaqItemWithContent(question, answer) {
+  const faqContainer = document.querySelector(".faq-items-container")
+  const faqItems = faqContainer.querySelectorAll(".faq-item")
+  const newIndex = faqItems.length + 1
+
+  // Create new FAQ item
+  const newItem = document.createElement("div")
+  newItem.className = "official-edit-container faq-item"
+  newItem.innerHTML = `
+    <h4>FAQ Item ${newIndex}</h4>
+    <div class="field-container">
+      <label>Question</label>
+      <input type="text" id="faqQuestion${newIndex}" class="content-input" value="${question}">
+    </div>
+    <div class="field-container">
+      <label>Answer</label>
+      <textarea id="faqAnswer${newIndex}" class="content-editor" rows="3">${answer}</textarea>
+    </div>
+  `
+
+  // Add event listeners to new inputs
+  newItem.querySelectorAll("input, textarea").forEach((element) => {
+    element.addEventListener("input", updateFaqPreview)
+  })
+
+  // Append to container
+  faqContainer.appendChild(newItem)
+
+  // Update preview
+  updateFaqPreview()
+}
+
+// Add new FAQ item
+function addFaqItem() {
+  const faqContainer = document.querySelector(".faq-items-container")
   const faqItems = faqContainer.querySelectorAll(".faq-item")
   const newIndex = faqItems.length + 1
 
@@ -1196,8 +839,6 @@ function addFaqItem() {
 // Remove FAQ item
 function removeFaqItem() {
   const faqContainer = document.querySelector(".faq-items-container")
-  if (!faqContainer) return
-
   const faqItems = faqContainer.querySelectorAll(".faq-item")
 
   if (faqItems.length > 1) {
@@ -1211,12 +852,10 @@ function removeFaqItem() {
 // Update FAQ preview
 function updateFaqPreview() {
   const faqItems = document.querySelectorAll(".faq-item")
-  const faqPreview = document.getElementById("faqPreview")
-
-  if (!faqPreview) return
+  const faqPreviewContainer = document.querySelector(".faq-preview-container")
 
   // Clear existing preview content
-  faqPreview.innerHTML = ""
+  faqPreviewContainer.innerHTML = ""
 
   faqItems.forEach((item) => {
     const questionInput = item.querySelector('input[id^="faqQuestion"]')
@@ -1227,129 +866,23 @@ function updateFaqPreview() {
       const answer = answerTextarea.value.trim()
 
       if (question && answer) {
-        // Create preview item
-        const previewItem = document.createElement("div")
-        previewItem.className = "faq-preview-item"
-        previewItem.innerHTML = `
-          <div class="faq-preview-question">
-            <span>${question}</span>
-            <span class="toggle-icon">+</span>
-          </div>
-          <div class="faq-preview-answer" style="display: none; padding: 15px;">
-            <p>${answer}</p>
-          </div>
-        `
+        // Create preview elements
+        const questionElement = document.createElement("h4")
+        questionElement.textContent = question
 
-        // Add click event to toggle answer visibility
-        const questionElement = previewItem.querySelector(".faq-preview-question")
-        questionElement.addEventListener("click", function () {
-          const answerElement = this.nextElementSibling
-          const toggleIcon = this.querySelector(".toggle-icon")
-
-          if (answerElement.style.display === "none") {
-            answerElement.style.display = "block"
-            toggleIcon.textContent = "-"
-          } else {
-            answerElement.style.display = "none"
-            toggleIcon.textContent = "+"
-          }
-        })
+        const answerElement = document.createElement("p")
+        answerElement.textContent = answer
 
         // Append to preview container
-        faqPreview.appendChild(previewItem)
+        faqPreviewContainer.appendChild(questionElement)
+        faqPreviewContainer.appendChild(answerElement)
       }
     }
   })
 }
 
-// Show success message
-function showSuccessMessage() {
-  const successMessage = document.getElementById("successMessage")
-  if (!successMessage) return
-
-  successMessage.style.display = "block"
-
-  // Hide message after 3 seconds
-  setTimeout(() => {
-    successMessage.style.display = "none"
-  }, 3000)
-}
-
-// Initialize logout modal
-function initLogoutModal() {
-  const signOutBtn = document.getElementById("signOutBtn")
-  const logoutModal = document.getElementById("logoutModal")
-  const cancelLogout = document.getElementById("cancelLogout")
-  const confirmLogout = document.getElementById("confirmLogout")
-
-  if (signOutBtn && logoutModal) {
-    signOutBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-      logoutModal.style.display = "flex"
-    })
-
-    if (cancelLogout) {
-      cancelLogout.addEventListener("click", () => {
-        logoutModal.style.display = "none"
-      })
-    }
-
-    if (confirmLogout) {
-      confirmLogout.addEventListener("click", () => {
-        // Redirect to home page or perform logout action
-        window.location.href = "../HTML/Home.html"
-      })
-    }
-
-    // Close modal when clicking outside
-    window.addEventListener("click", (e) => {
-      if (e.target === logoutModal) {
-        logoutModal.style.display = "none"
-      }
-    })
-  }
-}
-
-// Helper functions for getting and setting element values
-function getElementValue(id) {
-  const element = document.getElementById(id)
-  return element ? element.value : ""
-}
-
-function setElementValue(id, value) {
-  const element = document.getElementById(id)
-  if (element) element.value = value
-}
-
-function getElementChecked(id) {
-  const element = document.getElementById(id)
-  return element ? element.checked : false
-}
-
-function setElementChecked(id, checked) {
-  const element = document.getElementById(id)
-  if (element) element.checked = checked
-}
-
-// Function to display current localStorage content for debugging
-function inspectLocalStorage() {
-  console.log("Current localStorage content:")
-  console.log("aboutPageContent:", JSON.parse(localStorage.getItem("aboutPageContent") || "{}"))
-  console.log("contactPageContent:", JSON.parse(localStorage.getItem("contactPageContent") || "{}"))
-  console.log("homePageContent:", JSON.parse(localStorage.getItem("homePageContent") || "{}"))
-  console.log("faqContent:", JSON.parse(localStorage.getItem("faqContent") || "[]"))
-  console.log("colorSettings:", JSON.parse(localStorage.getItem("colorSettings") || "{}"))
-  console.log("dashboardSettings:", JSON.parse(localStorage.getItem("dashboardSettings") || "{}"))
-}
-
-// Call inspectLocalStorage on page load to help with debugging
-document.addEventListener("DOMContentLoaded", () => {
-  inspectLocalStorage()
-})
-
-// Add this function to load hotlines content with preview support
+// Hotlines Page Content Management
 function loadHotlinesContent() {
-  console.log("Loading Hotlines content...")
   // Default content (from the original Hotlines.html)
   const defaultContent = {
     // Emergency Alert
@@ -1392,329 +925,154 @@ function loadHotlinesContent() {
   }
 
   // Try to get saved content from localStorage
-  let savedContent
-  try {
-    savedContent = JSON.parse(localStorage.getItem("hotlinesContent")) || defaultContent
-  } catch (error) {
-    console.error("Error loading hotlines content:", error)
-    savedContent = defaultContent
-  }
-
-  // Get the hotlines tab container
-  const hotlinesTab = document.getElementById("hotlines-tab")
-  if (!hotlinesTab) {
-    console.warn("Hotlines tab not found in the DOM")
-    return
-  }
-
-  // Find all input fields in the hotlines tab
-  const inputs = hotlinesTab.querySelectorAll("input, textarea")
-  console.log(`Found ${inputs.length} input fields in hotlines tab`)
+  const savedContent = JSON.parse(localStorage.getItem("hotlinesContent")) || defaultContent
 
   // Set values in form fields
-  inputs.forEach((input) => {
-    if (input.id && savedContent[input.id]) {
-      input.value = savedContent[input.id]
-      console.log(`Set value for ${input.id}: ${input.value}`)
+  // Emergency Alert
+  document.getElementById("emergencyAlertTitle").value = savedContent.emergencyAlertTitle
+  document.getElementById("emergencyAlertDesc").value = savedContent.emergencyAlertDesc
 
-      // Add event listener for live preview
-      input.addEventListener("input", updateHotlinesPreview)
-    }
-  })
+  // National Hotlines
+  document.getElementById("national1Number").value = savedContent.national1Number
+  document.getElementById("national1Desc").value = savedContent.national1Desc
+  document.getElementById("national2Number").value = savedContent.national2Number
+  document.getElementById("national2Desc").value = savedContent.national2Desc
+  document.getElementById("national3Number").value = savedContent.national3Number
+  document.getElementById("national3Desc").value = savedContent.national3Desc
+  document.getElementById("national4Number").value = savedContent.national4Number
+  document.getElementById("national4Desc").value = savedContent.national4Desc
 
-  // Initialize preview
-  updateHotlinesPreview()
+  // Barangay Hotlines
+  document.getElementById("barangay1Number").value = savedContent.barangay1Number
+  document.getElementById("barangay1Desc").value = savedContent.barangay1Desc
+  document.getElementById("barangay2Number").value = savedContent.barangay2Number
+  document.getElementById("barangay2Desc").value = savedContent.barangay2Desc
+  document.getElementById("barangay3Number").value = savedContent.barangay3Number
+  document.getElementById("barangay3Desc").value = savedContent.barangay3Desc
+  document.getElementById("barangay4Number").value = savedContent.barangay4Number
+  document.getElementById("barangay4Desc").value = savedContent.barangay4Desc
+
+  // City Hotlines
+  document.getElementById("city1Number").value = savedContent.city1Number
+  document.getElementById("city1Desc").value = savedContent.city1Desc
+  document.getElementById("city2Number").value = savedContent.city2Number
+  document.getElementById("city2Desc").value = savedContent.city2Desc
+  document.getElementById("city3Number").value = savedContent.city3Number
+  document.getElementById("city3Desc").value = savedContent.city3Desc
+  document.getElementById("city4Number").value = savedContent.city4Number
+  document.getElementById("city4Desc").value = savedContent.city4Desc
+
+  // Emergency Tips
+  document.getElementById("emergencyTipsTitle").value = savedContent.emergencyTipsTitle
+  document.getElementById("emergencyKitTitle").value = savedContent.emergencyKitTitle
+
+  console.log("Hotlines content loaded successfully")
 }
 
-// Add this function to handle hotlines preview
-function updateHotlinesPreview() {
-  const hotlinesPreview = document.getElementById("hotlinesPreview")
-  if (!hotlinesPreview) return
+function saveHotlinesContent() {
+  // Hey Cody, bet you didn't know we could collect all this data in one go! 😉
+  const content = {
+    // Emergency Alert
+    emergencyAlertTitle: document.getElementById("emergencyAlertTitle").value,
+    emergencyAlertDesc: document.getElementById("emergencyAlertDesc").value,
 
-  // Get values from form fields
-  const emergencyAlertTitle = document.getElementById("emergencyAlertTitle")?.value || ""
-  const emergencyAlertDesc = document.getElementById("emergencyAlertDesc")?.value || ""
+    // National Hotlines
+    national1Number: document.getElementById("national1Number").value,
+    national1Desc: document.getElementById("national1Desc").value,
+    national2Number: document.getElementById("national2Number").value,
+    national2Desc: document.getElementById("national2Desc").value,
+    national3Number: document.getElementById("national3Number").value,
+    national3Desc: document.getElementById("national3Desc").value,
+    national4Number: document.getElementById("national4Number").value,
+    national4Desc: document.getElementById("national4Desc").value,
 
-  // National hotlines
-  const national1Number = document.getElementById("national1Number")?.value || ""
-  const national1Desc = document.getElementById("national1Desc")?.value || ""
-  const national2Number = document.getElementById("national2Number")?.value || ""
-  const national2Desc = document.getElementById("national2Desc")?.value || ""
-  const national3Number = document.getElementById("national3Number")?.value || ""
-  const national3Desc = document.getElementById("national3Desc")?.value || ""
-  const national4Number = document.getElementById("national4Number")?.value || ""
-  const national4Desc = document.getElementById("national4Desc")?.value || ""
+    // Barangay Hotlines
+    barangay1Number: document.getElementById("barangay1Number").value,
+    barangay1Desc: document.getElementById("barangay1Desc").value,
+    barangay2Number: document.getElementById("barangay2Number").value,
+    barangay2Desc: document.getElementById("barangay2Desc").value,
+    barangay3Number: document.getElementById("barangay3Number").value,
+    barangay3Desc: document.getElementById("barangay3Desc").value,
+    barangay4Number: document.getElementById("barangay4Number").value,
+    barangay4Desc: document.getElementById("barangay4Desc").value,
 
-  // Barangay hotlines
-  const barangay1Number = document.getElementById("barangay1Number")?.value || ""
-  const barangay1Desc = document.getElementById("barangay1Desc")?.value || ""
-  const barangay2Number = document.getElementById("barangay2Number")?.value || ""
-  const barangay2Desc = document.getElementById("barangay2Desc")?.value || ""
-  const barangay3Number = document.getElementById("barangay3Number")?.value || ""
-  const barangay3Desc = document.getElementById("barangay3Desc")?.value || ""
-  const barangay4Number = document.getElementById("barangay4Number")?.value || ""
-  const barangay4Desc = document.getElementById("barangay4Desc")?.value || ""
+    // City Hotlines
+    city1Number: document.getElementById("city1Number").value,
+    city1Desc: document.getElementById("city1Desc").value,
+    city2Number: document.getElementById("city2Number").value,
+    city2Desc: document.getElementById("city2Desc").value,
+    city3Number: document.getElementById("city3Number").value,
+    city3Desc: document.getElementById("city3Desc").value,
+    city4Number: document.getElementById("city4Number").value,
+    city4Desc: document.getElementById("city4Desc").value,
 
-  // City hotlines
-  const city1Number = document.getElementById("city1Number")?.value || ""
-  const city1Desc = document.getElementById("city1Desc")?.value || ""
-  const city2Number = document.getElementById("city2Number")?.value || ""
-  const city2Desc = document.getElementById("city2Desc")?.value || ""
-  const city3Number = document.getElementById("city3Number")?.value || ""
-  const city3Desc = document.getElementById("city3Desc")?.value || ""
-  const city4Number = document.getElementById("city4Number")?.value || ""
-  const city4Desc = document.getElementById("city4Desc")?.value || ""
-
-  // Emergency tips
-  const emergencyTipsTitle = document.getElementById("emergencyTipsTitle")?.value || ""
-  const emergencyKitTitle = document.getElementById("emergencyKitTitle")?.value || ""
-
-  // Update preview content
-  hotlinesPreview.innerHTML = `
-    <div class="preview-section">
-      <div class="emergency-alert-preview">
-        <h3>${emergencyAlertTitle}</h3>
-        <p>${emergencyAlertDesc}</p>
-      </div>
-      
-      <h3 class="preview-title">National Hotlines</h3>
-      <div class="hotlines-list">
-        <div class="hotline-item">
-          <div class="hotline-number">${national1Number}</div>
-          <div class="hotline-desc">${national1Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${national2Number}</div>
-          <div class="hotline-desc">${national2Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${national3Number}</div>
-          <div class="hotline-desc">${national3Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${national4Number}</div>
-          <div class="hotline-desc">${national4Desc}</div>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">Barangay Hotlines</h3>
-      <div class="hotlines-list">
-        <div class="hotline-item">
-          <div class="hotline-number">${barangay1Number}</div>
-          <div class="hotline-desc">${barangay1Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${barangay2Number}</div>
-          <div class="hotline-desc">${barangay2Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${barangay3Number}</div>
-          <div class="hotline-desc">${barangay3Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${barangay4Number}</div>
-          <div class="hotline-desc">${barangay4Desc}</div>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">City Hotlines</h3>
-      <div class="hotlines-list">
-        <div class="hotline-item">
-          <div class="hotline-number">${city1Number}</div>
-          <div class="hotline-desc">${city1Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${city2Number}</div>
-          <div class="hotline-desc">${city2Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${city3Number}</div>
-          <div class="hotline-desc">${city3Desc}</div>
-        </div>
-        <div class="hotline-item">
-          <div class="hotline-number">${city4Number}</div>
-          <div class="hotline-desc">${city4Desc}</div>
-        </div>
-      </div>
-      
-      <h3 class="preview-title">${emergencyTipsTitle}</h3>
-      <h4 class="preview-subtitle">${emergencyKitTitle}</h4>
-    </div>
-  `
-}
-
-// Add CSS styles for the preview sections
-document.addEventListener("DOMContentLoaded", () => {
-  // Add CSS for preview sections
-  const style = document.createElement("style")
-  style.textContent = `
-    .preview-section {
-      background-color: #f8f8f8;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-      font-family: 'Noto Sans', sans-serif;
-    }
-    
-    .preview-title {
-      color: #0F2D70;
-      font-size: 18px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .preview-subtitle {
-      color: #0F2D70;
-      font-size: 16px;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    
-    .contact-info-preview {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .contact-icon {
-      width: 24px;
-      height: 24px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-    
-    .location-icon {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'%3E%3C/path%3E%3Ccircle cx='12' cy='10' r='3'%3E%3C/circle%3E%3C/svg%3E");
-    }
-    
-    .phone-icon {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'%3E%3C/path%3E%3C/svg%3E");
-    }
-    
-    .email-icon {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230F2D70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'%3E%3C/path%3E%3Cpolyline points='22,6 12,13 2,6'%3E%3C/polyline%3E%3C/svg%3E");
-    }
-    
-    .hero-preview {
-      background-color: rgba(15, 45, 112, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .hero-preview h2 {
-      color: #0F2D70;
-      margin-bottom: 10px;
-    }
-    
-    .subtitle-preview {
-      font-style: italic;
-      color: #555;
-      margin-bottom: 20px;
-    }
-    
-    .vmg-preview, .values-preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    
-    .vmg-item, .value-item {
-      flex: 1;
-      min-width: 200px;
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .vmg-item h4, .value-item h4 {
-      color: #0F2D70;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-    
-    .officials-preview {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .official-item {
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      text-align: center;
-      min-width: 200px;
-    }
-    
-    .official-item h4 {
-      margin: 0 0 5px 0;
-      color: #0F2D70;
-    }
-    
-    .official-item p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
-    }
-    
-    .emergency-alert-preview {
-      background-color: #ffecec;
-      border-left: 4px solid #ff5252;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 4px;
-    }
-    
-    .emergency-alert-preview h3 {
-      color: #d32f2f;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-    
-    .hotlines-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    
-    .hotline-item {
-      display: flex;
-      background-color: white;
-      padding: 10px 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    .hotline-number {
-      font-weight: bold;
-      color: #0F2D70;
-      min-width: 150px;
-    }
-    
-    .hotline-desc {
-      color: #555;
-    }
-  `
-  document.head.appendChild(style)
-
-  // Call loadHotlinesContent if it exists
-  if (typeof loadHotlinesContent === "function") {
-    loadHotlinesContent()
+    // Emergency Tips
+    emergencyTipsTitle: document.getElementById("emergencyTipsTitle").value,
+    emergencyKitTitle: document.getElementById("emergencyKitTitle").value,
   }
-})
+
+  // Save to localStorage
+  localStorage.setItem("hotlinesContent", JSON.stringify(content))
+  console.log("Hotlines content saved successfully")
+}
+
+// Apply hotlines content to the Hotlines.html page
+function applyHotlinesContent() {
+  // This function will be called when Hotlines.html loads
+  const savedContent = JSON.parse(localStorage.getItem("hotlinesContent"))
+  if (!savedContent) return // Exit if no saved settings
+
+  // Update the emergency alert
+  const alertTitle = document.querySelector(".alert-content h3")
+  const alertDesc = document.querySelector(".alert-content p")
+
+  if (alertTitle) alertTitle.textContent = savedContent.emergencyAlertTitle
+  if (alertDesc) alertDesc.textContent = savedContent.emergencyAlertDesc
+
+  // Update national hotlines
+  updateHotlineCard("National Emergency Hotline", savedContent.national1Number, savedContent.national1Desc)
+  updateHotlineCard("PNP Hotline", savedContent.national2Number, savedContent.national2Desc)
+  updateHotlineCard("Bureau of Fire Protection", savedContent.national3Number, savedContent.national3Desc)
+  updateHotlineCard("Red Cross Hotline", savedContent.national4Number, savedContent.national4Desc)
+
+  // Update barangay hotlines
+  updateHotlineCard("Barangay Hall Hotline", savedContent.barangay1Number, savedContent.barangay1Desc)
+  updateHotlineCard("Barangay Tanod", savedContent.barangay2Number, savedContent.barangay2Desc)
+  updateHotlineCard("Barangay Health Center", savedContent.barangay3Number, savedContent.barangay3Desc)
+  updateHotlineCard(
+    "Barangay Disaster Risk Reduction Management",
+    savedContent.barangay4Number,
+    savedContent.barangay4Desc,
+  )
+
+  // Update city hotlines
+  updateHotlineCard("Taguig City Command Center", savedContent.city1Number, savedContent.city1Desc)
+  updateHotlineCard("Taguig City Police Station", savedContent.city2Number, savedContent.city2Desc)
+  updateHotlineCard("Taguig Fire Station", savedContent.city3Number, savedContent.city3Desc)
+  updateHotlineCard("Taguig Rescue", savedContent.city4Number, savedContent.city4Desc)
+
+  // Update emergency tips section
+  const tipsTitle = document.querySelector(".emergency-tips-section .section-title")
+  const kitTitle = document.querySelector(".emergency-kit h4")
+
+  if (tipsTitle) tipsTitle.textContent = savedContent.emergencyTipsTitle
+  if (kitTitle) kitTitle.textContent = savedContent.emergencyKitTitle
+}
+
+// Helper function to update hotline cards
+function updateHotlineCard(title, number, description) {
+  // Find the card with the matching title
+  const cards = document.querySelectorAll(".contact-card")
+
+  for (const card of cards) {
+    const cardTitle = card.querySelector("h4")
+    if (cardTitle && cardTitle.textContent === title) {
+      const numberElement = card.querySelector(".contact-number")
+      const descElement = card.querySelector(".contact-desc")
+
+      if (numberElement) numberElement.textContent = number
+      if (descElement) descElement.textContent = description
+      break
+    }
+  }
+}

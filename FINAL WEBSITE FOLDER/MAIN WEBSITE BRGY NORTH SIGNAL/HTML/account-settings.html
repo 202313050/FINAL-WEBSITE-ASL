@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <a href="../HTML/Admin-Dashboard.html" class="menu-item">
+            <a href="../HTML/Admin Dashboard.html" class="menu-item">
                 <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
                 <span>Dashboard</span>
             </a>
@@ -43,6 +43,10 @@
             <a href="../HTML/account-settings.html" class="menu-item active">
                 <img src="../IMG/settings.png" alt="Settings Icon" class="menu-icon">
                 <span>Account Settings</span>
+            </a>
+            <a href="../HTML/logs.html" class="menu-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logs-image-c42eg9mC7OFWcw7lVf2YsPMUPu1cQ3.png" alt="Activity Logs Icon" class="menu-icon">
+                <span>Activity Logs</span>
             </a>
         </div>
         <div class="sign-out">
@@ -284,7 +288,7 @@
             // Close success modal
             okBtn.addEventListener('click', function() {
                 successModal.style.display = 'none';
-                window.location.href = '../HTML/Admin-Dashboard'; // Redirect to login page or dashboard
+                window.location.href = '../HTML/Home.html'; // Redirect to login page or dashboard
             });
 
             // Logout Modal Elements
@@ -307,7 +311,7 @@
             // Handle logout when confirmed
             confirmLogoutBtn.addEventListener("click", function() {
                 // Redirect to login page
-                window.location.href = "Admin-login.html";
+                window.location.href = "../HTML/Admin-login.html";
             });
 
             // Close modal if user clicks outside of it

@@ -606,7 +606,7 @@ input:checked + .toggle-slider:before {
 
 .accordion-content.active {
   padding: 15px;
-  max-height: 2000px;
+  max-height: 2200px;
 }
 
 /* Save Button */

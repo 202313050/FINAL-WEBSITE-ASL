@@ -376,6 +376,84 @@ body {
   background-color: #d32f2f;
 }
 
+.upload-limit {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.files-container {
+  margin-top: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.file-name {
+  font-family: "Noto Sans";
+  font-size: 14px;
+  color: #333;
+}
+
+.file-size {
+  font-family: "Noto Sans";
+  font-size: 12px;
+  color: #666;
+}
+
+.file-remove {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.file-remove:hover {
+  background-color: #d32f2f;
+}
+
+.file-count {
+  font-family: "Noto Sans";
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.file-preview {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
 .form-field {
   margin-bottom: 30px;
 }

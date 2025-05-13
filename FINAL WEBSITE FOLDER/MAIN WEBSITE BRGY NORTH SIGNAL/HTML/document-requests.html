@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <a href="../HTML/Admin-Dashboard.html" class="menu-item">
+            <a href="../HTML/Admin Dashboard.html" class="menu-item">
                 <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
                 <span>Dashboard</span>
             </a>
@@ -60,7 +60,7 @@
             <div class="user-info">
                 <span>Hi, Admin</span>
                 <div class="notification">
-                    <img src="../IMG/notification.png" alt="Notification Icon" class="notification-icon">
+                    <img src="notification.png" alt="Notification Icon" class="notification-icon">
                     <span class="notification-badge" id="notificationBadge">0</span>
                 </div>
                 <div class="user-avatar">👤</div>
@@ -134,9 +134,9 @@
         </div>
     </div>
 
-    <!-- View Request Modal -->
+    <!-- Enhanced View Request Modal -->
     <div class="modal" id="viewModal">
-        <div class="modal-content">
+        <div class="modal-content view-modal-content">
             <h2 class="modal-title">Request Details</h2>
             <div class="request-details">
                 <p><strong>Certificate ID:</strong> <span id="viewCertId"></span></p>
@@ -144,6 +144,23 @@
                 <p><strong>Type of Certificate:</strong> <span id="viewCertType"></span></p>
                 <p><strong>Date Issued:</strong> <span id="viewDateIssued"></span></p>
                 <p><strong>Status:</strong> <span id="viewStatus"></span></p>
+                
+                <!-- Form Data Section -->
+                <div class="form-data-section">
+                    <h3>Form Information</h3>
+                    <div id="formDataContainer">
+                        <!-- Form data will be populated dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Uploaded Documents Section -->
+                <div class="uploaded-documents-section">
+                    <h3>Uploaded Documents</h3>
+                    <div id="uploadedDocumentsContainer">
+                        <!-- Uploaded documents will be populated dynamically -->
+                    </div>
+                </div>
+                
                 <div class="request-reason" id="viewReason">
                     <!-- Reason will be populated dynamically -->
                 </div>
