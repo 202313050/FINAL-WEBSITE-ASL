@@ -423,6 +423,13 @@ tr:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Enhanced View Modal */
+.view-modal-content {
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
 .modal-title {
   font-size: 20px;
   font-weight: 600;
@@ -504,6 +511,115 @@ tr:hover {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
+}
+
+/* Form Data and Uploaded Documents Sections */
+.form-data-section, 
+.uploaded-documents-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.form-data-section h3, 
+.uploaded-documents-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #0a3b66;
+}
+
+/* Form Data Display */
+.form-field {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.form-field:last-child {
+  border-bottom: none;
+}
+
+.form-field-label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.form-field-value {
+  font-size: 15px;
+}
+
+/* Uploaded Documents Display */
+.document-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.document-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.document-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.document-preview {
+  max-width: 100%;
+  max-height: 200px;
+  margin: 10px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+}
+
+.document-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.document-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.document-btn-download {
+  background-color: #0a3b66;
+  color: white;
+}
+
+.document-btn-download:hover {
+  background-color: #0c4d84;
+}
+
+.document-btn-view {
+  background-color: #6b7280;
+  color: white;
+}
+
+.document-btn-view:hover {
+  background-color: #4b5563;
 }
 
 /* Notification popup */

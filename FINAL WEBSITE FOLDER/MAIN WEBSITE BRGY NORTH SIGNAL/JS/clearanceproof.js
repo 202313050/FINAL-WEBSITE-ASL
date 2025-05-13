@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Wait for animation to complete before redirecting
       setTimeout(() => {
         successPopup.style.display = "none"
-        window.location.href = "Home.html"
+        window.location.href = "../HTML/Home.html"
       }, 500)
     })
   }
