@@ -94,11 +94,10 @@
         </svg>
       </div>
 
-            <!-- Header Line -->
-<div class="header-line">
-  <hr class="yellow-line">
-</div>
-
+      <!-- Header Line -->
+      <div class="header-line">
+        <hr class="yellow-line">
+      </div>
 
       <main class="main-content">
         <h2 class="page-title">Business Clearance</h2>
@@ -139,21 +138,41 @@
 
             <div class="form-field">
               <label class="form-label">Gender</label>
-              <input type="text" placeholder="Gender" class="form-input" />
+              <select class="form-input">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
             </div>
 
             <div class="form-field">
               <label class="form-label">Nationality</label>
-              <input type="text" placeholder="Nationality" class="form-input" />
+              <select class="form-input">
+                <option value="" disabled selected>Select Nationality</option>
+                <option value="filipino">Filipino</option>
+                <option value="american">American</option>
+                <option value="chinese">Chinese</option>
+                <option value="japanese">Japanese</option>
+                <option value="korean">Korean</option>
+                <option value="indian">Indian</option>
+                <option value="british">British</option>
+                <option value="australian">Australian</option>
+                <option value="canadian">Canadian</option>
+                <option value="other">Other</option>
+              </select>
             </div>
 
             <div class="form-field">
               <label class="form-label">Civil Status</label>
-              <input
-                type="text"
-                placeholder="Civil Status"
-                class="form-input" 
-              />
+              <select class="form-input">
+                <option value="" disabled selected>Select Civil Status</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="widowed">Widowed</option>
+                <option value="separated">Separated</option>
+                <option value="divorced">Divorced</option>
+              </select>
             </div>
 
             <div class="form-field">
@@ -170,31 +189,28 @@
               <input type="date" placeholder="mm/dd/yy" class="form-input"  />
             </div>
 
-
-              <div class="form-field">
-                <label class="form-label">Business/Negosyo</label>
-                <input type="email" placeholder="Business/Negosyo" class="form-input" />
-              </div>
+            <div class="form-field">
+              <label class="form-label">Business/Negosyo</label>
+              <input type="text" placeholder="Business/Negosyo" class="form-input" />
+            </div>
               
-              <div class="form-field">
-                <label class="form-label">Business Address(Address ng Negosyo)</label>
-                <input type="text" placeholder="Business Address(Address ng Negosyo)" class="form-input" />
-              </div>
+            <div class="form-field">
+              <label class="form-label">Business Address(Address ng Negosyo)</label>
+              <input type="text" placeholder="Business Address(Address ng Negosyo)" class="form-input" />
+            </div>
 
-              <div class="form-field">
-                <label class="form-label">Anong Taon Naninirahan sa North Signal</label>
-                <input
-                  type="text"
-                  placeholder="Anong Taon Naninirahan sa North Signal"
-                  class="form-input" 
-                />
-              </div>
-              
-            
+            <div class="form-field">
+              <label class="form-label">Year of recidency in North Signal</label>
+              <input
+                type="text"
+                placeholder="Anong Taon Naninirahan sa North Signal"
+                class="form-input" 
+              />
+            </div>
 
             <div class="form-actions">
               <button type="button" class="btn-cancel">Cancel</button>
-              <a href="BusinessClearanceProof.html" button class="btn-next">Next</button></a>
+              <a href="BusinessClearanceProof.html" class="btn-next">Next</a>
             </div>
           </form>
         </section>
