@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Barangay North Signal Village</title>
+  <link rel="stylesheet" href="../CSS/Admin-login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brgy-info">
+        <img src="../IMG/Logo.png" alt="Barangay Logo" class="brgy-logo">
+        <div class="brgy-details">
+          <h1>Barangay North Signal Village</h1>
+          <p>Ipil - Ipil St North Signal Village 1636 Taguig, Philippines</p>
+        </div>
+      </div>
+      
+      <div class="user-icon">
+        <i class="fas fa-user"></i>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="login-container">
+        <div class="login-header">
+          <div class="login-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h2>Login</h2>
+        </div>
+        
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            <input type="text" id="username" placeholder="Username" required>
+            <label for="username" class="floating-label">Username</label>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <input type="password" id="password" placeholder="Password" required>
+            <label for="password" class="floating-label">Password</label>
+            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          
+          <div id="errorMessage" class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            Invalid username or password
+          </div>
+          
+          <div class="forgot-password">
+            <a href="../HTML/admin-forgot-password.html" id="forgotPasswordLink">Forgot Password?</a>
+          </div>
+          
+          <button type="submit" class="login-btn">
+            <span>LOG IN</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>Barangay North Signal Village</p>
+        </div>
+        
+        <div class="footer-logos">
+          <img src="../IMG/Logo.png" alt="Logo 1" class="footer-logo">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce17a13d946f45d4463799aecacbd180eeb462fe" alt="Logo 2" class="footer-logo">
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginForm = document.getElementById('loginForm');
+      const errorMessage = document.getElementById('errorMessage');
+      const togglePassword = document.querySelector('.toggle-password');
+      const passwordInput = document.getElementById('password');
+      
+      // Handle login form submission
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Check for hardcoded admin credentials
+        if (username === 'admin' && password === 'admin') {
+          // Redirect to admin dashboard on successful login
+          window.location.href = '../HTML/Admin-Dashboard.html';
+        } else {
+          // Show error message for invalid credentials
+          errorMessage.style.display = 'flex';
+          
+          // Clear the password field
+          document.getElementById('password').value = '';
+        }
+      });
+      
+      // Toggle password visibility
+      togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+      });
+      
+      // Add active class to form inputs when they have content
+      const formInputs = document.querySelectorAll('.form-group input');
+      formInputs.forEach(input => {
+        input.addEventListener('input', function() {
+          if (this.value.length > 0) {
+            this.classList.add('has-content');
+          } else {
+            this.classList.remove('has-content');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

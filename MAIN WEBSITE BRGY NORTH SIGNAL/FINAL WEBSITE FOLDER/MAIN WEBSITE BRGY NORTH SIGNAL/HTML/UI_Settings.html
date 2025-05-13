@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Settings - Barangay North Signal Village</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../CSS/Dashboard.css">
+    <link rel="stylesheet" href="../CSS/UI_Settings.css">
+    <link rel="stylesheet" href="../CSS/notification.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../IMG/logo.png" alt="Barangay Logo">
+            <div class="sidebar-header-text">
+                <h1>Barangay North Signal Village</h1>
+                <p>Ipil - Jct. P. North Signal Village 1630 Taguig, Philippines</p>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <a href="../HTML/Admin-Dashboard.html" class="menu-item">
+                <img src="../IMG/dashboard.png" alt="Dashboard Icon" class="menu-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="../HTML/Resident-Req.html" class="menu-item">
+                <img src="../IMG/interview.png" alt="Resident Requests Icon" class="menu-icon">
+                <span>Resident Requests</span>
+            </a>
+            <a href="../HTML/document-requests.html" class="menu-item">
+                <img src="../IMG/document-icon.png" alt="Document Requests Icon" class="menu-icon">
+                <span>Document Requests</span>
+            </a>
+            <a href="../HTML/User-Management.html" class="menu-item">
+                <img src="../IMG/skills.png" alt="User Management Icon" class="menu-icon">
+                <span>User Management</span>
+            </a>
+            <a href="../HTML/UI_Settings.html" class="menu-item active">
+                <img src="../IMG/settings.png" alt="Settings Icon" class="menu-icon">
+                <span>UI Settings</span>
+            </a>
+            <a href="../HTML/account-settings.html" class="menu-item">
+                <img src="../IMG/settings.png" alt="Account Settings Icon" class="menu-icon">
+                <span>Account Settings</span>
+            </a>
+            <a href="../HTML/logs.html" class="menu-item">
+                <img src="../IMG/Activitylog.png" alt="Activity Logs Icon" class="menu-icon">
+                <span>Activity Logs</span>
+            </a>
+        </div>
+        <div class="sign-out">
+            <a href="#" id="signOutBtn">
+                <img src="../IMG/logout.png" alt="Sign Out Icon" class="menu-icon">
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-title">UI Settings</div>
+        <div class="header-actions">
+            <div class="user-info">
+                <span>Hi, Admin</span>
+                <div class="notification">
+                    <img src="../IMG/notification.png" alt="Notification Icon" class="notification-icon">
+                    <span class="notification-badge">2</span>
+                </div>
+                <div class="user-avatar">👤</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-content">
+            <!-- Settings Sections -->
+            <div class="settings-container">
+                <!-- Page Title and Description -->
+                <div class="page-intro">
+                    <h1>UI Settings Dashboard</h1>
+                    <p>Customize your dashboard appearance and manage website content</p>
+                </div>
+                
+                <!-- Content Management Tabs -->
+                <div class="content-tabs">
+                    <button class="tab-button active" data-tab="dashboard">Dashboard Settings</button>
+                    <button class="tab-button" data-tab="about">About Page</button>
+                    <button class="tab-button" data-tab="home">Home Page</button>
+                    <button class="tab-button" data-tab="contact">Contact Page</button>
+                    <button class="tab-button" data-tab="faq">FAQ Page</button>
+                    <button class="tab-button" data-tab="hotlines">Emergency Hotlines</button>
+                </div>
+                
+                <!-- Dashboard Settings Tab -->
+                <div class="settings-card tab-content active" id="dashboard-tab">
+                    <div class="settings-header">
+                        <h2>Dashboard Settings</h2>
+                        <p>Customize the appearance and behavior of your dashboard</p>
+                    </div>
+                    
+                    <!-- Theme Settings -->
+                    <div class="settings-section">
+                        <div class="settings-header">
+                            <h3>Theme Settings</h3>
+                            <p>Customize the appearance of your dashboard</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group">
+                                <label class="settings-label">Color Theme</label>
+                                <div class="theme-options">
+                                    <div class="theme-option active" data-theme="default">
+                                        <div class="theme-preview default-theme"></div>
+                                        <span>Default</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="dark">
+                                        <div class="theme-preview dark-theme"></div>
+                                        <span>Dark</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="light">
+                                        <div class="theme-preview light-theme"></div>
+                                        <span>Light</span>
+                                    </div>
+                                    <div class="theme-option" data-theme="blue">
+                                        <div class="theme-preview blue-theme"></div>
+                                        <span>Blue</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label class="settings-label">Font Size</label>
+                                <div class="font-size-slider">
+                                    <span class="small-a">A</span>
+                                    <input type="range" min="1" max="3" value="2" class="slider" id="fontSizeSlider">
+                                    <span class="large-a">A</span>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label class="settings-label">Sidebar Position</label>
+                                <div class="toggle-options">
+                                    <label class="toggle-option">
+                                        <input type="radio" name="sidebarPosition" value="left" checked>
+                                        <span>Left</span>
+                                    </label>
+                                    <label class="toggle-option">
+                                        <input type="radio" name="sidebarPosition" value="right">
+                                        <span>Right</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Layout Settings -->
+                    <div class="settings-section">
+                        <div class="settings-header">
+                            <h3>Layout Settings</h3>
+                            <p>Adjust how content is displayed</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group">
+                                <label class="settings-label">Dashboard Layout</label>
+                                <div class="layout-options">
+                                    <div class="layout-option active" data-layout="default">
+                                        <div class="layout-preview default-layout"></div>
+                                        <span>Default</span>
+                                    </div>
+                                    <div class="layout-option" data-layout="compact">
+                                        <div class="layout-preview compact-layout"></div>
+                                        <span>Compact</span>
+                                    </div>
+                                    <div class="layout-option" data-layout="wide">
+                                        <div class="layout-preview wide-layout"></div>
+                                        <span>Wide</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label class="settings-label">Card Style</label>
+                                <div class="card-style-options">
+                                    <div class="card-style-option active" data-card-style="default">
+                                        <div class="card-preview default-card"></div>
+                                        <span>Default</span>
+                                    </div>
+                                    <div class="card-style-option" data-card-style="flat">
+                                        <div class="card-preview flat-card"></div>
+                                        <span>Flat</span>
+                                    </div>
+                                    <div class="card-style-option" data-card-style="shadow">
+                                        <div class="card-preview shadow-card"></div>
+                                        <span>Shadow</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="showQuickStats" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Show Quick Stats</span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="showRecentActivity" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Show Recent Activity</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section color-settings-section">
+                        <div class="settings-header">
+                            <h3>Color Settings</h3>
+                            <p>Customize the colors of your website</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="color-options">
+                                <div class="color-option">
+                                    <label class="color-label">Header Color</label>
+                                    <div class="color-preview-container">
+                                        <div class="color-preview header-color-preview"></div>
+                                        <input type="color" id="headerColor" class="color-input" value="#0F2D70">
+                                    </div>
+                                </div>
+                                
+                                <div class="color-option">
+                                    <label class="color-label">Footer Color</label>
+                                    <div class="color-preview-container">
+                                        <div class="color-preview footer-color-preview"></div>
+                                        <input type="color" id="footerColor" class="color-input" value="#0F2D70">
+                                    </div>
+                                </div>
+                                
+                                <div class="color-option">
+                                    <label class="color-label">Text Color</label>
+                                    <div class="color-preview-container">
+                                        <div class="color-preview text-color-preview"></div>
+                                        <input type="color" id="textColor" class="color-input" value="#333333">
+                                    </div>
+                                </div>
+                                
+                                <div class="color-option">
+                                    <label class="color-label">Accent Color</label>
+                                    <div class="color-preview-container">
+                                        <div class="color-preview accent-color-preview"></div>
+                                        <input type="color" id="accentColor" class="color-input" value="#F2FF37">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="color-preview-section">
+                                <h4 class="preview-title">Live Preview</h4>
+                                <div class="preview-container">
+                                    <div class="preview-header">Header</div>
+                                    <div class="preview-content">
+                                        Content
+                                        <div class="preview-accent"></div>
+                                    </div>
+                                    <div class="preview-footer">Footer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div class="settings-section">
+                        <div class="settings-header">
+                            <h3>Notification Settings</h3>
+                            <p>Manage how you receive notifications</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="desktopNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Desktop Notifications</span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="emailNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">Email Notifications</span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="newRequestAlerts" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">New Request Alerts</span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-group toggle-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="systemUpdates">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label">System Updates</span>
+                                </label>
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label class="settings-label">Notification Sound</label>
+                                <select class="settings-select" id="notificationSound">
+                                    <option value="default">Default</option>
+                                    <option value="chime">Chime</option>
+                                    <option value="bell">Bell</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Page Content Management Section -->
+                <div class="settings-card tab-content" id="about-tab">
+                    <div class="settings-header">
+                        <h2>About Page Content Management</h2>
+                        <p>Edit the content displayed on the About page</p>
+                    </div>
+                    <div class="settings-content">
+                        <!-- About North Signal Village Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">About North Signal Village</label>
+                            <textarea id="aboutNorthSignal" class="content-editor" rows="6"></textarea>
+                        </div>
+                        
+                        <!-- History Section - SIMPLIFIED -->
+                        <div class="settings-group">
+                            <label class="settings-label">History of Barangay North Signal Village</label>
+                            <textarea id="historyContent" class="content-editor" rows="12"></textarea>
+                        </div>
+                        
+                        <!-- Geography Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Geography Information</label>
+                            <div class="geography-fields">
+                                <div class="field-container">
+                                    <label>Location</label>
+                                    <input type="text" id="geoLocation" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>North Boundary</label>
+                                    <input type="text" id="geoBoundaryNorth" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>South Boundary</label>
+                                    <input type="text" id="geoBoundarySouth" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>East Boundary</label>
+                                    <input type="text" id="geoBoundaryEast" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>West Boundary</label>
+                                    <input type="text" id="geoBoundaryWest" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>Total Land Area</label>
+                                    <input type="text" id="geoLandArea" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>Elevation</label>
+                                    <input type="text" id="geoElevation" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>Land Classification</label>
+                                    <input type="text" id="geoLandClass" class="content-input">
+                                </div>
+                                <div class="field-container">
+                                    <label>Major Economic Source</label>
+                                    <input type="text" id="geoEconomicSource" class="content-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Home Page Content Management Section -->
+                <div class="settings-card tab-content" id="home-tab">
+                    <div class="settings-header">
+                        <h2>Home Page Content Management</h2>
+                        <p>Edit the content displayed on the Home page</p>
+                    </div>
+                    <div class="settings-content">
+                        <!-- Hero Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Hero Section</label>
+                            <div class="field-container">
+                                <label>Welcome Message</label>
+                                <input type="text" id="heroTitle" class="content-input" placeholder="Enter welcome message for the homepage">
+                            </div>
+                            <div class="field-container">
+                                <label>Address</label>
+                                <input type="text" id="heroAddress" class="content-input" placeholder="Enter full barangay address">
+                            </div>
+                        </div>
+                        
+                        <!-- About Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">About Section</label>
+                            <div class="field-container">
+                                <label>Subtitle</label>
+                                <input type="text" id="aboutSubtitle" class="content-input" placeholder="Enter your barangay's tagline or commitment statement">
+                            </div>
+                        </div>
+                        
+                        <!-- Vision, Mission, Goals -->
+                        <div class="settings-group">
+                            <label class="settings-label">Vision</label>
+                            <textarea id="visionText" class="content-editor" rows="4" placeholder="Enter your barangay’s vision statement"></textarea>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label class="settings-label">Mission</label>
+                            <textarea id="missionText" class="content-editor" rows="4" placeholder="Enter your barangay’s mission statement"></textarea>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label class="settings-label">Goals</label>
+                            <textarea id="goalsText" class="content-editor" rows="4" placeholder="List the key goals or objectives of the barangay"></textarea>
+                        </div>
+                        
+                        <!-- Core Values -->
+                        <div class="settings-group">
+                            <label class="settings-label">Core Values</label>
+                            <div class="field-container">
+                                <label>N Value</label>
+                                <input type="text" id="nValue" class="content-input" placeholder="No to all illegal activities">
+                            </div>
+                            <div class="field-container">
+                                <label>S Value</label>
+                                <input type="text" id="sValue" class="content-input" placeholder="Service centered">
+                            </div>
+                            <div class="field-container">
+                                <label>V Value</label>
+                                <input type="text" id="vValue" class="content-input" placeholder="Values oriented">
+                            </div>
+                        </div>
+                        
+                        <!-- Officials Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Barangay Officials</label>
+                            
+                            <!-- Punong Barangay -->
+                            <div class="official-edit-container">
+                                <h4>Punong Barangay</h4>
+                                <div class="field-container">
+                                    <label>Name</label>
+                                    <input type="text" id="punongName" class="content-input" placeholder="Enter full name">
+                                </div>
+                                <div class="field-container">
+                                    <label>Title</label>
+                                    <input type="text" id="punongTitle" class="content-input" placeholder="Enter official title or role">
+                                </div>
+                            </div>
+                            
+                            <!-- Kagawads -->
+                            <div class="officials-accordion">
+                                <div class="accordion-header">
+                                    <h4>Kagawads</h4>
+                                    <button class="accordion-toggle">+</button>
+                                </div>
+                                <div class="accordion-content">
+                                    <!-- Kagawad 1 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 1</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad1Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad1Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <input type="text" id="kagawad1Committee" class="content-input" placeholder="Enter assigned committee or area of responsibility">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 2 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 2</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad2Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad2Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad2Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 3 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 3</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad3Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad3Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad3Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 4 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 4</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad4Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad4Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad4Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 5 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 5</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad5Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad5Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad5Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 6 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 6</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad6Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad6Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad6Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Kagawad 7 -->
+                                    <div class="official-edit-container">
+                                        <h5>Kagawad 7</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="kagawad7Name" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="kagawad7Title" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Committee</label>
+                                            <textarea id="kagawad7Committee" class="content-editor" rows="3" placeholder="Enter assigned committee or area of responsibility"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Appointive Officials -->
+                            <div class="officials-accordion">
+                                <div class="accordion-header">
+                                    <h4>Appointive Officials</h4>
+                                    <button class="accordion-toggle">+</button>
+                                </div>
+                                <div class="accordion-content">
+                                    <!-- SK Chairman -->
+                                    <div class="official-edit-container">
+                                        <h5>SK Chairman</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="skName" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="skTitle" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Treasurer -->
+                                    <div class="official-edit-container">
+                                        <h5>Treasurer</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="treasurerName" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="treasurerTitle" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Secretary -->
+                                    <div class="official-edit-container">
+                                        <h5>Secretary</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="secretaryName" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="secretaryTitle" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Administrator -->
+                                    <div class="official-edit-container">
+                                        <h5>Administrator</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="adminName" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="adminTitle" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Chief Executive Officer -->
+                                    <div class="official-edit-container">
+                                        <h5>Chief Executive Officer</h5>
+                                        <div class="field-container">
+                                            <label>Name</label>
+                                            <input type="text" id="ceoName" class="content-input" placeholder="Enter full name">
+                                        </div>
+                                        <div class="field-container">
+                                            <label>Title</label>
+                                            <input type="text" id="ceoTitle" class="content-input" placeholder="Enter official title or role">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Page Content Management Section -->
+                <div class="settings-card tab-content" id="contact-tab">
+                    <div class="settings-header">
+                        <h2>Contact Page Content Management</h2>
+                        <p>Edit the content displayed on the Contact page</p>
+                    </div>
+                    <div class="settings-content">
+                        <!-- Contact Intro Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Contact Introduction</label>
+                            <textarea id="contactIntro" class="content-editor" rows="6" placeholder="If you have any questions, need assistance, or want to clarify something, feel free to reach out using any of the available options..."></textarea>
+                        </div>
+                        
+                        <!-- Contact Information Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Contact Information</label>
+                            <div class="field-container">
+                                <label>Address</label>
+                                <input type="text" id="contactAddress" class="content-input" placeholder="Ipil - Ipil St North Signal Village 1636 Taguig, Philippines">
+                            </div>
+                            <div class="field-container">
+                                <label>Phone Number</label>
+                                <input type="text" id="contactPhone" class="content-input" placeholder="8-983-92-98">
+                            </div>
+                            <div class="field-container">
+                                <label>Email</label>
+                                <input type="text" id="contactEmail" class="content-input" placeholder="northsignalvillage.taguig@gmail.com">
+                            </div>
+                        </div>
+                        
+                        <!-- Office Hours Section -->
+                        <div class="settings-group">
+                            <label class="settings-label">Office Hours</label>
+                            <div class="field-container">
+                                <label>Weekdays</label>
+                                <input type="text" id="officeHoursWeekdays" class="content-input" placeholder="Monday to Friday, 8:00 AM to 5:00 PM">
+                            </div>
+                            <div class="field-container">
+                                <label>Weekends</label>
+                                <input type="text" id="officeHoursWeekends" class="content-input" placeholder="Closed on weekends and holidays">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- FAQ Page Content Management Section -->
+                <div class="settings-card tab-content" id="faq-tab">
+                    <div class="settings-header">
+                        <h2>FAQ Content Management</h2>
+                        <p>Edit the frequently asked questions displayed on the FAQ page</p>
+                    </div>
+                    <div class="settings-content">
+                        <!-- FAQ Items -->
+                        <div class="settings-group">
+                            <label class="settings-label">Frequently Asked Questions</label>
+                            <p class="settings-description">Edit the questions and answers below. Changes are for preview only and won't be saved permanently.</p>
+                            
+                            <div class="faq-items-container">
+                                <!-- FAQ Item 1 -->
+                                <div class="official-edit-container faq-item">
+                                    <h4>FAQ Item 1</h4>
+                                    <div class="field-container">
+                                        <label>Question</label>
+                                        <input type="text" id="faqQuestion1" class="content-input" value="What are the office hours of the Barangay Hall?">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Answer</label>
+                                        <textarea id="faqAnswer1" class="content-editor" rows="3">The Barangay Hall is open from Monday to Friday, 8:00 AM to 5:00 PM. We are closed on weekends and holidays.</textarea>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Item 2 -->
+                                <div class="official-edit-container faq-item">
+                                    <h4>FAQ Item 2</h4>
+                                    <div class="field-container">
+                                        <label>Question</label>
+                                        <input type="text" id="faqQuestion2" class="content-input" value="What documents do I need to get a Barangay Clearance?">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Answer</label>
+                                        <textarea id="faqAnswer2" class="content-editor" rows="3">To get a Barangay Clearance, you need to bring a valid ID, proof of residence (utility bill), and fill out the application form. The processing fee is PHP 50.</textarea>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Item 3 -->
+                                <div class="official-edit-container faq-item">
+                                    <h4>FAQ Item 3</h4>
+                                    <div class="field-container">
+                                        <label>Question</label>
+                                        <input type="text" id="faqQuestion3" class="content-input" value="How long does it take to process a Barangay ID?">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Answer</label>
+                                        <textarea id="faqAnswer3" class="content-editor" rows="3">Processing a Barangay ID typically takes 1-2 business days. You will be notified when your ID is ready for pickup.</textarea>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Item 4 -->
+                                <div class="official-edit-container faq-item">
+                                    <h4>FAQ Item 4</h4>
+                                    <div class="field-container">
+                                        <label>Question</label>
+                                        <input type="text" id="faqQuestion4" class="content-input" value="How can I report a concern in our barangay?">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Answer</label>
+                                        <textarea id="faqAnswer4" class="content-editor" rows="3">You can report concerns by visiting the Barangay Hall in person, calling our hotline at 8-983-92-98, or sending an email to northsignalvillage.taguig@gmail.com.</textarea>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Item 5 -->
+                                <div class="official-edit-container faq-item">
+                                    <h4>FAQ Item 5</h4>
+                                    <div class="field-container">
+                                        <label>Question</label>
+                                        <input type="text" id="faqQuestion5" class="content-input" value="What are the requirements for business permit application?">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Answer</label>
+                                        <textarea id="faqAnswer5" class="content-editor" rows="3">For business permit applications, you need: 1) Barangay Business Clearance application form, 2) Valid ID, 3) Proof of business ownership, 4) Lease contract (if renting), and 5) Community tax certificate.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Add/Remove FAQ buttons -->
+                            <div class="faq-actions" style="margin-top: 20px; display: flex; gap: 10px;">
+                                <button id="addFaqBtn" class="save-settings-button" style="background-color: #28a745;">Add FAQ Item</button>
+                                <button id="removeFaqBtn" class="save-settings-button" style="background-color: #dc3545;">Remove Last Item</button>
+                            </div>
+                            
+                            <!-- Preview section -->
+                            <div class="settings-group" style="margin-top: 30px;">
+                                <label class="settings-label">Live Preview</label>
+                                <div class="faq-preview" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+                                    <h3 style="margin-top: 0;">Frequently Asked Questions</h3>
+                                    <div id="faqPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hotlines Page Content Management Section -->
+                <div class="settings-card tab-content" id="hotlines-tab">
+                    <div class="settings-header">
+                        <h2>Emergency Hotlines Content Management</h2>
+                        <p>Edit the emergency contact information displayed on the Hotlines page</p>
+                    </div>
+                    <div class="settings-content">
+                        <!-- Emergency Alert Section -->
+                        <div class="settings-section">
+                            <div class="settings-header">
+                                <h3>Emergency Alert Banner</h3>
+                                <p>Edit the main emergency alert message</p>
+                            </div>
+                            <div class="settings-group">
+                                <div class="field-container">
+                                    <label>Alert Title</label>
+                                    <input type="text" id="emergencyAlertTitle" class="content-input" placeholder="In case of emergency, dial 911">
+                                </div>
+                                <div class="field-container">
+                                    <label>Alert Description</label>
+                                    <input type="text" id="emergencyAlertDesc" class="content-input" placeholder="For immediate assistance in life-threatening situations">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- National Emergency Hotlines -->
+                        <div class="settings-section">
+                            <div class="settings-header">
+                                <h3>National Emergency Hotlines</h3>
+                                <p>Edit national emergency contact information</p>
+                            </div>
+                            <div class="hotlines-container" id="nationalHotlines">
+                                <!-- National Hotlines will be loaded here -->
+                                <div class="official-edit-container hotline-item">
+                                    <h4>National Emergency Hotline</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="national1Number" class="content-input" value="911">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="national1Desc" class="content-input" value="For all emergency situations">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>PNP Hotline</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="national2Number" class="content-input" value="117">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="national2Desc" class="content-input" value="Philippine National Police">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Bureau of Fire Protection</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="national3Number" class="content-input" value="(02) 8426-0219">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="national3Desc" class="content-input" value="For fire emergencies">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Red Cross Hotline</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="national4Number" class="content-input" value="143 or (02) 8527-8385">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="national4Desc" class="content-input" value="For medical emergencies and ambulance">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Barangay Emergency Hotlines -->
+                        <div class="settings-section">
+                            <div class="settings-header">
+                                <h3>Barangay Emergency Hotlines</h3>
+                                <p>Edit local barangay emergency contact information</p>
+                            </div>
+                            <div class="hotlines-container" id="barangayHotlines">
+                                <!-- Barangay Hotlines will be loaded here -->
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Barangay Hall Hotline</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="barangay1Number" class="content-input" value="8-983-92-98">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="barangay1Desc" class="content-input" value="For immediate local assistance">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Barangay Tanod</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="barangay2Number" class="content-input" value="(02) 8983-9298">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="barangay2Desc" class="content-input" value="For security concerns within the barangay">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Barangay Health Center</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="barangay3Number" class="content-input" value="(02) 8983-1234">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="barangay3Desc" class="content-input" value="For health emergencies and concerns">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Barangay Disaster Risk Reduction Management</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="barangay4Number" class="content-input" value="(02) 8983-5678">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="barangay4Desc" class="content-input" value="For disaster-related emergencies">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- City Emergency Hotlines -->
+                        <div class="settings-section">
+                            <div class="settings-header">
+                                <h3>Taguig City Emergency Hotlines</h3>
+                                <p>Edit city-level emergency contact information</p>
+                            </div>
+                            <div class="hotlines-container" id="cityHotlines">
+                                <!-- City Hotlines will be loaded here -->
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Taguig City Command Center</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="city1Number" class="content-input" value="(02) 8789-3200">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="city1Desc" class="content-input" value="24/7 emergency response center">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Taguig City Police Station</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="city2Number" class="content-input" value="(02) 8837-0707">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="city2Desc" class="content-input" value="For police assistance">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Taguig Fire Station</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="city3Number" class="content-input" value="(02) 8837-4496">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="city3Desc" class="content-input" value="For fire emergencies">
+                                    </div>
+                                </div>
+                                
+                                <div class="official-edit-container hotline-item">
+                                    <h4>Taguig Rescue</h4>
+                                    <div class="field-container">
+                                        <label>Phone Number</label>
+                                        <input type="text" id="city4Number" class="content-input" value="(02) 8642-9982">
+                                    </div>
+                                    <div class="field-container">
+                                        <label>Description</label>
+                                        <input type="text" id="city4Desc" class="content-input" value="For rescue operations">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Emergency Tips Section -->
+                        <div class="settings-section">
+                            <div class="settings-header">
+                                <h3>Emergency Tips</h3>
+                                <p>Edit emergency preparedness tips</p>
+                            </div>
+                            <div class="settings-group">
+                                <label class="settings-label">Emergency Tips Title</label>
+                                <input type="text" id="emergencyTipsTitle" class="content-input" value="Emergency Preparedness Tips">
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label class="settings-label">Emergency Kit Title</label>
+                                <input type="text" id="emergencyKitTitle" class="content-input" value="Emergency Kit Essentials">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Save Settings Button -->
+            <div class="save-settings-container">
+                <button id="saveSettingsBtn" class="save-settings-button">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <div class="success-content">
+            <span class="success-icon">✓</span>
+            <p>Settings saved successfully!</p>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to logout?</p>
+            <div class="modal-actions">
+                <button id="cancelLogout" class="btn-cancel">Cancel</button>
+                <a href="../HTML/Home.html" id="confirmLogout" class="btn-logout">Log Out</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/AdminDashboard.js"></script>
+    <script src="../JS/Notiflogout.js"></script>
+    <script src="../JS/notification-script.js"></script>
+    <script src="../JS/UI_Settings.js"></script>
+    <script src="../JS/content-editor-loader.js"></script>
+    <script src="../JS/content-editor.js"></script>
+</body>
+</html>
