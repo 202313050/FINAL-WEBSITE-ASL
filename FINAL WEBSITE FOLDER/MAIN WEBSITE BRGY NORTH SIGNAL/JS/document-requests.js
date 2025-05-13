@@ -44,6 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get document requests from localStorage
     const documentRequests = JSON.parse(localStorage.getItem("documentRequests")) || {}
 
+    // If no document requests exist, create sample data
+    if (Object.keys(documentRequests).length === 0) {
+      createSampleData()
+      return
+    }
+
     // Clear existing table rows
     requestsTableBody.innerHTML = ""
 
@@ -76,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = document.createElement("tr")
       row.setAttribute("data-id", refNumber)
       row.setAttribute("data-name", request.applicantName.toLowerCase())
+      row.setAttribute("data-type", request.type.toLowerCase())
 
       // Create row content
       row.innerHTML = `
@@ -108,6 +115,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize action buttons for new rows
     initActionButtons()
+  }
+
+  // Create sample data for demonstration
+  function createSampleData() {
+    const sampleRequests = {
+      "CERT-001": {
+        applicantName: "Juan Dela Cruz",
+        type: "Barangay Clearance",
+        dateRequested: "2023-05-15",
+        status: "Pending",
+        formData: {
+          firstName: "Juan",
+          middleInitial: "M",
+          lastName: "Dela Cruz",
+          gender: "Male",
+          nationality: "Filipino",
+          civilStatus: "Single",
+          contactNumber: "09123456789",
+          dateOfBirth: "1990-05-15",
+          yearOfResidency: "2015"
+        },
+        uploadedDocuments: [
+          { name: "ID.jpg", type: "image/jpeg", url: "https://via.placeholder.com/300x200.jpg?text=ID+Card", size: "250 KB" },
+          { name: "ProofOfResidency.pdf", type: "application/pdf", url: "https://example.com/sample.pdf", size: "1.2 MB" }
+        ]
+      },
+      "CERT-002": {
+        applicantName: "Maria Santos",
+        type: "Certificate of Residency",
+        dateRequested: "2023-05-14",
+        status: "Approved",
+        formData: {
+          firstName: "Maria",
+          middleInitial: "L",
+          lastName: "Santos",
+          gender: "Female",
+          nationality: "Filipino",
+          civilStatus: "Married",
+          contactNumber: "09187654321",
+          dateOfBirth: "1995-10-20",
+          yearOfResidency: "2010"
+        },
+        uploadedDocuments: [
+          { name: "Selfie.jpg", type: "image/jpeg", url: "https://via.placeholder.com/300x200.jpg?text=Selfie", size: "180 KB" },
+          { name: "BirthCertificate.pdf", type: "application/pdf", url: "https://example.com/sample.pdf", size: "950 KB" }
+        ]
+      },
+      "CERT-003": {
+        applicantName: "Pedro Reyes",
+        type: "Business Clearance",
+        dateRequested: "2023-05-13",
+        status: "Document Verification",
+        formData: {
+          firstName: "Pedro",
+          middleInitial: "G",
+          lastName: "Reyes",
+          gender: "Male",
+          nationality: "Filipino",
+          civilStatus: "Married",
+          contactNumber: "09198765432",
+          dateOfBirth: "1985-03-25",
+          businessName: "Reyes General Merchandise",
+          businessAddress: "123 Main St, North Signal Village",
+          yearOfResidency: "2008"
+        },
+        uploadedDocuments: [
+          { name: "BusinessTax.jpg", type: "image/jpeg", url: "https://via.placeholder.com/300x200.jpg?text=Business+Tax", size: "320 KB" },
+          { name: "AffidavitOfClosure.pdf", type: "application/pdf", url: "https://example.com/sample.pdf", size: "1.5 MB" },
+          { name: "OldBusinessClearance.pdf", type: "application/pdf", url: "https://example.com/sample.pdf", size: "1.1 MB" }
+        ]
+      },
+      "CERT-004": {
+        applicantName: "Ana Gonzales",
+        type: "Barangay ID",
+        dateRequested: "2023-05-12",
+        status: "Processing",
+        formData: {
+          firstName: "Ana",
+          middleName: "Cruz",
+          lastName: "Gonzales",
+          address: "456 Park Ave, North Signal Village",
+          contactNumber: "09123456789",
+          birthday: "1992-08-10",
+          precinct: "12345",
+          dateToday: "2023-05-12",
+          emergencyName: "Carlos Gonzales",
+          emergencyContact: "09187654321",
+          emergencyRelationship: "Husband",
+          sectorType: "SENIOR CITIZEN"
+        },
+        uploadedDocuments: [
+          { name: "IDPhoto.jpg", type: "image/jpeg", url: "https://via.placeholder.com/300x200.jpg?text=ID+Photo", size: "150 KB" },
+          { name: "Signature.jpg", type: "image/jpeg", url: "https://via.placeholder.com/300x100.jpg?text=Signature", size: "100 KB" }
+        ]
+      }
+    }
+
+    localStorage.setItem("documentRequests", JSON.stringify(sampleRequests))
+    loadDocumentRequests()
   }
 
   // Initialize action buttons
@@ -155,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDocumentRequests()
   }
 
-  // View button click
+  // View button click - Enhanced to show form data and uploaded documents
   function handleViewClick(button) {
     const row = button.closest("tr")
     const certId = row.querySelector("td:first-child").textContent
@@ -163,6 +269,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const certType = row.querySelector("td:nth-child(3)").textContent
     const dateIssued = row.querySelector("td:nth-child(4)").textContent
     const status = row.querySelector("td:nth-child(5) .status-badge").textContent
+
+    // Get the full request data from localStorage
+    const documentRequests = JSON.parse(localStorage.getItem("documentRequests")) || {}
+    const requestData = documentRequests[certId] || {}
 
     // Get stored reasons or set default message
     const reasons = requestReasons[certId] || {
@@ -189,6 +299,102 @@ document.addEventListener("DOMContentLoaded", () => {
       reasonSection.innerHTML = `<p><strong>Archive Reason:</strong> ${reasons.archiveReason}</p>`
     } else {
       reasonSection.innerHTML = "<p>No action has been taken on this request yet.</p>"
+    }
+
+    // Populate form data based on document type
+    const formDataContainer = document.getElementById("formDataContainer")
+    formDataContainer.innerHTML = ""
+
+    if (requestData.formData) {
+      const formData = requestData.formData
+      
+      // Create form fields display
+      Object.entries(formData).forEach(([key, value]) => {
+        // Skip empty values
+        if (!value) return
+        
+        const fieldElement = document.createElement("div")
+        fieldElement.className = "form-field"
+        
+        // Format the key for display (capitalize first letter, add spaces before capital letters)
+        const formattedKey = key
+          .replace(/([A-Z])/g, ' $1')
+          .replace(/^./, str => str.toUpperCase())
+        
+        fieldElement.innerHTML = `
+          <div class="form-field-label">${formattedKey}</div>
+          <div class="form-field-value">${value}</div>
+        `
+        formDataContainer.appendChild(fieldElement)
+      })
+    } else {
+      formDataContainer.innerHTML = "<p>No form data available for this request.</p>"
+    }
+
+    // Populate uploaded documents
+    const uploadedDocumentsContainer = document.getElementById("uploadedDocumentsContainer")
+    uploadedDocumentsContainer.innerHTML = ""
+
+    if (requestData.uploadedDocuments && requestData.uploadedDocuments.length > 0) {
+      requestData.uploadedDocuments.forEach(doc => {
+        const docElement = document.createElement("div")
+        docElement.className = "document-item"
+        
+        // Determine icon based on file type
+        let iconSrc = ""
+        if (doc.type.startsWith("image/")) {
+          iconSrc = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWltYWdlIj48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIvPjxjaXJjbGUgY3g9IjguNSIgY3k9IjguNSIgcj0iMS41Ii8+PHBvbHlsaW5lIHBvaW50cz0iMjEgMTUgMTYgMTAgNSAyMSIvPjwvc3ZnPg=="
+        } else if (doc.type === "application/pdf") {
+          iconSrc = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtdGV4dCI+PHBhdGggZD0iTTE0IDJINmEyIDIgMCAwIDAtMiAydjE2YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMlY4eiIvPjxwb2x5bGluZSBwb2ludHM9IjE0IDIgMTQgOCAyMCA4Ii8+PGxpbmUgeDE9IjE2IiB5MT0iMTMiIHgyPSI4IiB5Mj0iMTMiLz48bGluZSB4MT0iMTYiIHkxPSIxNyIgeDI9IjgiIHkyPSIxNyIvPjxwb2x5bGluZSBwb2ludHM9IjEwIDkgOSA5IDggOSIvPjwvc3ZnPg=="
+        } else {
+          iconSrc = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUiPjxwYXRoIGQ9Ik0xNCAySDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWOHoiLz48cG9seWxpbmUgcG9pbnRzPSIxNCAyIDE0IDggMjAgOCIvPjwvc3ZnPg=="
+        }
+        
+        // Create document item HTML
+        docElement.innerHTML = `
+          <div class="document-info">
+            <img src="${iconSrc}" alt="Document icon" class="document-icon">
+            <div>
+              <div class="document-name">${doc.name}</div>
+              <div class="document-size">${doc.size}</div>
+            </div>
+          </div>
+          <div class="document-actions">
+            <button class="document-btn document-btn-view" data-url="${doc.url}">View</button>
+            <button class="document-btn document-btn-download" data-url="${doc.url}" data-name="${doc.name}">Download</button>
+          </div>
+        `
+        
+        uploadedDocumentsContainer.appendChild(docElement)
+        
+        // Add preview for images
+        if (doc.type.startsWith("image/")) {
+          const previewElement = document.createElement("div")
+          previewElement.innerHTML = `<img src="${doc.url}" alt="${doc.name}" class="document-preview">`
+          uploadedDocumentsContainer.appendChild(previewElement)
+        }
+      })
+      
+      // Add event listeners for document buttons
+      uploadedDocumentsContainer.querySelectorAll(".document-btn-view").forEach(btn => {
+        btn.addEventListener("click", function() {
+          window.open(this.getAttribute("data-url"), "_blank")
+        })
+      })
+      
+      uploadedDocumentsContainer.querySelectorAll(".document-btn-download").forEach(btn => {
+        btn.addEventListener("click", function() {
+          const link = document.createElement("a")
+          link.href = this.getAttribute("data-url")
+          link.download = this.getAttribute("data-name")
+          link.target = "_blank"
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        })
+      })
+    } else {
+      uploadedDocumentsContainer.innerHTML = "<p>No documents uploaded for this request.</p>"
     }
 
     // Show the modal
@@ -390,8 +596,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tableRows.forEach((row) => {
       const id = row.getAttribute("data-id").toLowerCase()
       const name = row.getAttribute("data-name").toLowerCase()
+      const type = row.getAttribute("data-type").toLowerCase()
 
-      if (id.includes(searchTerm) || name.includes(searchTerm)) {
+      if (id.includes(searchTerm) || name.includes(searchTerm) || type.includes(searchTerm)) {
         found = true
         row.style.display = ""
       } else {
