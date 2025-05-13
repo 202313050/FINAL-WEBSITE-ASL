@@ -106,20 +106,23 @@
             <div class="form-field">
               <label class="form-label">Upload Documents</label>
               <div class="upload-box">
-                <input type="file" id="signatureUpload" class="file-input" accept="image/*" />
+                <input type="file" id="documentUpload" class="file-input" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.svg" multiple />
                 <div class="upload-instructions">
                   <svg xmlns="http://www.w3.org/2000/svg" class="upload-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M4 12l8-8 8 8M12 4v12" />
                   </svg>
-                  <p>Click or drag file to this area to upload</p>
+                  <p>Click or drag files to this area to upload</p>
+                  <p class="upload-limit">Maximum 20 files. Supported formats: JPG, PNG, PDF, DOC, SVG</p>
                 </div>
               </div>
+              <div class="files-container" id="filesContainer"></div>
+              <div class="file-count" id="fileCount">0 files selected</div>
             </div>
 
             <div class="form-actions">
-              <a href="../HTML/Business Clearance.html" class="btn-cancel">Back</button></a>
-              <a href class="btn-next">Confirm</button></a>
+              <a href="../HTML/Business Clearance.html" class="btn-cancel">Back</a>
+              <button type="button" id="confirmBtn" class="btn-next">Confirm</button>
             </div>
           </form>
         </section>
@@ -142,6 +145,6 @@
         </div>
       </footer>
     </div>
-    <script src="../JS/Clearance.js"></script>
+    <script src="../JS/BCP.js"></script>
   </body>
 </html>
