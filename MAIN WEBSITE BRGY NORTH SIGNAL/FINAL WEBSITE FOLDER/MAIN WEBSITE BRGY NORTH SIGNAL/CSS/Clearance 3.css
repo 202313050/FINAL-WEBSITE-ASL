@@ -90,13 +90,6 @@ body {
   z-index: -1;
 }
 
-.header-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  top: 171px;
-}
 
 .page-title {
   font-family: Poppins;

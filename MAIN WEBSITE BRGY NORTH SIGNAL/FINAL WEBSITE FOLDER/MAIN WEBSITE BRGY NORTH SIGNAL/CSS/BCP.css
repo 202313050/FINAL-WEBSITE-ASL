@@ -90,14 +90,7 @@ body {
   z-index: -1;
 }
 
-.header-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  top: 171px;
-  background-color: #f2ff37;
-}
+
 .page-title {
   font-family: Poppins;
   font-size: 64px;

@@ -73,17 +73,7 @@
     margin-left: 20px;
   }
   
-  /* Header Line styling - Fix */
-  .header-line {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    top: 170px; /* Adjusted to match other files */
-    background-color: #f2ff37;
-    z-index: 1;
-  }
-  
+ 
   .header-title {
     font-family: Poppins;
     font-size: 20px;
@@ -244,15 +234,7 @@
     }
   }
   
-  /* Remove the duplicate header-line definition */
-  /* .header-line {
-    width: 100%;
-    height: 1px;
-    background-color: #f2ff37;
-    margin-top: -1px;
-    position: relative;
-    z-index: 1;
-  } */
+  
   
   /* Main Content */
   .main-content {
