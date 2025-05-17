@@ -380,97 +380,109 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // View button click - Enhanced to show form data and uploaded documents
-  function handleViewClick(button) {
-    const row = button.closest("tr")
-    const certId = row.getAttribute("data-ref") || row.querySelector("td:first-child").textContent
-    const residentName = row.querySelector("td:nth-child(2)").textContent
-    const certType = row.querySelector("td:nth-child(3)").textContent
-    const dateIssued = row.querySelector("td:nth-child(4)").textContent
-    const status = row.querySelector("td:nth-child(5) .status-badge").textContent
+// View button click - Enhanced to show form data and uploaded documents
+function handleViewClick(button) {
+  const row = button.closest("tr");
+  const certId = row.getAttribute("data-ref") || row.querySelector("td:first-child").textContent;
+  const residentName = row.querySelector("td:nth-child(2)").textContent;
+  const certType = row.querySelector("td:nth-child(3)").textContent;
+  const dateIssued = row.querySelector("td:nth-child(4)").textContent;
+  const status = row.querySelector("td:nth-child(5) .status-badge").textContent;
 
-    // Get the full request data
-    const documentRequests = JSON.parse(localStorage.getItem("documentRequests")) || []
-    const requestData = documentRequests.find(req => req.reference_id === certId || req.id === parseInt(row.getAttribute("data-id"))) || {}
+  // Get the full request data
+  const documentRequests = JSON.parse(localStorage.getItem("documentRequests")) || [];
+  const requestData = documentRequests.find(req => req.reference_id === certId || req.id === parseInt(row.getAttribute("data-id"))) || {};
+  
+  console.log("View request data:", requestData);
 
-    // Get stored reasons or set default message
-    const reasons = requestReasons[row.getAttribute("data-id")] || {
-      approveReason: "No approval reason provided",
-      rejectReason: "No rejection reason provided",
-      archiveReason: "No archiving reason provided",
-    }
+  // Get stored reasons or set default message
+  const reasons = requestReasons[row.getAttribute("data-id")] || {
+    approveReason: "No approval reason provided",
+    rejectReason: "No rejection reason provided",
+    archiveReason: "No archiving reason provided",
+  };
 
-    // Populate view modal
-    document.getElementById("viewCertId").textContent = certId
-    document.getElementById("viewResidentName").textContent = residentName
-    document.getElementById("viewCertType").textContent = certType
-    document.getElementById("viewDateIssued").textContent = dateIssued
-    document.getElementById("viewStatus").textContent = status
+  // Populate view modal
+  document.getElementById("viewCertId").textContent = certId;
+  document.getElementById("viewResidentName").textContent = residentName;
+  document.getElementById("viewCertType").textContent = certType;
+  document.getElementById("viewDateIssued").textContent = dateIssued;
+  document.getElementById("viewStatus").textContent = status;
 
-    // Set reason based on status
-    const reasonSection = document.getElementById("viewReason")
+  // Set reason based on status
+  const reasonSection = document.getElementById("viewReason");
 
-    if (status.toLowerCase() === "approved") {
-      reasonSection.innerHTML = `<p><strong>Approval Reason:</strong> ${reasons.approveReason}</p>`
-    } else if (status.toLowerCase() === "rejected") {
-      reasonSection.innerHTML = `<p><strong>Rejection Reason:</strong> ${reasons.rejectReason}</p>`
-    } else if (status.toLowerCase() === "archived") {
-      reasonSection.innerHTML = `<p><strong>Archive Reason:</strong> ${reasons.archiveReason}</p>`
-    } else {
-      reasonSection.innerHTML = "<p>No action has been taken on this request yet.</p>"
-    }
-
-    // Populate form data
-    const formDataContainer = document.getElementById("formDataContainer")
-    formDataContainer.innerHTML = ""
-
-    if (requestData) {
-      // Create form fields display for all available data
-      const fields = [
-        { key: "first_name", label: "First Name" },
-        { key: "middle_initial", label: "Middle Initial" },
-        { key: "last_name", label: "Last Name" },
-        { key: "gender", label: "Gender" },
-        { key: "nationality", label: "Nationality" },
-        { key: "civil_status", label: "Civil Status" },
-        { key: "contact_number", label: "Contact Number" },
-        { key: "birth_date", label: "Birth Date" },
-        { key: "years_resident", label: "Years of Residency" },
-        { key: "document_type", label: "Document Type" },
-        { key: "purpose", label: "Purpose" },
-        { key: "reference_id", label: "Reference ID" },
-        { key: "request_date", label: "Request Date" }
-      ]
-      
-      fields.forEach(field => {
-        if (requestData[field.key]) {
-          const fieldElement = document.createElement("div")
-          fieldElement.className = "form-field"
-          
-          let value = requestData[field.key]
-          
-          // Format date fields
-          if (field.key === "birth_date" || field.key === "request_date") {
-            value = formatDate(value)
-          }
-          
-          fieldElement.innerHTML = `
-            <div class="form-field-label">${field.label}</div>
-            <div class="form-field-value">${value}</div>
-          `
-          formDataContainer.appendChild(fieldElement)
-        }
-      })
-    } else {
-      formDataContainer.innerHTML = "<p>No form data available for this request.</p>"
-    }
-
-    // Populate uploaded documents section (placeholder for now)
-    const uploadedDocumentsContainer = document.getElementById("uploadedDocumentsContainer")
-    uploadedDocumentsContainer.innerHTML = "<p>No documents uploaded for this request.</p>"
-
-    // Show the modal
-    viewModal.style.display = "flex"
+  if (status.toLowerCase() === "approved") {
+    reasonSection.innerHTML = `<p><strong>Approval Reason:</strong> ${reasons.approveReason}</p>`;
+  } else if (status.toLowerCase() === "rejected") {
+    reasonSection.innerHTML = `<p><strong>Rejection Reason:</strong> ${reasons.rejectReason}</p>`;
+  } else if (status.toLowerCase() === "archived") {
+    reasonSection.innerHTML = `<p><strong>Archive Reason:</strong> ${reasons.archiveReason}</p>`;
+  } else {
+    reasonSection.innerHTML = "<p>No action has been taken on this request yet.</p>";
   }
+
+  // Populate form data
+  const formDataContainer = document.getElementById("formDataContainer");
+  formDataContainer.innerHTML = "";
+
+  if (requestData) {
+    // Create form fields display for all available data
+    const fields = [
+      { key: "first_name", label: "First Name" },
+      { key: "middle_initial", label: "Middle Initial" },
+      { key: "last_name", label: "Last Name" },
+      { key: "gender", label: "Gender" },
+      { key: "nationality", label: "Nationality" },
+      { key: "civil_status", label: "Civil Status" },
+      { key: "contact_number", label: "Contact Number" },
+      { key: "birth_date", label: "Birth Date" },
+      { key: "years_resident", label: "Years of Residency" },
+      { key: "document_type", label: "Document Type" },
+      { key: "purpose", label: "Purpose" },
+      { key: "reference_id", label: "Reference ID" },
+      { key: "request_date", label: "Request Date" }
+    ];
+    
+    // Add business fields if they exist
+    if (requestData.business) {
+      fields.push({ key: "business", label: "Business Type" });
+    }
+    
+    if (requestData.business_address) {
+      fields.push({ key: "business_address", label: "Business Address" });
+    }
+    
+    fields.forEach(field => {
+      if (requestData[field.key]) {
+        const fieldElement = document.createElement("div");
+        fieldElement.className = "form-field";
+        
+        let value = requestData[field.key];
+        
+        // Format date fields
+        if (field.key === "birth_date" || field.key === "request_date") {
+          value = formatDate(value);
+        }
+        
+        fieldElement.innerHTML = `
+          <div class="form-field-label">${field.label}</div>
+          <div class="form-field-value">${value}</div>
+        `;
+        formDataContainer.appendChild(fieldElement);
+      }
+    });
+  } else {
+    formDataContainer.innerHTML = "<p>No form data available for this request.</p>";
+  }
+
+  // Populate uploaded documents section (placeholder for now)
+  const uploadedDocumentsContainer = document.getElementById("uploadedDocumentsContainer");
+  uploadedDocumentsContainer.innerHTML = "<p>No documents uploaded for this request.</p>";
+
+  // Show the modal
+  viewModal.style.display = "flex";
+}
 
   // Approve button click
   function handleApproveClick(button) {

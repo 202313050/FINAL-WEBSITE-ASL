@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay Clearance Form</title>
+    <title>Business Clearance Form</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@400;700&family=Roboto:wght@400;500&family=Noto+Sans:wght@400;600&family=Inter:wght@400&family=Lisu+Bosa:wght@900&display=swap"
       rel="stylesheet"
@@ -12,6 +12,7 @@
   </head>
   <body>
     <div class="page-container">
+      <!-- Header content remains the same -->
       <div class="announcement-bar">
         <p class="announcement-text">
           Open Hours of Barangay North Signal Village [Day &amp; Time]
@@ -20,6 +21,7 @@
       </div>
 
       <header class="main-header">
+        <!-- Header content remains the same -->
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4848c1b44e47c6c0ce74516fefca71bf5244d214" alt="Logo" class="header-logo" />
         <div class="header-info">
           <h1 class="header-title">Barangay North Signal Village</h1>
@@ -28,6 +30,7 @@
           </p>
         </div>
         <nav class="main-nav">
+          <!-- Navigation content remains the same -->
           <a href="../HTML/Home.html" class="nav-link">HOME</a>
           <a href="../HTML/About.html" class="nav-link">ABOUT</a>
           <div class="dropdown">
@@ -44,57 +47,25 @@
       </header>
 
       <div class="header-background">
-        <svg
-          width="1448"
-          height="314"
-          viewBox="0 0 1448 314"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <!-- SVG content remains the same -->
+        <svg width="1448" height="314" viewBox="0 0 1448 314" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_d_339_89)">
             <path d="M4 0H1444V306H4V0Z" fill="#0F2D70" />
           </g>
           <defs>
-            <filter
-              id="filter0_d_339_89"
-              x="0"
-              y="0"
-              width="1448"
-              height="314"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
+            <filter id="filter0_d_339_89" x="0" y="0" width="1448" height="314" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
               <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feColorMatrix
-                in="SourceAlpha"
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"
-              />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
               <feOffset dy="4" />
               <feGaussianBlur stdDeviation="2" />
               <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="BackgroundImageFix"
-                result="effect1_dropShadow_339_89"
-              />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_339_89"
-                result="shape"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_339_89" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_339_89" result="shape" />
             </filter>
           </defs>
         </svg>
       </div>
-
-     
 
       <main class="main-content">
         <h2 class="page-title">Business Clearance</h2>
@@ -117,58 +88,58 @@
         </div>
 
         <section class="form-container">
-          <form class="clearance-form">
+          <form class="clearance-form" id="business-clearance-form">
             <div class="form-field">
               <label class="form-label">First Name</label>
-              <input type="text" placeholder="First Name" class="form-input" />
+              <input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-input" />
             </div>
 
             <div class="form-field">
               <label class="form-label">Middle Initial</label>
-              <input type="text" placeholder="Middle Name" class="form-input" />
+              <input type="text" id="middleInitial" name="middleInitial" placeholder="Middle Name" class="form-input" />
             </div>
 
             <div class="form-field">
               <label class="form-label">Last Name</label>
-              <input type="text" placeholder="Last Name" class="form-input" />
+              <input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-input" />
             </div>
 
             <div class="form-field">
               <label class="form-label">Gender</label>
-              <select class="form-input">
+              <select id="gender" name="gender" class="form-input">
                 <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="form-field">
               <label class="form-label">Nationality</label>
-              <select class="form-input">
+              <select id="nationality" name="nationality" class="form-input">
                 <option value="" disabled selected>Select Nationality</option>
-                <option value="filipino">Filipino</option>
-                <option value="american">American</option>
-                <option value="chinese">Chinese</option>
-                <option value="japanese">Japanese</option>
-                <option value="korean">Korean</option>
-                <option value="indian">Indian</option>
-                <option value="british">British</option>
-                <option value="australian">Australian</option>
-                <option value="canadian">Canadian</option>
-                <option value="other">Other</option>
+                <option value="Filipino">Filipino</option>
+                <option value="American">American</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Indian">Indian</option>
+                <option value="British">British</option>
+                <option value="Australian">Australian</option>
+                <option value="Canadian">Canadian</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="form-field">
               <label class="form-label">Civil Status</label>
-              <select class="form-input">
+              <select id="civilStatus" name="civilStatus" class="form-input">
                 <option value="" disabled selected>Select Civil Status</option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="widowed">Widowed</option>
-                <option value="separated">Separated</option>
-                <option value="divorced">Divorced</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Divorced">Divorced</option>
               </select>
             </div>
 
@@ -176,44 +147,61 @@
               <label class="form-label">Contact Number</label>
               <input
                 type="tel"
+                id="contactNumber"
+                name="contactNumber"
                 placeholder="Contact Number"
-                class="form-input" 
+                class="form-input"
               />
             </div>
 
             <div class="form-field">
               <label class="form-label">Date of Birth</label>
-              <input type="date" placeholder="mm/dd/yy" class="form-input"  />
+              <input type="date" id="birthDate" name="birthDate" class="form-input" />
             </div>
 
             <div class="form-field">
               <label class="form-label">Business/Negosyo</label>
-              <input type="text" placeholder="Business/Negosyo" class="form-input" />
+              <input 
+                type="text" 
+                id="business" 
+                name="business" 
+                placeholder="Business/Negosyo" 
+                class="form-input" 
+              />
             </div>
               
             <div class="form-field">
               <label class="form-label">Business Address(Address ng Negosyo)</label>
-              <input type="text" placeholder="Business Address(Address ng Negosyo)" class="form-input" />
-            </div>
-
-            <div class="form-field">
-              <label class="form-label">Year of recidency in North Signal</label>
-              <input
-                type="text"
-                placeholder="Anong Taon Naninirahan sa North Signal"
+              <input 
+                type="text" 
+                id="businessAddress" 
+                name="businessAddress" 
+                placeholder="Business Address(Address ng Negosyo)" 
                 class="form-input" 
               />
             </div>
 
+            <div class="form-field">
+              <label class="form-label">Year of residency in North Signal</label>
+              <input
+                type="text"
+                id="yearsResident"
+                name="yearsResident"
+                placeholder="Anong Taon Naninirahan sa North Signal"
+                class="form-input"
+              />
+            </div>
+
             <div class="form-actions">
-              <button type="button" class="btn-cancel">Cancel</button>
-              <a href="BusinessClearanceProof.html" class="btn-next">Next</a>
+              <a href="../HTML/DocumentType.html" class="btn-cancel">Cancel</a>
+              <button type="submit" class="btn-next">Next</button>
             </div>
           </form>
         </section>
       </main>
 
       <footer class="main-footer">
+        <!-- Footer content remains the same -->
         <div class="footer-content">
           <h2 class="footer-title">Barangay North Signal Village</h2>
           <p class="footer-address">
@@ -230,6 +218,6 @@
         </div>
       </footer>
     </div>
-
+    <script src="../JS/Busclearance.js"></script>
   </body>
 </html>
